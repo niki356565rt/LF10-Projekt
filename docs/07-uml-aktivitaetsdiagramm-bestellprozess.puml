@@ -1,0 +1,75 @@
+@startuml
+skinparam DefaultFontName Arial
+skinparam ActivityBackgroundColor #FEFECE
+skinparam ActivityBorderColor #A80036
+skinparam NoteBackgroundColor #E8F8F5
+skinparam NoteBorderColor #1ABC9C
+' Erzwingt echte Rauten (Diamonds) statt der PlantUML-Standard-Sechsecke
+skinparam conditionStyle diamond
+
+|Service|
+start
+:Tisch auswählen;
+
+repeat
+  :Bestellung (Nachbestellung) anlegen;
+  
+  repeat
+    :Position hinzufügen;
+    :Wunsch nach weiteren Positionen abfragen;
+  repeat while ("") is ([Ja]) not ([Nein])
+  
+  :Bestellung speichern;
+
+  |System|
+  :Status -> aufgegeben;
+  :Log(Status='aufgegeben', Mitarbeiter='', Zeit='', Bestellung='');
+  note right: [Bestellstatus = aufgegeben]
+
+  :Bestellte Positionen auf Speisen prüfen;
+  if ("") then ([Speisen enthalten])
+    |Küche|
+    :Küche anzeigen;
+    
+    |System|
+    :Status -> in Bearbeitung;
+    :Log(Status='in Bearbeitung', Mitarbeiter='', Zeit='', Bestellung='');
+    note right: [Bestellstatus = in Bearbeitung]
+    
+    |Küche|
+    :Speisen zubereiten;
+    
+    |System|
+    :Status -> fertig;
+    :Log(Status='fertig', Mitarbeiter='', Zeit='', Bestellung='');
+    note right: [Bestellstatus = fertig]
+  else ([nur Getränke])
+    |System|
+    :Pfad ohne Küche (nur Getränke) fortsetzen;
+  endif
+
+  |Service|
+  :Speisen/Getränke servieren;
+
+  |System|
+  :Status -> serviert;
+  :Log(Status='serviert', Mitarbeiter='', Zeit='', Bestellung='');
+  note right: [Bestellstatus = serviert]
+
+  |Service|
+  :Gästewunsch bezüglich Rechnung oder Nachbestellung erfragen;
+repeat while ("") is ([weitere Bestellung]) not ([Rechnung erstellen])
+
+:Rechnung anzeigen;
+:Bezahlung entgegennehmen;
+
+|System|
+:Status -> bezahlt;
+:Log(Status='bezahlt', Mitarbeiter='', Zeit='', Bestellung='');
+note right: [Bestellstatus = bezahlt]
+
+|Service|
+:Tisch freigeben;
+
+stop
+@enduml
