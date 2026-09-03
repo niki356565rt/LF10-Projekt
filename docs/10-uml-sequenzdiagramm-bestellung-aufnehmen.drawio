@@ -11,13 +11,13 @@
         <mxCell id="ll0" value=":service" style="shape=umlActor;html=1;outlineConnect=0;verticalLabelPosition=bottom;verticalAlign=top;labelPosition=center;align=center;whiteSpace=nowrap;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=12;fontColor=#333333;" vertex="1" parent="1">
           <mxGeometry x="95" y="56" width="30" height="60" as="geometry"/>
         </mxCell>
-        <mxCell id="ll1" value=":ui" style="shape=umlLifeline;html=1;perimeter=lifelinePerimeter;whiteSpace=wrap;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=40;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=12;fontColor=#333333;align=center;verticalAlign=middle;" vertex="1" parent="1">
+        <mxCell id="ll1" value=":Service-UI" style="shape=umlLifeline;html=1;perimeter=lifelinePerimeter;whiteSpace=wrap;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=40;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=12;fontColor=#333333;align=center;verticalAlign=middle;" vertex="1" parent="1">
           <mxGeometry x="300" y="56" width="140" height="1830" as="geometry"/>
         </mxCell>
-        <mxCell id="ll2" value=":kern" style="shape=umlLifeline;html=1;perimeter=lifelinePerimeter;whiteSpace=wrap;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=40;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=12;fontColor=#333333;align=center;verticalAlign=middle;" vertex="1" parent="1">
+        <mxCell id="ll2" value=":Bestellverwaltung" style="shape=umlLifeline;html=1;perimeter=lifelinePerimeter;whiteSpace=wrap;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=40;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=12;fontColor=#333333;align=center;verticalAlign=middle;" vertex="1" parent="1">
           <mxGeometry x="560" y="56" width="140" height="1830" as="geometry"/>
         </mxCell>
-        <mxCell id="ll3" value=":db" style="shape=umlLifeline;html=1;perimeter=lifelinePerimeter;whiteSpace=wrap;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=40;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=12;fontColor=#333333;align=center;verticalAlign=middle;" vertex="1" parent="1">
+        <mxCell id="ll3" value=":Datenbank" style="shape=umlLifeline;html=1;perimeter=lifelinePerimeter;whiteSpace=wrap;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=40;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=12;fontColor=#333333;align=center;verticalAlign=middle;" vertex="1" parent="1">
           <mxGeometry x="820" y="56" width="140" height="1830" as="geometry"/>
         </mxCell>
         <mxCell id="ll4" value=":kueche" style="shape=umlLifeline;html=1;perimeter=lifelinePerimeter;whiteSpace=wrap;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=40;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=12;fontColor=#333333;align=center;verticalAlign=middle;" vertex="1" parent="1">
@@ -176,7 +176,7 @@
             <mxPoint x="0" y="-10" as="offset"/>
           </mxGeometry>
         </mxCell>
-        <mxCell id="c43" value="bestellung:Bestellung" style="html=1;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=none;strokeColor=#666666;strokeWidth=1;align=center;verticalAlign=bottom;exitPerimeter=0;entryPerimeter=0;curved=0;rounded=0;dashed=1;endArrow=open;endFill=0;endSize=12;startArrow=none;exitX=0.45714286;exitY=0.33551912;exitDx=0;exitDy=0;entryX=0.54285714;entryY=0.33551912;entryDx=0;entryDy=0;whiteSpace=nowrap;" edge="1" parent="1" source="ll3" target="ll2">
+        <mxCell id="c43" value="bestellungId:int" style="html=1;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=none;strokeColor=#666666;strokeWidth=1;align=center;verticalAlign=bottom;exitPerimeter=0;entryPerimeter=0;curved=0;rounded=0;dashed=1;endArrow=open;endFill=0;endSize=12;startArrow=none;exitX=0.45714286;exitY=0.33551912;exitDx=0;exitDy=0;entryX=0.54285714;entryY=0.33551912;entryDx=0;entryDy=0;whiteSpace=nowrap;" edge="1" parent="1" source="ll3" target="ll2">
           <mxGeometry relative="1" as="geometry" x="0.5">
             <mxPoint x="0" y="-10" as="offset"/>
           </mxGeometry>
@@ -208,7 +208,7 @@
             <mxPoint x="0" y="-10" as="offset"/>
           </mxGeometry>
         </mxCell>
-        <mxCell id="c49" value="position:Bestellposition" style="html=1;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=none;strokeColor=#666666;strokeWidth=1;align=center;verticalAlign=bottom;exitPerimeter=0;entryPerimeter=0;curved=0;rounded=0;dashed=1;endArrow=open;endFill=0;endSize=12;startArrow=none;exitX=0.45714286;exitY=0.54972677;exitDx=0;exitDy=0;entryX=0.54285714;entryY=0.54972677;entryDx=0;entryDy=0;whiteSpace=nowrap;" edge="1" parent="1" source="ll3" target="ll2">
+        <mxCell id="c49" value="positionId:int" style="html=1;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=none;strokeColor=#666666;strokeWidth=1;align=center;verticalAlign=bottom;exitPerimeter=0;entryPerimeter=0;curved=0;rounded=0;dashed=1;endArrow=open;endFill=0;endSize=12;startArrow=none;exitX=0.45714286;exitY=0.54972677;exitDx=0;exitDy=0;entryX=0.54285714;entryY=0.54972677;entryDx=0;entryDy=0;whiteSpace=nowrap;" edge="1" parent="1" source="ll3" target="ll2">
           <mxGeometry relative="1" as="geometry" x="0.5">
             <mxPoint x="0" y="-10" as="offset"/>
           </mxGeometry>
@@ -258,7 +258,7 @@
             <mxPoint x="0" y="-10" as="offset"/>
           </mxGeometry>
         </mxCell>
-        <mxCell id="c57" value="logEintrag:Protokoll" style="html=1;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=none;strokeColor=#666666;strokeWidth=1;align=center;verticalAlign=bottom;exitPerimeter=0;entryPerimeter=0;curved=0;rounded=0;dashed=1;endArrow=open;endFill=0;endSize=12;startArrow=none;exitX=0.45714286;exitY=0.82513661;exitDx=0;exitDy=0;entryX=0.54285714;entryY=0.82513661;entryDx=0;entryDy=0;whiteSpace=nowrap;" edge="1" parent="1" source="ll3" target="ll2">
+        <mxCell id="c57" value="protokolliert" style="html=1;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=none;strokeColor=#666666;strokeWidth=1;align=center;verticalAlign=bottom;exitPerimeter=0;entryPerimeter=0;curved=0;rounded=0;dashed=1;endArrow=open;endFill=0;endSize=12;startArrow=none;exitX=0.45714286;exitY=0.82513661;exitDx=0;exitDy=0;entryX=0.54285714;entryY=0.82513661;entryDx=0;entryDy=0;whiteSpace=nowrap;" edge="1" parent="1" source="ll3" target="ll2">
           <mxGeometry relative="1" as="geometry" x="0.5">
             <mxPoint x="0" y="-10" as="offset"/>
           </mxGeometry>
