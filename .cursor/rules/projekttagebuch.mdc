@@ -10,8 +10,7 @@ Bei jeder wesentlichen Änderung, neuen Features, Commits, Dokumentationsanpassu
 ## Vorgaben:
 1. **Format:** Das Projekttagebuch muss als strukturierte HTML-Datei (`docs/Projekttagebuch.html`) gepflegt und als sauberes, druckfertiges PDF (`abgabe/Projekttagebuch.pdf` und `docs/Projekttagebuch.pdf`) generiert werden.
 2. **Struktur pro Eintrag:**
-   - Datum & Uhrzeit
-   - Bearbeiter / Entwickler
+   - Datum (`Datum: DD.MM.YYYY` - ohne Uhrzeiten oder Bearbeiternamen)
    - Kategorie (z. B. *Anforderungsanalyse*, *Modellierung*, *Datenbank*, *Software-Implementierung*, *Qualitätssicherung*, *Dokumentation*)
    - Beschreibung der durchgeführten Tätigkeiten & Ergebnisse
    - Betroffene Dateien & Artefakte
