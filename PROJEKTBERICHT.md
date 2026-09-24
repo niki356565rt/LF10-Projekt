@@ -14,7 +14,7 @@
 
 ## Inhaltsübersicht des Projektberichts
 
-1. **Management Summary (Executive Summary):** Kern-Erkenntnisse, Projektziele, Meilensteine, Java-Software & SQL-Dump.
+1. **Management Summary (Executive Summary):** Kern-Erkenntnisse, Projektziele, Meilensteine, Java-Software, PDF-Dokumente & SQL-Dump.
 2. **Projektgegenstand & Ausgangslage:** Papierbasierter Ist-Zustand vs. digitaler Soll-Zustand, Rollenverteilung.
 3. **Java-Softwareimplementierung & Objektorientiertes Design:** 
    - Lauffähige Java 17 Swing-Anwendung (`src/com/smartrestaurant/`) mit Standard-SQL-Queries.
@@ -22,9 +22,9 @@
 4. **Testdokumentation & Konzept zum automatisierten Testen:**
    - Automatisierter Testsuite-Runner ([`DatabaseTest.java`](src/com/smartrestaurant/DatabaseTest.java)) mit 100 % Erfolgsquote.
    - Testdokumentation & Qualitätskonzept ([`docs/17-testdokumentation.md`](docs/17-testdokumentation.md)).
-5. **Entwickler- & Benutzerdokumentation:**
-   - Entwicklerhandbuch ([`docs/18-entwicklerdokumentation.md`](docs/18-entwicklerdokumentation.md)) mit `javac`- & `java`-Anleitungen.
-   - Anwenderhandbuch ([`docs/19-benutzerdokumentation.md`](docs/19-benutzerdokumentation.md)) für die Swing-GUI.
+5. **Entwickler- & Benutzerdokumentation (PDF & Markdown):**
+   - Entwicklerdokumentation (PDF): [`abgabe/Entwicklerdokumentation.pdf`](abgabe/Entwicklerdokumentation.pdf) / [`docs/18-entwicklerdokumentation.md`](docs/18-entwicklerdokumentation.md)
+   - Benutzerdokumentation (PDF): [`abgabe/Benutzerdokumentation.pdf`](abgabe/Benutzerdokumentation.pdf) / [`docs/19-benutzerdokumentation.md`](docs/19-benutzerdokumentation.md)
 6. **Strategische Entscheidungen:** Make-or-Buy-Bewertung (Entscheidung für Eigenentwicklung) & Stakeholder-Analyse.
 7. **Projektplanung & Wirtschaftlichkeit:** 320h Aufwand, Herstellkosten (14.900 €), Selbstkosten (17.880 €), Angebotspreis (19.668 € netto / 23.404,92 € brutto).
 8. **Physikalische Datenbankerstellung & Export:** SQL-Dump [`smart_restaurant_dump.sql`](smart_restaurant_dump.sql).
@@ -32,4 +32,6 @@
 10. **Projektergebnis & Ausblick:** Zusammenfassung & Erweiterungsmöglichkeiten.
 
 👉 **Vollständigen Bericht lesen:** [`docs/PROJEKTBERICHT.md`](docs/PROJEKTBERICHT.md)  
+👉 **Entwicklerdoku PDF:** [`abgabe/Entwicklerdokumentation.pdf`](abgabe/Entwicklerdokumentation.pdf)  
+👉 **Benutzerdoku PDF:** [`abgabe/Benutzerdokumentation.pdf`](abgabe/Benutzerdokumentation.pdf)  
 👉 **Datenbank-Dump (.sql) abrufen:** [`smart_restaurant_dump.sql`](smart_restaurant_dump.sql)

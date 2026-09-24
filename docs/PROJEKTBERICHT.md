@@ -19,10 +19,10 @@ Im Rahmen der Projektlaufzeit wurden sämtliche Fach- und IT-Grundlagen erarbeit
 - **Make-or-Buy-Entscheidung:** Qualifizierte Bewertung gegen Branchen-SaaS mit einer klaren Entscheidung für die **Eigenentwicklung (Make)** zur Sicherstellung der Erweiterbarkeit und Prozesskonformität.
 - **Projektplanung & Agiles Vorgehen:** Strukturierung in 6 Phasen und 4 Sprints inkl. umfassender Risikomatrix (10 klassifizierte Projektrisiken).
 - **Kosten- & Betriebskalkulation:** Vollständige Kostenrechnung über 320 Arbeitsstunden mit Herstellkosten von **14.900,00 €**, Selbstkosten von **17.880,00 €** und einem Angebotspreis von **19.668,00 € netto** (**23.404,92 € brutto**), ergänzt durch eine Zuordnung nach Einzel- und Gemeinkostenstellen.
-- **Java-Softwareimplementierung & Standard-SQL:** Ausführung einer lauffähigen, objektorientierten Administrationssoftware in reinet Java (Swing GUI + JDBC + Standard SQL-Abfragen) unter `src/com/smartrestaurant/`.
-- **GUI-Mockups & UML-Klassendiagramm:** Detaillierte UI-Mockups (`docs/15-mockup-gui.md`) und ein vollstandiges PlantUML-Klassendiagramm (`docs/16-klassendiagramm.puml`).
+- **Java-Softwareimplementierung & Standard-SQL:** Ausführung einer lauffähigen, objektorientierten Administrationssoftware in reinem Java (Swing GUI + JDBC + Standard SQL-Abfragen) unter `src/com/smartrestaurant/`.
+- **GUI-Mockups & UML-Klassendiagramm:** Detaillierte UI-Mockups (`docs/15-mockup-gui.md`) und ein vollständiges PlantUML-Klassendiagramm (`docs/16-klassendiagramm.puml`).
 - **Automatisierte & Manuelle Qualitätssicherung:** Implementierung einer automatisierten Java-Testsuite (`DatabaseTest.java`) mit 100 % Erfolgsquote sowie Dokumentation des automatisierten Testkonzepts (`docs/17-testdokumentation.md`).
-- **Entwickler- & Benutzerdokumentation:** Ausführliche Dokumentation zur Kompilierung (`javac`), Ausführung (`java`) und Bedienung der Software (`docs/18-entwicklerdokumentation.md` & `docs/19-benutzerdokumentation.md`).
+- **Entwickler- & Benutzerdokumentation (auch als PDF):** Ausführliche Dokumentation zur Kompilierung, Ausführung und Bedienung der Software als Markdown, HTML sowie als druckfertige PDF-Dateien ([`abgabe/Entwicklerdokumentation.pdf`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/abgabe/Entwicklerdokumentation.pdf) & [`abgabe/Benutzerdokumentation.pdf`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/abgabe/Benutzerdokumentation.pdf)).
 - **Security, Compliance & ISO 27001:** Etablierung eines ISMS-Gesamtkonzepts nach ISO/IEC 27001:2022 (Annex A Mapping für 15 Kontrollen), DSGVO-Konformitätsprüfungen, Sicherheitsrichtlinien sowie ein vollständiges Audit-Framework mit 11 Prüfkriterien (`A-01`–`A-10`).
 
 ---
@@ -35,12 +35,6 @@ In der Gaststätte werden Bestellungen traditionell manuell mit Papier und Stift
 - **Verzögerungen:** Physische Wege des Servicepersonals zwischen Gästetisch und Küche bremsen den Gesamtablauf.
 - **Fehlende Transparenz:** Kein Echtzeit-Überblick über offene, in Bearbeitung befindliche oder fertiggestellte Speisen und Getränke.
 - **Manuelle Abrechnung:** Erhöhter Fehleraufwand bei der Rechnungsstellung und Rechnungsaufteilung.
-
-### 2.2 Zielsetzung & Projektauftrag
-Ziel des Projekts ist die Entwicklung einer maßgeschneiderten Softwarelösung, die den Bestellprozess digital optimiert. Das System adressiert drei Kernbereiche:
-1. **Service:** Schnelle Bestellerfassung direkt am Tisch, Einsicht in Tischstatus, Servieren und Rechnungsabschluss.
-2. **Küche / Bar:** Echtzeit-Anzeige eingehender Speisen (Küche) und Getränke (Bar) in chronologischer Reihenfolge mit Statusmeldung.
-3. **Administration:** Stammdatenpflege für Mitarbeiter, Speise- und Getränkekarten (Artikel) sowie Raumplanung (Tische) inklusive kaufmännischer Auswertungen.
 
 ---
 
@@ -59,59 +53,23 @@ Die entwickelte Administrationssoftware ist vollständig in **Java 17** ohne ext
 - **`Bestellung.java`**: Entitätsklasse für Bestellungen.
 - **`DatabaseTest.java`**: Automatisierte Testsuite.
 
-### 3.2 UI-Mockups
-Vor der GUI-Umsetzung wurden detaillierte Mockups für alle 5 Hauptbereiche erstellt und im Dokument [`docs/15-mockup-gui.md`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/docs/15-mockup-gui.md) dokumentiert.
-
-### 3.3 PlantUML-Klassendiagramm
-Das objektorientierte Klassendesign ist im PlantUML-Klassendiagramm ([`docs/16-klassendiagramm.puml`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/docs/16-klassendiagramm.puml)) spezifiziert und als Vektorgrafik ([`docs/16-klassendiagramm.svg`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/docs/16-klassendiagramm.svg)) gerendert.
+### 3.2 UI-Mockups & Klassendiagramm
+- UI-Mockups: [`docs/15-mockup-gui.md`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/docs/15-mockup-gui.md)
+- PlantUML-Klassendiagramm: [`docs/16-klassendiagramm.puml`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/docs/16-klassendiagramm.puml) / SVG: [`docs/16-klassendiagramm.svg`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/docs/16-klassendiagramm.svg)
 
 ---
 
-## 4. Testdokumentation & Konzept zum automatisierten Testen
+## 4. Testdokumentation & Dokumentations-PDFs
 
-### 4.1 Testdurchführung & Testergebnisse
-Die automatisierte Testklasse `DatabaseTest` prüft alle SQL-Queries und Datenbank-CRUD-Operationen:
-```text
-=== AUTOMATISIERTER TEST: DatabaseManager & SQL ===
-[PASS] 1. Datenbank erfolgreich initialisiert.
-  ✓ Mitarbeiter konnte hinzugefügt werden.
-  ✓ Mitarbeiter-Anzahl hat sich um 1 erhöht.
-  ✓ Mitarbeiter konnte gelöscht werden.
-[PASS] 2. Mitarbeiter CRUD-Operationen erfolgreich.
-  ✓ Artikel konnte hinzugefügt werden.
-  ✓ Artikel-Anzahl hat sich um 1 erhöht.
-  ✓ Artikel konnte gelöscht werden.
-[PASS] 3. Artikel CRUD-Operationen erfolgreich.
-  ✓ Tisch konnte hinzugefügt werden.
-  ✓ Tisch-Anzahl hat sich um 1 erhöht.
-  ✓ Tisch konnte gelöscht werden.
-[PASS] 4. Tisch CRUD-Operationen erfolgreich.
-  ✓ Bestellungen vorhanden.
-  ✓ Bestellstatus konnte auf 'in Bearbeitung' aktualisiert werden.
-[PASS] 5. Bestellstatus-Update erfolgreich.
-
-✅ ALLE AUTOMATISIERTEN TESTS ERFOLGREICH BESTANDEN!
-```
-Ausführliche manuelle & automatisierte Testergebnisse sind in [`docs/17-testdokumentation.md`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/docs/17-testdokumentation.md) dokumentiert.
-
-### 4.2 Vorteile des automatisierten Testens
-- **Frühzeitige Fehlererkennung (Shift-Left):** Entwickler erkennen Regressionsfehler sofort beim lokalen Build.
-- **Refactoring-Sicherheit:** Code & SQL-Abfragen können ohne Risiko optimiert werden.
-- **Effizienz & Schnelligkeit:** Sekunden schnelle Durchführung statt langwieriger manueller UI-Klicks.
-- **CI/CD Integration:** Automatische Qualitätsschranken vor Git-Commits.
+- **Entwicklerdokumentation PDF:** [`abgabe/Entwicklerdokumentation.pdf`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/abgabe/Entwicklerdokumentation.pdf) (sowie [`docs/Entwicklerdokumentation.pdf`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/docs/Entwicklerdokumentation.pdf))
+- **Benutzerdokumentation PDF:** [`abgabe/Benutzerdokumentation.pdf`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/abgabe/Benutzerdokumentation.pdf) (sowie [`docs/Benutzerdokumentation.pdf`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/docs/Benutzerdokumentation.pdf))
+- **Testdokumentation:** [`docs/17-testdokumentation.md`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/docs/17-testdokumentation.md)
 
 ---
 
-## 5. Entwickler- & Benutzerdokumentation
+## 5. Projektergebnis & Ausblick
 
-- **Entwicklerdokumentation ([`docs/18-entwicklerdokumentation.md`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/docs/18-entwicklerdokumentation.md)):** Enthält Kompilieranleitung (`javac -encoding UTF-8 -cp "lib/sqlite-jdbc.jar;src" -d bin src/com/smartrestaurant/*.java`), Ausführbefehl (`java -cp "lib/sqlite-jdbc.jar;bin" com.smartrestaurant.Main`) sowie DDL-Schema.
-- **Benutzerdokumentation ([`docs/19-benutzerdokumentation.md`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/docs/19-benutzerdokumentation.md)):** Ausführliche Schritt-für-Schritt Anwenderanleitung für die Bedienung aller 5 Tabs der Swing-Oberfläche.
-
----
-
-## 6. Projektergebnis & Ausblick
-
-Das Projekt *Smart Restaurant* beinhaltet die vollständige, lauffähige Java-Softwareanwendung, Mockups, Klassendiagramme, automatisierte Testsuites, SQL-Dumps sowie eine lückenlose Entwickler- und Benutzerdokumentation.
+Das Projekt *Smart Restaurant* beinhaltet die vollständige, lauffähige Java-Softwareanwendung, Mockups, Klassendiagramme, automatisierte Testsuites, SQL-Dumps sowie Entwickler- und Benutzerdokumentationen im Markdown-, HTML- und PDF-Format.
 
 ---
 *Bericht erstellt und verifiziert durch das Entwicklungsteam „Der Dreier“ (Another Great Solution GmbH).*

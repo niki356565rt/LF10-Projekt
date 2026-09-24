@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Benutzerdokumentation – Smart Restaurant</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 20mm 15mm 20mm 15mm;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 11pt;
+            line-height: 1.55;
+            color: #1a1a1a;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            font-size: 22pt;
+            color: #0d2b45;
+            border-bottom: 2px solid #0d2b45;
+            padding-bottom: 8px;
+            margin-top: 0;
+        }
+        h2 {
+            font-size: 15pt;
+            color: #16425b;
+            border-bottom: 1px solid #d1d5db;
+            padding-bottom: 4px;
+            margin-top: 24px;
+        }
+        h3 {
+            font-size: 12pt;
+            color: #2a6f97;
+            margin-top: 16px;
+        }
+        p {
+            margin-bottom: 12px;
+        }
+        .meta-box {
+            background-color: #f3f4f6;
+            border-left: 4px solid #2a6f97;
+            padding: 12px 16px;
+            margin-bottom: 20px;
+            font-size: 10pt;
+        }
+        .meta-box table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .meta-box td {
+            padding: 4px 8px;
+            border: none;
+        }
+        ol, ul {
+            margin-top: 6px;
+            margin-bottom: 14px;
+            padding-left: 24px;
+        }
+        li {
+            margin-bottom: 6px;
+        }
+        .step-box {
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 14px 18px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .step-box h3 {
+            margin-top: 0;
+            color: #0d2b45;
+        }
+        .page-break {
+            page-break-before: always;
+        }
+        .tip {
+            background-color: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 10px 14px;
+            font-size: 10pt;
+            margin: 12px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Benutzerdokumentation</h1>
+
+    <div class="meta-box">
+        <table>
+            <tr>
+                <td><strong>Software:</strong> Smart Restaurant Adminoberfläche</td>
+                <td><strong>Zielgruppe:</strong> Betriebsleitung & Personal</td>
+            </tr>
+            <tr>
+                <td><strong>Voraussetzung:</strong> Java 17 Runtime Environment</td>
+                <td><strong>Stand:</strong> 24. September 2026</td>
+            </tr>
+        </table>
+    </div>
+
+    <h2>1. Überblick</h2>
+    <p>
+        Diese Anleitung erklärt die Bedienung der Administrationssoftware für das Smart Restaurant. 
+        Über das Programm verwalten Sie Mitarbeiter, Speisekarten, Tische und den aktuellen Status eingehender Bestellungen.
+    </p>
+
+    <h2>2. Programm starten</h2>
+    <p>
+        Öffnen Sie die Anwendung mit einem Doppelklick auf die Datei <code>run.bat</code> im Hauptordner. 
+        Alternativ starten Sie das Programm über das Terminal mit folgendem Befehl:
+    </p>
+    <p><code>java -cp "lib/sqlite-jdbc.jar;bin" com.smartrestaurant.Main</code></p>
+    <p>
+        Nach dem Start öffnet sich das Hauptfenster. Die Benutzeroberfläche unterteilt sich in fünf Reiter.
+    </p>
+
+    <h2>3. Die Funktionsbereiche</h2>
+
+    <div class="step-box">
+        <h3>Reiter 1: Mitarbeiterverwaltung</h3>
+        <p>Hier pflegen Sie die Zugänge des Gaststättenpersonals.</p>
+        <ul>
+            <li><strong>Neuen Mitarbeiter anlegen:</strong> Tragen Sie Name und Benutzernamen in die Textfelder ein, wählen Sie die Rolle (Service, Küche oder Administration) aus und klicken Sie auf <strong>Hinzufügen</strong>.</li>
+            <li><strong>Mitarbeiter löschen:</strong> Wählen Sie die Zeile in der Tabelle aus und klicken Sie auf <strong>Löschen</strong>.</li>
+        </ul>
+    </div>
+
+    <div class="step-box">
+        <h3>Reiter 2: Artikelverwaltung</h3>
+        <p>Verwaltung der Speisen- und Getränkekarte mit Preisen.</p>
+        <ul>
+            <li><strong>Artikel anlegen:</strong> Geben Sie den Namen ein, wählen Sie die Kategorie (z. B. Hauptspeisen) und tragen Sie den Preis ein (z. B. <code>14.50</code>). Klicken Sie auf <strong>Hinzufügen</strong>.</li>
+            <li><strong>Artikel löschen:</strong> Zeile in der Tabelle markieren und auf <strong>Löschen</strong> klicken.</li>
+        </ul>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="step-box">
+        <h3>Reiter 3: Tischverwaltung</h3>
+        <p>Übersicht der Tische und deren Belegungszustand.</p>
+        <ul>
+            <li><strong>Tisch anlegen:</strong> Geben Sie die Tischnummer und die Anzahl der Sitzplätze (2 bis 8 Personen) ein. Wählen Sie den Status (frei oder belegt) und klicken Sie auf <strong>Hinzufügen</strong>.</li>
+        </ul>
+    </div>
+
+    <div class="step-box">
+        <h3>Reiter 4: Bestellübersicht</h3>
+        <p>Echtzeitübersicht aller eingegangenen Bestellungen.</p>
+        <ul>
+            <li><strong>Status weiterleiten:</strong> Klicken Sie auf eine Bestellung in der Tabelle und danach auf <strong>Status weiterschalten</strong>. Der Status durchläuft nacheinander die Stufen: <em>aufgegeben → in Bearbeitung → fertig → serviert → bezahlt</em>.</li>
+            <li><strong>Aktualisieren:</strong> Mit dem Button <strong>Aktualisieren</strong> laden Sie die Tabelle neu.</li>
+        </ul>
+    </div>
+
+    <div class="step-box">
+        <h3>Reiter 5: System & DB Status</h3>
+        <p>Zeigt technische Informationen zur aktiven SQLite-Datenbank und der Java-Laufzeitumgebung.</p>
+    </div>
+
+    <h2>4. Häufige Fragen & Fehlerbehebung</h2>
+    
+    <div class="tip">
+        <strong>Meldung: "Gültigen Preis eingeben!"</strong><br>
+        Prüfen Sie das Preisfeld. Verwenden Sie Zahlen mit Punkt oder Komma (z. B. 12.50). Buchstaben oder Sonderzeichen sind nicht erlaubt.
+    </div>
+
+    <div class="tip">
+        <strong>Meldung: "Bitte alle Felder ausfüllen!"</strong><br>
+        Bei der Mitarbeiteranlage müssen sowohl Name als auch Benutzername ausgefüllt sein.
+    </div>
+
+    <div class="tip">
+        <strong>Tabelle zeigt neue Daten nicht an?</strong><br>
+        Klicken Sie unten im jeweiligen Reiter auf den Aktualisieren-Button.
+    </div>
+
+</body>
+</html>
