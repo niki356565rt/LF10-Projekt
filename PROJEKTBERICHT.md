@@ -8,25 +8,28 @@
 **Auftraggeber (Szenario):** Regionales Gastronomieunternehmen  
 **Projektlaufzeit:** 2 Wochen (10 Arbeitstage / 320 Personenstunden)  
 **Dokumentenstand:** 24. September 2026  
-**Status:** Vollständige Projektdokumentation, Datenbank-Export & Konsolidierter Bericht  
+**Status:** Vollständige Projektdokumentation, Java-Implementierung & Konsolidierter Bericht  
 
 ---
 
 ## Inhaltsübersicht des Projektberichts
 
-1. **Management Summary (Executive Summary):** Kern-Erkenntnisse, Projektziele, Meilensteine, MariaDB-Anlegung und SQL-Dump.
+1. **Management Summary (Executive Summary):** Kern-Erkenntnisse, Projektziele, Meilensteine, Java-Software & SQL-Dump.
 2. **Projektgegenstand & Ausgangslage:** Papierbasierter Ist-Zustand vs. digitaler Soll-Zustand, Rollenverteilung.
-3. **Anforderungsanalyse & Priorisierung:** 26 Anforderungen (A-01 bis AD-10), MoSCoW-Klassifizierung, Scope-Abgrenzung.
-4. **Strategische Entscheidungen:** Make-or-Buy-Bewertung (Entscheidung für Eigenentwicklung) & Stakeholder-Analyse (10 Gruppen).
-5. **Projektplanung, Ressourcen & Risikomanagement:** 6 Phasen, 4 Sprints, Risikomatrix mit 10 Risiken.
-6. **Kosten- & Wirtschaftlichkeitsbetrachtung:** 320h Aufwand, Herstellkosten (14.900 €), Selbstkosten (17.880 €), Angebotspreis (19.668 € netto / 23.404,92 € brutto), Einzel- vs. Gemeinkosten.
-7. **Physikalische Datenbankerstellung, Testdaten & SQL-Export:** 
-   - Physikalische Anlegung der Datenbank `smart_restaurant` in MariaDB.
-   - Befüllung aller 10 Tabellen mit repräsentativen Testdaten (5 Mitarbeiter, 8 Tische, 6 Kategorien, 15 Artikel, 4 Bestellungen, 13 Positionen, 12 Audit-Protokolle).
-   - Export der vollständigen Datenbankstruktur (DDL) und Datensätze (DML) als standalone Dump-Datei: [`smart_restaurant_dump.sql`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/smart_restaurant_dump.sql) / [`docs/smart_restaurant_dump.sql`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/docs/smart_restaurant_dump.sql).
-8. **Security, Compliance & ISMS (ISO 27001 / DSGVO):** ISMS-Gesamtkonzept, ISO 27001 Annex-A-Mapping (15 Controls), DSGVO-Prüfung, Sicherheitsrichtlinien & Lizenzinventar.
-9. **Qualitätssicherung & Audit-Framework:** Audit-Verifikation der Datensätze, 11 Prüfkriterien (A-01 bis A-10), Feststellungen F-01 bis F-05.
-10. **Projektergebnis, Fazit & Ausblick:** Soll-Ist-Vergleich, Lessons Learned, Erweiterungsmöglichkeiten.
+3. **Java-Softwareimplementierung & Objektorientiertes Design:** 
+   - Lauffähige Java 17 Swing-Anwendung (`src/com/smartrestaurant/`) mit Standard-SQL-Queries.
+   - UI-Mockups ([`docs/15-mockup-gui.md`](docs/15-mockup-gui.md)) & PlantUML-Klassendiagramm ([`docs/16-klassendiagramm.puml`](docs/16-klassendiagramm.puml)).
+4. **Testdokumentation & Konzept zum automatisierten Testen:**
+   - Automatisierter Testsuite-Runner ([`DatabaseTest.java`](src/com/smartrestaurant/DatabaseTest.java)) mit 100 % Erfolgsquote.
+   - Testdokumentation & Qualitätskonzept ([`docs/17-testdokumentation.md`](docs/17-testdokumentation.md)).
+5. **Entwickler- & Benutzerdokumentation:**
+   - Entwicklerhandbuch ([`docs/18-entwicklerdokumentation.md`](docs/18-entwicklerdokumentation.md)) mit `javac`- & `java`-Anleitungen.
+   - Anwenderhandbuch ([`docs/19-benutzerdokumentation.md`](docs/19-benutzerdokumentation.md)) für die Swing-GUI.
+6. **Strategische Entscheidungen:** Make-or-Buy-Bewertung (Entscheidung für Eigenentwicklung) & Stakeholder-Analyse.
+7. **Projektplanung & Wirtschaftlichkeit:** 320h Aufwand, Herstellkosten (14.900 €), Selbstkosten (17.880 €), Angebotspreis (19.668 € netto / 23.404,92 € brutto).
+8. **Physikalische Datenbankerstellung & Export:** SQL-Dump [`smart_restaurant_dump.sql`](smart_restaurant_dump.sql).
+9. **Security, Compliance & ISMS (ISO 27001 / DSGVO):** ISMS-Gesamtkonzept & Annex-A-Mapping.
+10. **Projektergebnis & Ausblick:** Zusammenfassung & Erweiterungsmöglichkeiten.
 
 👉 **Vollständigen Bericht lesen:** [`docs/PROJEKTBERICHT.md`](docs/PROJEKTBERICHT.md)  
-👉 **Datenbank-Dump (.sql) abrufen:** [`smart_restaurant_dump.sql`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/smart_restaurant_dump.sql)
+👉 **Datenbank-Dump (.sql) abrufen:** [`smart_restaurant_dump.sql`](smart_restaurant_dump.sql)

@@ -1,0 +1,131 @@
+@startuml
+package "com.smartrestaurant" {
+
+    class Main {
+        + {static} main(args: String[]): void
+    }
+
+    class AdminGUI {
+        - tabbedPane: JTabbedPane
+        - tableMitarbeiter: JTable
+        - modelMitarbeiter: DefaultTableModel
+        - tableArtikel: JTable
+        - modelArtikel: DefaultTableModel
+        - tableTische: JTable
+        - modelTische: DefaultTableModel
+        - tableBestellungen: JTable
+        - modelBestellungen: DefaultTableModel
+        + AdminGUI()
+        - createMitarbeiterPanel(): JPanel
+        - createArtikelPanel(): JPanel
+        - createTischPanel(): JPanel
+        - createBestellPanel(): JPanel
+        - createSystemPanel(): JPanel
+        - refreshAllTables(): void
+        - refreshMitarbeiterTable(): void
+        - refreshArtikelTable(): void
+        - refreshTischeTable(): void
+        - refreshBestellungenTable(): void
+        - getNextStatus(status: String): String
+    }
+
+    class DatabaseManager {
+        - {static} DB_URL: String
+        + {static} getConnection(): Connection
+        + {static} initDatabase(): void
+        - {static} seedInitialData(conn: Connection): void
+        + {static} getAllMitarbeiter(): List<Mitarbeiter>
+        + {static} addMitarbeiter(m: Mitarbeiter): boolean
+        + {static} deleteMitarbeiter(id: int): boolean
+        + {static} getAllArtikel(): List<Artikel>
+        + {static} addArtikel(a: Artikel): boolean
+        + {static} deleteArtikel(id: int): boolean
+        + {static} getAllTische(): List<Tisch>
+        + {static} addTisch(t: Tisch): boolean
+        + {static} deleteTisch(id: int): boolean
+        + {static} getAllBestellungen(): List<Bestellung>
+        + {static} updateBestellstatus(bestellungId: int, newStatus: String): boolean
+    }
+
+    class Mitarbeiter {
+        - id: int
+        - name: String
+        - benutzername: String
+        - rolle: String
+        - aktiv: boolean
+        + Mitarbeiter(id: int, name: String, benutzername: String, rolle: String, aktiv: boolean)
+        + Mitarbeiter(name: String, benutzername: String, rolle: String)
+        + getId(): int
+        + getName(): String
+        + getBenutzername(): String
+        + getRolle(): String
+        + isAktiv(): boolean
+        + toString(): String
+    }
+
+    class Artikel {
+        - id: int
+        - name: String
+        - kategorie: String
+        - preis: double
+        - aktiv: boolean
+        + Artikel(id: int, name: String, kategorie: String, preis: double, aktiv: boolean)
+        + Artikel(name: String, kategorie: String, preis: double)
+        + getId(): int
+        + getName(): String
+        + getKategorie(): String
+        + getPreis(): double
+        + isAktiv(): boolean
+        + toString(): String
+    }
+
+    class Tisch {
+        - id: int
+        - tischnummer: int
+        - kapazitaet: int
+        - status: String
+        + Tisch(id: int, tischnummer: int, kapazitaet: int, status: String)
+        + Tisch(tischnummer: int, kapazitaet: int, status: String)
+        + getId(): int
+        + getTischnummer(): int
+        + getKapazitaet(): int
+        + getStatus(): String
+        + toString(): String
+    }
+
+    class Bestellung {
+        - id: int
+        - tischId: int
+        - tischNummer: int
+        - mitarbeiterId: int
+        - mitarbeiterName: String
+        - status: String
+        - erstelltAm: String
+        - gesamtpreis: double
+        + Bestellung(id: int, tischId: int, tischNummer: int, mitarbeiterId: int, mitarbeiterName: String, status: String, erstelltAm: String, gesamtpreis: double)
+        + getId(): int
+        + getTischId(): int
+        + getTischNummer(): int
+        + getMitarbeiterId(): int
+        + getMitarbeiterName(): String
+        + getStatus(): String
+        + getErstelltAm(): String
+        + getGesamtpreis(): double
+    }
+
+    class DatabaseTest {
+        + {static} main(args: String[]): void
+        - {static} assertCondition(condition: boolean, message: String): void
+    }
+}
+
+Main --> DatabaseManager : ruft initDatabase() auf
+Main --> AdminGUI : startet GUI
+AdminGUI --> DatabaseManager : nutzt Daten-Abfragen (Standard SQL)
+DatabaseManager ..> Mitarbeiter : erzeugt & verwaltet
+DatabaseManager ..> Artikel : erzeugt & verwaltet
+DatabaseManager ..> Tisch : erzeugt & verwaltet
+DatabaseManager ..> Bestellung : erzeugt & verwaltet
+DatabaseTest --> DatabaseManager : verifiziert SQL-Befehle & CRUD
+
+@enduml
