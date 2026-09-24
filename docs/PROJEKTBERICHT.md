@@ -18,6 +18,7 @@ Im Rahmen der Projektlaufzeit wurden sämtliche Fach- und IT-Grundlagen erarbeit
 - **Anforderungs- & Prozessanalyse:** Definition von 26 strukturierten Muss- und Soll-Anforderungen (IDs `A-01`–`AD-10`) für die Funktionsbereiche Service, Küche und Administration.
 - **Make-or-Buy-Entscheidung:** Qualifizierte Bewertung gegen Branchen-SaaS mit einer klaren Entscheidung für die **Eigenentwicklung (Make)** zur Sicherstellung der Erweiterbarkeit und Prozesskonformität.
 - **Projektplanung & Agiles Vorgehen:** Strukturierung in 6 Phasen und 4 Sprints inkl. umfassender Risikomatrix (10 klassifizierte Projektrisiken).
+- **Projekttagebuch-Regel & Rekonstruktion:** Etablierung einer permanenten Projektregel (`.cursor/rules/projekttagebuch.mdc`) zur parallelen Führung des Projekttagebuchs sowie Erstellung der vollständigen, rekonstituierten Tagebuch-Dokumentation als PDF ([`abgabe/Projekttagebuch.pdf`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/abgabe/Projekttagebuch.pdf)).
 - **Kosten- & Betriebskalkulation:** Vollständige Kostenrechnung über 320 Arbeitsstunden mit Herstellkosten von **14.900,00 €**, Selbstkosten von **17.880,00 €** und einem Angebotspreis von **19.668,00 € netto** (**23.404,92 € brutto**), ergänzt durch eine Zuordnung nach Einzel- und Gemeinkostenstellen.
 - **Java-Softwareimplementierung & Standard-SQL:** Ausführung einer lauffähigen, objektorientierten Administrationssoftware in reinem Java (Swing GUI + JDBC + Standard SQL-Abfragen) unter `src/com/smartrestaurant/`.
 - **GUI-Mockups & UML-Klassendiagramm:** Detaillierte UI-Mockups (`docs/15-mockup-gui.md`) und ein vollständiges PlantUML-Klassendiagramm (`docs/16-klassendiagramm.puml`).
@@ -27,14 +28,13 @@ Im Rahmen der Projektlaufzeit wurden sämtliche Fach- und IT-Grundlagen erarbeit
 
 ---
 
-## 2. Projektgegenstand & Ausgangslage
+## 2. Projekttagebuch & Projektregeln
 
-### 2.1 Ausgangssituation & Problemstellung
-In der Gaststätte werden Bestellungen traditionell manuell mit Papier und Stift aufgenommen. Dieser analoge Prozess führt in der Praxis zu prägnanten Engpässen:
-- **Kommunikationsverluste & Handschriftenprobleme:** Lesefehler bei der Übermittlung von Sonderwünschen oder Artikeln an die Küche.
-- **Verzögerungen:** Physische Wege des Servicepersonals zwischen Gästetisch und Küche bremsen den Gesamtablauf.
-- **Fehlende Transparenz:** Kein Echtzeit-Überblick über offene, in Bearbeitung befindliche oder fertiggestellte Speisen und Getränke.
-- **Manuelle Abrechnung:** Erhöhter Fehleraufwand bei der Rechnungsstellung und Rechnungsaufteilung.
+In den Projektregeln unter `.cursor/rules/projekttagebuch.mdc` ist verbindlich vorgegeben, dass ein **Projekttagebuch** parallel geführt werden muss. 
+Sämtliche vergangenen Projektschritte von der Initialisierung am 18.08.2026 bis zur Softwareumsetzung und Dokumentation am 24.09.2026 wurden anhand der Git-Commit-Historie und Erstellungszeitpunkte chronologisch aufgearbeitet.
+
+- **Projekttagebuch PDF:** [`abgabe/Projekttagebuch.pdf`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/abgabe/Projekttagebuch.pdf) (sowie [`docs/Projekttagebuch.pdf`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/docs/Projekttagebuch.pdf))
+- **HTML-Quelle:** [`docs/Projekttagebuch.html`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/docs/Projekttagebuch.html)
 
 ---
 
@@ -53,23 +53,19 @@ Die entwickelte Administrationssoftware ist vollständig in **Java 17** ohne ext
 - **`Bestellung.java`**: Entitätsklasse für Bestellungen.
 - **`DatabaseTest.java`**: Automatisierte Testsuite.
 
-### 3.2 UI-Mockups & Klassendiagramm
-- UI-Mockups: [`docs/15-mockup-gui.md`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/docs/15-mockup-gui.md)
-- PlantUML-Klassendiagramm: [`docs/16-klassendiagramm.puml`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/docs/16-klassendiagramm.puml) / SVG: [`docs/16-klassendiagramm.svg`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/docs/16-klassendiagramm.svg)
-
 ---
 
 ## 4. Testdokumentation & Dokumentations-PDFs
 
-- **Entwicklerdokumentation PDF:** [`abgabe/Entwicklerdokumentation.pdf`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/abgabe/Entwicklerdokumentation.pdf) (sowie [`docs/Entwicklerdokumentation.pdf`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/docs/Entwicklerdokumentation.pdf))
-- **Benutzerdokumentation PDF:** [`abgabe/Benutzerdokumentation.pdf`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/abgabe/Benutzerdokumentation.pdf) (sowie [`docs/Benutzerdokumentation.pdf`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/docs/Benutzerdokumentation.pdf))
-- **Testdokumentation:** [`docs/17-testdokumentation.md`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/docs/17-testdokumentation.md)
+- **Projekttagebuch PDF:** [`abgabe/Projekttagebuch.pdf`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/abgabe/Projekttagebuch.pdf)
+- **Entwicklerdokumentation PDF:** [`abgabe/Entwicklerdokumentation.pdf`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/abgabe/Entwicklerdokumentation.pdf)
+- **Benutzerdokumentation PDF:** [`abgabe/Benutzerdokumentation.pdf`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/abgabe/Benutzerdokumentation.pdf)
 
 ---
 
 ## 5. Projektergebnis & Ausblick
 
-Das Projekt *Smart Restaurant* beinhaltet die vollständige, lauffähige Java-Softwareanwendung, Mockups, Klassendiagramme, automatisierte Testsuites, SQL-Dumps sowie Entwickler- und Benutzerdokumentationen im Markdown-, HTML- und PDF-Format.
+Das Projekt *Smart Restaurant* beinhaltet die vollständige, lauffähige Java-Softwareanwendung, Mockups, Klassendiagramme, automatisierte Testsuites, SQL-Dumps sowie Projekttagebuch, Entwickler- und Benutzerdokumentationen im Markdown-, HTML- und PDF-Format.
 
 ---
 *Bericht erstellt und verifiziert durch das Entwicklungsteam „Der Dreier“ (Another Great Solution GmbH).*

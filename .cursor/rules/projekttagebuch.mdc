@@ -1,0 +1,18 @@
+---
+description: Regel zur parallelen Führung des Projekttagebuchs als sauberes PDF-Dokument
+alwaysApply: true
+---
+
+# Projekttagebuch-Regel
+
+Bei jeder wesentlichen Änderung, neuen Features, Commits, Dokumentationsanpassungen oder Meilensteinen im Projekt MUST das **Projekttagebuch** parallel gepflegt und aktualisiert werden.
+
+## Vorgaben:
+1. **Format:** Das Projekttagebuch muss als strukturierte HTML-Datei (`docs/Projekttagebuch.html`) gepflegt und als sauberes, druckfertiges PDF (`abgabe/Projekttagebuch.pdf` und `docs/Projekttagebuch.pdf`) generiert werden.
+2. **Struktur pro Eintrag:**
+   - Datum & Uhrzeit
+   - Bearbeiter / Entwickler
+   - Kategorie (z. B. *Anforderungsanalyse*, *Modellierung*, *Datenbank*, *Software-Implementierung*, *Qualitätssicherung*, *Dokumentation*)
+   - Beschreibung der durchgeführten Tätigkeiten & Ergebnisse
+   - Betroffene Dateien & Artefakte
+3. **Synchronisation:** Bei neuen Commits oder Dokumentationsaktualisierungen ist das Tagebuch stets chronologisch auf den neuesten Stand zu bringen.
