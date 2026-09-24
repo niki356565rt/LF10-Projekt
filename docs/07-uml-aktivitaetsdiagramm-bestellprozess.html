@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UML-Aktivitätsdiagramm – Digitaler Bestellprozess | Smart Restaurant</title>
+<style>
+  :root{
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --line:#d7dbe2;
+    --paper:#ffffff;
+    --bg:#f4f6f9;
+    --service:#1d4ed8;
+    --system:#0f766e;
+    --kueche:#b45309;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:15px;
+    line-height:1.6;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:32px 20px 64px}
+  header.doc{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:24px 28px;
+  }
+  header.doc h1{font-size:24px;margin:0 0 6px}
+  header.doc .sub{color:var(--muted);margin:0 0 18px}
+  .meta{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:10px 24px;
+    border-top:1px solid var(--line);
+    padding-top:16px;
+  }
+  .meta div{font-size:14px}
+  .meta b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:600}
+  section{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:22px 28px;
+    margin-top:22px;
+  }
+  h2{font-size:18px;margin:0 0 12px}
+  h3{font-size:15px;margin:22px 0 8px}
+  p{margin:0 0 12px}
+  table{border-collapse:collapse;width:100%;font-size:14px;margin:0 0 8px}
+  th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+  th{background:#f8fafc;font-weight:600}
+  code{background:#f1f5f9;padding:1px 5px;border-radius:4px;font-size:13px}
+  ul{margin:0 0 12px;padding-left:22px}
+  li{margin-bottom:4px}
+
+  .toolbar{
+    display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+    margin:0 0 14px;
+  }
+  .toolbar button{
+    font:inherit;font-size:13px;
+    padding:6px 12px;
+    border:1px solid var(--line);
+    background:#fff;border-radius:6px;cursor:pointer;
+  }
+  .toolbar button:hover{background:#f1f5f9}
+  .toolbar .hint{color:var(--muted);font-size:13px;margin-left:auto}
+
+  .canvas{
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:#fff;
+    overflow:auto;
+    max-height:82vh;
+  }
+  .canvas svg{display:block}
+
+  .legend{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:10px 26px;
+    font-size:14px;
+  }
+  .legend .item{display:flex;align-items:center;gap:10px}
+  .legend svg{flex:none}
+
+  .lanekey{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0 0 14px;font-size:14px}
+  .lanekey span{display:inline-flex;align-items:center;gap:7px}
+  .dot{width:12px;height:12px;border-radius:3px;display:inline-block}
+
+  .statusflow{
+    display:flex;flex-wrap:wrap;align-items:center;gap:8px;
+    font-size:14px;margin:0 0 14px;
+  }
+  .statusflow .st{
+    border:1px solid var(--system);color:var(--system);
+    border-radius:999px;padding:3px 12px;background:#f0fdfa;font-weight:600;
+  }
+  .statusflow .arr{color:var(--muted)}
+
+  footer.doc{color:var(--muted);font-size:13px;margin-top:22px;text-align:center}
+
+  @media print{
+    body{background:#fff}
+    .wrap{max-width:none;padding:0}
+    section,header.doc{border:none;border-radius:0;padding:0 0 14px;page-break-inside:avoid}
+    .toolbar{display:none}
+    .canvas{border:none;max-height:none;overflow:visible}
+    .diagram-section{page-break-before:always}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="doc">
+    <h1>UML-Aktivitätsdiagramm – Digitaler Bestellprozess</h1>
+    <p class="sub">Projekt „Smart Restaurant“ – Digitales Bestell- und Verwaltungssystem für eine Gaststätte</p>
+    <div class="meta">
+      <div><b>Notation</b>UML 2.5 Aktivitätsdiagramm nach DIN EN ISO/IEC 19505</div>
+      <div><b>Prozess</b>Bestellaufnahme bis Bezahlung</div>
+      <div><b>Partitionen</b>Service, System, Küche</div>
+      <div><b>Dokument</b>07 – Prozessmodell (Phase 2)</div>
+      <div><b>Stand</b>20.08.2026</div>
+      <div><b>Grundlage</b>01-anforderungskatalog.md, 02-projektplanung-bestellprozess.md</div>
+    </div>
+  </header>
+
+  <section>
+    <h2>1. Zweck und Abgrenzung</h2>
+    <p>
+      Das Diagramm modelliert den vollständigen Kernablauf des digitalen Bestellprozesses von der Tischauswahl
+      bis zur abgeschlossenen Bezahlung. Es dient als fachliche Grundlage für die Umsetzung der Service-,
+      Küchen- und Systemfunktionen und bildet das Ergebnis der Projektphase 2 (Prozess- und Ablaufplanung).
+    </p>
+    <p>
+      Die Aktivität ist in drei Partitionen (Swimlanes) gegliedert. Eine Aktion liegt genau in der Partition,
+      die für ihre Ausführung verantwortlich ist: fachliche Handlungen des Personals liegen bei
+      <b>Service</b> beziehungsweise <b>Küche</b>, alle automatisch ausgeführten Speicher-, Anzeige- und
+      Protokollierungsschritte liegen beim <b>System</b>.
+    </p>
+    <h3>Nicht Bestandteil dieser Version</h3>
+    <ul>
+      <li>keine eigene Bar-Partition – Getränke werden ohne Küchenschritt direkt vom Service ausgegeben</li>
+      <li>keine Lagerverwaltung und keine Bestandsbuchung</li>
+      <li>keine Selbstbestellung durch Gäste per App oder QR-Code</li>
+      <li>keine Anbindung eines Kartenlesegeräts – die Bezahlung wird als fachlicher Schritt modelliert</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>2. Statusmodell und Protokollierung</h2>
+    <div class="statusflow">
+      <span class="st">aufgegeben</span><span class="arr">→</span>
+      <span class="st">in Bearbeitung</span><span class="arr">→</span>
+      <span class="st">fertig</span><span class="arr">→</span>
+      <span class="st">serviert</span><span class="arr">→</span>
+      <span class="st">bezahlt</span>
+    </div>
+    <p>
+      Die Statuswerte werden ausschließlich in dieser Reihenfolge durchlaufen. Reine Getränkebestellungen
+      überspringen die Küchenschritte und wechseln von <code>aufgegeben</code> direkt nach
+      <code>serviert</code>. Jeder Statuswechsel wird vom System protokolliert; im Diagramm ist dies als
+      eigene Systemaktion mit angehängtem Objektknoten dargestellt.
+    </p>
+    <table>
+      <thead>
+        <tr><th>Status</th><th>Auslösende Rolle</th><th>Setzende Aktion im Diagramm</th><th>Protokollinhalt</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>aufgegeben</td><td>Service (über System)</td><td>Status »aufgegeben« setzen und Log-Eintrag schreiben</td><td>Mitarbeiter, Zeitstempel, Bestellung</td></tr>
+        <tr><td>in Bearbeitung</td><td>Küche</td><td>Status »in Bearbeitung« setzen</td><td>Mitarbeiter, Zeitstempel, Bestellung</td></tr>
+        <tr><td>fertig</td><td>Küche</td><td>Status »fertig« setzen</td><td>Mitarbeiter, Zeitstempel, Bestellung</td></tr>
+        <tr><td>serviert</td><td>Service</td><td>Status »serviert« setzen</td><td>Mitarbeiter, Zeitstempel, Bestellung</td></tr>
+        <tr><td>bezahlt</td><td>Service</td><td>Status »bezahlt« setzen</td><td>Mitarbeiter, Zeitstempel, Bestellung</td></tr>
+      </tbody>
+    </table>
+    <p>
+      Zusätzlich wird der Tischstatus geführt: Beim Anlegen der ersten Bestellung wechselt ein freier Tisch
+      auf <code>besetzt</code>; erst wenn alle Bestellungen des Tisches bezahlt sind, wird er wieder auf
+      <code>frei</code> gesetzt.
+    </p>
+  </section>
+
+  <section>
+    <h2>3. Verwendete UML-Notation</h2>
+    <div class="legend" id="legend"></div>
+  </section>
+
+  <section class="diagram-section">
+    <h2>4. Aktivitätsdiagramm „Bestellprozess“</h2>
+    <div class="lanekey">
+      <span><i class="dot" style="background:var(--service)"></i> Partition <b>Service</b></span>
+      <span><i class="dot" style="background:var(--system)"></i> Partition <b>System</b></span>
+      <span><i class="dot" style="background:var(--kueche)"></i> Partition <b>Küche</b></span>
+    </div>
+    <div class="toolbar">
+      <button type="button" id="zoomOut">− Verkleinern</button>
+      <button type="button" id="zoomIn">+ Vergrößern</button>
+      <button type="button" id="zoomFit">Breite anpassen</button>
+      <button type="button" id="download">SVG herunterladen</button>
+      <button type="button" id="print">Drucken</button>
+      <span class="hint" id="zoomLabel"></span>
+    </div>
+    <div class="canvas" id="canvas"></div>
+  </section>
+
+  <section>
+    <h2>5. Lesehinweise zum Diagramm</h2>
+    <ul>
+      <li><b>Verzweigung „Tisch frei?“</b> – Der Tischstatus wird nur gesetzt, wenn der Tisch vorher frei war. Beide Zweige werden in einem Verbindungsknoten zusammengeführt.</li>
+      <li><b>Schleife „Alle Positionen erfasst?“</b> – Der Rücksprung führt auf einen Verbindungsknoten vor der Aktion „Artikel und Menge als Bestellposition hinzufügen“, damit der eingehende Kontrollfluss regelkonform zusammengeführt wird.</li>
+      <li><b>Verzweigung „Speisen (Kategorie Küche) enthalten?“</b> – Der Zweig <code>[nein – nur Getränke]</code> überspringt die gesamte Küchen-Partition und führt direkt zum Verbindungsknoten vor dem Servieren.</li>
+      <li><b>Verzweigung „Alle Bestellungen des Tisches bezahlt?“</b> – Bei offenen Bestellungen bleibt der Tisch besetzt; beide Zweige enden nach der Zusammenführung im Endknoten.</li>
+      <li><b>Objektknoten</b> – Die Notizen in eckigen Klammern zeigen den Zustand des Objekts „Bestellung“ beziehungsweise „Tisch“ nach der jeweiligen Aktion. Sie sind über gestrichelte Linien angebunden und beschreiben keinen Kontrollfluss.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>6. Nachweis zu den Anforderungen</h2>
+    <table>
+      <thead><tr><th>Anforderung</th><th>Umsetzung im Diagramm</th></tr></thead>
+      <tbody>
+        <tr><td>A-03 / S-01 / S-08</td><td>Verzweigung „Tisch frei?“, Aktionen zum Tischstatus, Verzweigung „Alle Bestellungen des Tisches bezahlt?“</td></tr>
+        <tr><td>A-05</td><td>Systemaktion „Datum und Uhrzeit der Bestellung speichern“</td></tr>
+        <tr><td>A-06 / A-07 / S-03</td><td>Aktion „Artikel und Menge als Bestellposition hinzufügen“ mit Erfassungsschleife</td></tr>
+        <tr><td>A-09 / K-05</td><td>Verzweigung „Speisen (Kategorie Küche) enthalten?“ mit Umgehung der Küchen-Partition</td></tr>
+        <tr><td>A-10 / S-04 / S-05 / S-07</td><td>Statusaktionen »aufgegeben«, »serviert«, »bezahlt« in den Partitionen Service und System</td></tr>
+        <tr><td>A-13</td><td>Systemaktionen „Statuswechsel protokollieren (Mitarbeiter, Zeitstempel, Bestellung)“ nach jedem Statuswechsel</td></tr>
+        <tr><td>K-01 / K-02</td><td>Systemaktion „Bestellung in der Küchenansicht anzeigen“ und Küchenaktion „Offene Bestellungen nach Eingangszeit sortiert einsehen“</td></tr>
+        <tr><td>K-03 / K-04</td><td>Küchenaktionen „Status »in Bearbeitung« setzen“ und „Status »fertig« setzen“ mit anschließender Protokollierung</td></tr>
+        <tr><td>S-06</td><td>Aktion „Rechnung anzeigen (Positionen, Mengen, Preise, Gesamtsumme)“</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer class="doc">
+    Smart Restaurant · Dokument 07 · UML-Aktivitätsdiagramm nach DIN EN ISO/IEC 19505 · Stand 20.08.2026
+  </footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ------------------------------------------------------------------
+     Modell: Partitionen, Knoten und Kontrollflüsse
+     ------------------------------------------------------------------ */
+
+  var LANES = [
+    { id:"service", name:"Service", x:20,  w:380, cx:210,  color:"#1d4ed8", band:"#f5f8ff" },
+    { id:"system",  name:"System",  x:400, w:500, cx:595,  color:"#0f766e", band:"#f2fbfa" },
+    { id:"kueche",  name:"Küche",   x:900, w:390, cx:1095, color:"#b45309", band:"#fffaf3" }
+  ];
+
+  var VB_W = 1310;
+  var HEAD_TOP = 24, HEAD_H = 44;
+  var ROW_GAP = 34;
+  var BOX_W = 250;
+  var NOTE_X = 750, NOTE_W = 138;
+
+  var NODES = [
+    { id:"start",       lane:"service", row:0,  type:"initial" },
+    { id:"aTisch",      lane:"service", row:1,  type:"action", label:["Tisch aus der Tischübersicht","auswählen"] },
+    { id:"dFrei",       lane:"system",  row:2,  type:"decision", label:["Tisch frei?"] },
+    { id:"aBesetzt",    lane:"system",  row:3,  type:"action", label:["Tischstatus auf »besetzt« setzen"], note:["«Tisch»","[besetzt]"] },
+    { id:"m1",          lane:"system",  row:4,  type:"merge" },
+    { id:"aNeu",        lane:"service", row:5,  type:"action", label:["Neue Bestellung für den","Tisch anlegen"] },
+    { id:"mLoop",       lane:"service", row:6,  type:"merge" },
+    { id:"aPos",        lane:"service", row:7,  type:"action", label:["Artikel und Menge als","Bestellposition hinzufügen"] },
+    { id:"dPos",        lane:"service", row:8,  type:"decision", label:["Alle Positionen","erfasst?"] },
+    { id:"aSave",       lane:"service", row:9,  type:"action", label:["Bestellung speichern"] },
+    { id:"aZeit",       lane:"system",  row:10, type:"action", label:["Datum und Uhrzeit der","Bestellung speichern"] },
+    { id:"aAufgegeben", lane:"system",  row:11, type:"action", label:["Status »aufgegeben« setzen","und Log-Eintrag schreiben"], note:["«Bestellung»","[aufgegeben]"] },
+    { id:"dSpeisen",    lane:"system",  row:12, type:"decision", label:["Speisen (Kategorie","Küche) enthalten?"] },
+    { id:"aKview",      lane:"system",  row:13, type:"action", label:["Bestellung in der","Küchenansicht anzeigen"] },
+    { id:"aKopen",      lane:"kueche",  row:14, type:"action", label:["Offene Bestellungen nach","Eingangszeit sortiert einsehen"] },
+    { id:"aKstart",     lane:"kueche",  row:15, type:"action", label:["Status »in Bearbeitung« setzen"] },
+    { id:"aLog1",       lane:"system",  row:16, type:"action", label:["Statuswechsel protokollieren","(Mitarbeiter, Zeitstempel, Bestellung)"], note:["«Bestellung»","[in Bearbeitung]"] },
+    { id:"aKprep",      lane:"kueche",  row:17, type:"action", label:["Speisen zubereiten"] },
+    { id:"aKfertig",    lane:"kueche",  row:18, type:"action", label:["Status »fertig« setzen"] },
+    { id:"aLog2",       lane:"system",  row:19, type:"action", label:["Statuswechsel protokollieren","(Mitarbeiter, Zeitstempel, Bestellung)"], note:["«Bestellung»","[fertig]"] },
+    { id:"aSichtbar",   lane:"system",  row:20, type:"action", label:["Fertige Bestellung für den","Service sichtbar machen"] },
+    { id:"m2",          lane:"service", row:21, type:"merge" },
+    { id:"aServe",      lane:"service", row:22, type:"action", label:["Bestellung abholen und","am Tisch ausgeben"] },
+    { id:"aServiert",   lane:"service", row:23, type:"action", label:["Status »serviert« setzen"] },
+    { id:"aLog3",       lane:"system",  row:24, type:"action", label:["Statuswechsel protokollieren","(Mitarbeiter, Zeitstempel, Bestellung)"], note:["«Bestellung»","[serviert]"] },
+    { id:"aRechnung",   lane:"service", row:25, type:"action", label:["Rechnung anzeigen (Positionen,","Mengen, Preise, Gesamtsumme)"] },
+    { id:"aZahlung",    lane:"service", row:26, type:"action", label:["Bezahlung entgegennehmen"] },
+    { id:"aBezahlt",    lane:"service", row:27, type:"action", label:["Status »bezahlt« setzen"] },
+    { id:"aLog4",       lane:"system",  row:28, type:"action", label:["Statuswechsel protokollieren","(Mitarbeiter, Zeitstempel, Bestellung)"], note:["«Bestellung»","[bezahlt]"] },
+    { id:"dAlle",       lane:"system",  row:29, type:"decision", label:["Alle Bestellungen des","Tisches bezahlt?"] },
+    { id:"aBleibt",     lane:"system",  row:30, type:"action", cx:497, w:154, label:["Tisch bleibt","»besetzt«"] },
+    { id:"aFrei",       lane:"system",  row:30, type:"action", cx:693, w:170, label:["Tischstatus auf","»frei« setzen"] },
+    { id:"m3",          lane:"system",  row:31, type:"merge" },
+    { id:"end",         lane:"system",  row:32, type:"final" }
+  ];
+
+  var EDGES = [
+    { from:"start",       to:"aTisch" },
+    { from:"aTisch",      to:"dFrei" },
+    { from:"dFrei",       to:"aBesetzt",  guard:"[ja]" },
+    { from:"dFrei",       to:"m1",        guard:"[nein]", route:"channel", channelX:432, fromSide:"left", toSide:"left", guardDy:-10 },
+    { from:"aBesetzt",    to:"m1" },
+    { from:"m1",          to:"aNeu" },
+    { from:"aNeu",        to:"mLoop" },
+    { from:"mLoop",       to:"aPos" },
+    { from:"aPos",        to:"dPos" },
+    { from:"dPos",        to:"aSave",     guard:"[ja]" },
+    { from:"dPos",        to:"mLoop",     guard:"[nein]", route:"channel", channelX:372, fromSide:"right", toSide:"right", guardDy:-10 },
+    { from:"aSave",       to:"aZeit" },
+    { from:"aZeit",       to:"aAufgegeben" },
+    { from:"aAufgegeben", to:"dSpeisen" },
+    { from:"dSpeisen",    to:"aKview",    guard:"[ja – Speisen enthalten]" },
+    { from:"dSpeisen",    to:"m2",        guard:"[nein – nur Getränke]", route:"channel", channelX:52, fromSide:"left", toSide:"left", guardDy:-10 },
+    { from:"aKview",      to:"aKopen" },
+    { from:"aKopen",      to:"aKstart" },
+    { from:"aKstart",     to:"aLog1" },
+    { from:"aLog1",       to:"aKprep" },
+    { from:"aKprep",      to:"aKfertig" },
+    { from:"aKfertig",    to:"aLog2" },
+    { from:"aLog2",       to:"aSichtbar" },
+    { from:"aSichtbar",   to:"m2" },
+    { from:"m2",          to:"aServe" },
+    { from:"aServe",      to:"aServiert" },
+    { from:"aServiert",   to:"aLog3" },
+    { from:"aLog3",       to:"aRechnung" },
+    { from:"aRechnung",   to:"aZahlung" },
+    { from:"aZahlung",    to:"aBezahlt" },
+    { from:"aBezahlt",    to:"aLog4" },
+    { from:"aLog4",       to:"dAlle" },
+    { from:"dAlle",       to:"aBleibt",   guard:"[nein]", route:"sideDown", fromSide:"left",  guardDy:-10 },
+    { from:"dAlle",       to:"aFrei",     guard:"[ja]",   route:"sideDown", fromSide:"right", guardDy:-10 },
+    { from:"aBleibt",     to:"m3" },
+    { from:"aFrei",       to:"m3" },
+    { from:"m3",          to:"end" }
+  ];
+
+  /* ------------------------------------------------------------------
+     Geometrie
+     ------------------------------------------------------------------ */
+
+  var laneById = {};
+  LANES.forEach(function(l){ laneById[l.id] = l; });
+
+  function nodeSize(n){
+    if(n.type === "initial") return { w:28, h:28 };
+    if(n.type === "final")   return { w:32, h:32 };
+    if(n.type === "merge")   return { w:56, h:30 };
+    if(n.type === "decision"){
+      var wd = Math.max(150, maxLen(n.label) * 7.4 + 46);
+      return { w:wd, h:60 };
+    }
+    var w = n.w || BOX_W;
+    var h = n.label.length > 1 ? 52 : 44;
+    return { w:w, h:h };
+  }
+
+  function maxLen(lines){
+    return lines.reduce(function(m,s){ return Math.max(m, s.length); }, 0);
+  }
+
+  var byId = {};
+  NODES.forEach(function(n){
+    var s = nodeSize(n);
+    n.w = s.w; n.h = s.h;
+    n.cx = n.cx || laneById[n.lane].cx;
+    byId[n.id] = n;
+  });
+
+  // Zeilenweise vertikale Position berechnen
+  var rows = {};
+  NODES.forEach(function(n){
+    rows[n.row] = rows[n.row] || [];
+    rows[n.row].push(n);
+  });
+  var rowKeys = Object.keys(rows).map(Number).sort(function(a,b){ return a-b; });
+  var cursor = HEAD_TOP + HEAD_H + 30;
+  rowKeys.forEach(function(r){
+    var h = rows[r].reduce(function(m,n){ return Math.max(m, n.h); }, 0);
+    var cy = cursor + h / 2;
+    rows[r].forEach(function(n){ n.cy = cy; });
+    cursor = cy + h / 2 + ROW_GAP;
+  });
+  var VB_H = cursor + 26;
+
+  function anchor(n, side){
+    switch(side){
+      case "top":    return { x:n.cx, y:n.cy - n.h/2 };
+      case "bottom": return { x:n.cx, y:n.cy + n.h/2 };
+      case "left":   return { x:n.cx - n.w/2, y:n.cy };
+      case "right":  return { x:n.cx + n.w/2, y:n.cy };
+    }
+  }
+
+  /* ------------------------------------------------------------------
+     SVG-Hilfsfunktionen
+     ------------------------------------------------------------------ */
+
+  var NS = "http://www.w3.org/2000/svg";
+  function el(name, attrs, parent){
+    var e = document.createElementNS(NS, name);
+    for(var k in attrs){ if(attrs[k] !== undefined && attrs[k] !== null) e.setAttribute(k, attrs[k]); }
+    if(parent) parent.appendChild(e);
+    return e;
+  }
+  function text(parent, x, y, lines, opts){
+    opts = opts || {};
+    var t = el("text", {
+      x:x, y:y,
+      "text-anchor": opts.anchor || "middle",
+      "font-family": '"Segoe UI",Roboto,Helvetica,Arial,sans-serif',
+      "font-size": opts.size || 13,
+      "font-weight": opts.weight || "normal",
+      "font-style": opts.style || "normal",
+      fill: opts.fill || "#1f2937"
+    }, parent);
+    var lh = opts.lh || 15;
+    var arr = [].concat(lines);
+    var y0 = y - (arr.length - 1) * lh / 2;
+    arr.forEach(function(line, i){
+      el("tspan", { x:x, y:(y0 + i*lh).toFixed(1) }, t).textContent = line;
+    });
+    return t;
+  }
+
+  /* ------------------------------------------------------------------
+     Zeichnen
+     ------------------------------------------------------------------ */
+
+  var svg = el("svg", {
+    xmlns: NS,
+    viewBox: "0 0 " + VB_W + " " + VB_H,
+    width: VB_W, height: VB_H,
+    role: "img",
+    "aria-label": "UML-Aktivitätsdiagramm des digitalen Bestellprozesses mit den Partitionen Service, System und Küche"
+  });
+  el("title", {}, svg).textContent = "UML-Aktivitätsdiagramm: Digitaler Bestellprozess Smart Restaurant";
+
+  var defs = el("defs", {}, svg);
+  var mk = el("marker", {
+    id:"arrow", viewBox:"0 0 10 10", refX:9, refY:5,
+    markerWidth:7, markerHeight:7, orient:"auto-start-reverse"
+  }, defs);
+  el("path", { d:"M 0 0 L 10 5 L 0 10 z", fill:"#374151" }, mk);
+
+  el("rect", { x:0, y:0, width:VB_W, height:VB_H, fill:"#ffffff" }, svg);
+
+  // Partitionen
+  var gLanes = el("g", { id:"partitionen" }, svg);
+  LANES.forEach(function(l){
+    el("rect", {
+      x:l.x, y:HEAD_TOP, width:l.w, height:VB_H - HEAD_TOP - 14,
+      fill:l.band, stroke:"#9aa3af", "stroke-width":1
+    }, gLanes);
+    el("rect", {
+      x:l.x, y:HEAD_TOP, width:l.w, height:HEAD_H,
+      fill:"#ffffff", stroke:"#9aa3af", "stroke-width":1
+    }, gLanes);
+    text(gLanes, l.x + l.w/2, HEAD_TOP + HEAD_H/2 + 1, l.name,
+      { size:17, weight:"700", fill:l.color, lh:18 });
+  });
+
+  var gEdges = el("g", { id:"kontrollfluesse" }, svg);
+  var gNodes = el("g", { id:"knoten" }, svg);
+  var gLabels = el("g", { id:"bedingungen" }, svg);
+
+  // ---- Kanten ----
+  function drawPath(points){
+    var d = points.map(function(p,i){
+      return (i === 0 ? "M " : "L ") + p.x.toFixed(1) + " " + p.y.toFixed(1);
+    }).join(" ");
+    el("path", {
+      d:d, fill:"none", stroke:"#374151", "stroke-width":1.6,
+      "marker-end":"url(#arrow)", "stroke-linejoin":"miter"
+    }, gEdges);
+  }
+
+  function guardLabel(x, y, txt){
+    var w = txt.length * 6.35 + 10;
+    el("rect", {
+      x:(x - w/2).toFixed(1), y:(y - 9).toFixed(1), width:w.toFixed(1), height:18,
+      fill:"#ffffff", stroke:"none", rx:3
+    }, gLabels);
+    text(gLabels, x, y + 1, txt, { size:12, weight:"600", fill:"#1f2937", lh:13 });
+  }
+
+  EDGES.forEach(function(e){
+    var a = byId[e.from], b = byId[e.to];
+    var pts, gx, gy;
+
+    if(e.route === "channel"){
+      var s = anchor(a, e.fromSide);
+      var t = anchor(b, e.toSide);
+      pts = [ s, { x:e.channelX, y:s.y }, { x:e.channelX, y:t.y }, t ];
+      gx = (s.x + e.channelX) / 2;
+      gy = s.y + (e.guardDy || -10);
+
+    } else if(e.route === "sideDown"){
+      var s2 = anchor(a, e.fromSide);
+      var t2 = anchor(b, "top");
+      pts = [ s2, { x:t2.x, y:s2.y }, t2 ];
+      gx = (s2.x + t2.x) / 2;
+      gy = s2.y + (e.guardDy || -10);
+
+    } else if(a.cx === b.cx){
+      var s3 = anchor(a, "bottom");
+      var t3 = anchor(b, "top");
+      pts = [ s3, t3 ];
+      gx = s3.x + 10 + (e.guard ? e.guard.length * 3.2 : 0);
+      gy = (s3.y + t3.y) / 2 + 1;
+
+    } else {
+      var s4 = anchor(a, "bottom");
+      var t4 = anchor(b, "top");
+      var mid = (s4.y + t4.y) / 2;
+      pts = [ s4, { x:s4.x, y:mid }, { x:t4.x, y:mid }, t4 ];
+      gx = s4.x + (t4.x > s4.x ? 1 : -1) * ((e.guard ? e.guard.length * 3.3 : 0) + 14);
+      gy = mid - 10;
+    }
+
+    drawPath(pts);
+    if(e.guard) guardLabel(gx, gy, e.guard);
+  });
+
+  // ---- Knoten ----
+  NODES.forEach(function(n){
+    var lane = laneById[n.lane];
+
+    if(n.type === "initial"){
+      el("circle", { cx:n.cx, cy:n.cy, r:13, fill:"#1f2937" }, gNodes);
+      text(gNodes, n.cx + 34, n.cy + 1, "Start", { size:12, weight:"600", fill:"#4b5563", anchor:"start", lh:13 });
+      return;
+    }
+    if(n.type === "final"){
+      el("circle", { cx:n.cx, cy:n.cy, r:15, fill:"#ffffff", stroke:"#1f2937", "stroke-width":2 }, gNodes);
+      el("circle", { cx:n.cx, cy:n.cy, r:9, fill:"#1f2937" }, gNodes);
+      text(gNodes, n.cx + 36, n.cy + 1, "Ende", { size:12, weight:"600", fill:"#4b5563", anchor:"start", lh:13 });
+      return;
+    }
+    if(n.type === "merge"){
+      var mw = n.w/2, mh = n.h/2;
+      el("polygon", {
+        points:[
+          n.cx + "," + (n.cy - mh),
+          (n.cx + mw) + "," + n.cy,
+          n.cx + "," + (n.cy + mh),
+          (n.cx - mw) + "," + n.cy
+        ].join(" "),
+        fill:"#ffffff", stroke:"#6b7280", "stroke-width":1.6
+      }, gNodes);
+      return;
+    }
+    if(n.type === "decision"){
+      var dw = n.w/2, dh = n.h/2;
+      el("polygon", {
+        points:[
+          n.cx + "," + (n.cy - dh),
+          (n.cx + dw) + "," + n.cy,
+          n.cx + "," + (n.cy + dh),
+          (n.cx - dw) + "," + n.cy
+        ].join(" "),
+        fill:"#ffffff", stroke:lane.color, "stroke-width":1.8
+      }, gNodes);
+      text(gNodes, n.cx, n.cy + 1, n.label, { size:12.5, weight:"600", fill:"#111827", lh:14 });
+      return;
+    }
+
+    // Aktion
+    el("rect", {
+      x:(n.cx - n.w/2).toFixed(1), y:(n.cy - n.h/2).toFixed(1),
+      width:n.w, height:n.h, rx:14, ry:14,
+      fill:"#ffffff", stroke:lane.color, "stroke-width":1.8
+    }, gNodes);
+    text(gNodes, n.cx, n.cy + 1, n.label, { size:12.5, lh:15, fill:"#111827" });
+
+    // Objektknoten (Zustandshinweis)
+    if(n.note){
+      var nh = 40, nx = NOTE_X, ny = n.cy - nh/2;
+      el("line", {
+        x1:(n.cx + n.w/2).toFixed(1), y1:n.cy, x2:nx, y2:n.cy,
+        stroke:"#9ca3af", "stroke-width":1.3, "stroke-dasharray":"4 3"
+      }, gNodes);
+      el("rect", {
+        x:nx, y:ny.toFixed(1), width:NOTE_W, height:nh,
+        fill:"#fffbeb", stroke:"#d0a63c", "stroke-width":1.3
+      }, gNodes);
+      text(gNodes, nx + NOTE_W/2, n.cy + 1, n.note, { size:11.5, weight:"600", fill:"#7c5a10", lh:14 });
+    }
+  });
+
+  document.getElementById("canvas").appendChild(svg);
+
+  /* ------------------------------------------------------------------
+     Legende
+     ------------------------------------------------------------------ */
+
+  var legendItems = [
+    { label:"Startknoten (Initialknoten)", draw:function(g){
+        el("circle", { cx:26, cy:22, r:11, fill:"#1f2937" }, g); } },
+    { label:"Aktion (Aktivitätsschritt)", draw:function(g){
+        el("rect", { x:6, y:8, width:60, height:28, rx:11, fill:"#fff", stroke:"#0f766e", "stroke-width":1.8 }, g); } },
+    { label:"Entscheidungsknoten mit Bedingung", draw:function(g){
+        el("polygon", { points:"36,6 66,22 36,38 6,22", fill:"#fff", stroke:"#0f766e", "stroke-width":1.8 }, g); } },
+    { label:"Verbindungsknoten (Zusammenführung)", draw:function(g){
+        el("polygon", { points:"36,10 58,22 36,34 14,22", fill:"#fff", stroke:"#6b7280", "stroke-width":1.6 }, g); } },
+    { label:"Kontrollfluss (Transition)", draw:function(g){
+        el("path", { d:"M 6 22 L 54 22", stroke:"#374151", "stroke-width":1.6 }, g);
+        el("polygon", { points:"66,22 53,16 53,28", fill:"#374151" }, g); } },
+    { label:"Objektknoten / Zustandshinweis", draw:function(g){
+        el("rect", { x:6, y:9, width:60, height:26, fill:"#fffbeb", stroke:"#d0a63c", "stroke-width":1.3 }, g);
+        el("text", { x:36, y:26, "text-anchor":"middle", "font-size":10, fill:"#7c5a10",
+          "font-family":'"Segoe UI",Arial,sans-serif' }, g).textContent = "[Status]"; } },
+    { label:"Partition (Swimlane) einer Rolle", draw:function(g){
+        el("rect", { x:6, y:6, width:60, height:32, fill:"#f2fbfa", stroke:"#9aa3af" }, g);
+        el("line", { x1:36, y1:6, x2:36, y2:38, stroke:"#9aa3af" }, g); } },
+    { label:"Endknoten (Aktivitätsende)", draw:function(g){
+        el("circle", { cx:26, cy:22, r:12, fill:"#fff", stroke:"#1f2937", "stroke-width":2 }, g);
+        el("circle", { cx:26, cy:22, r:7, fill:"#1f2937" }, g); } }
+  ];
+
+  var legend = document.getElementById("legend");
+  legendItems.forEach(function(item){
+    var div = document.createElement("div");
+    div.className = "item";
+    var s = el("svg", { width:74, height:44, viewBox:"0 0 74 44" });
+    item.draw(s);
+    div.appendChild(s);
+    var span = document.createElement("span");
+    span.textContent = item.label;
+    div.appendChild(span);
+    legend.appendChild(div);
+  });
+
+  /* ------------------------------------------------------------------
+     Bedienelemente
+     ------------------------------------------------------------------ */
+
+  var scale = 1;
+  var manualZoom = false;
+  var zoomLabel = document.getElementById("zoomLabel");
+
+  function applyScale(s){
+    scale = Math.min(2, Math.max(0.3, s));
+    svg.setAttribute("width", Math.round(VB_W * scale));
+    svg.setAttribute("height", Math.round(VB_H * scale));
+    zoomLabel.textContent = "Zoom " + Math.round(scale * 100) + " % · Diagrammfläche " + VB_W + " × " + VB_H + " px";
+  }
+  function fit(){
+    var avail = document.getElementById("canvas").clientWidth - 4;
+    applyScale(avail / VB_W);
+  }
+
+  document.getElementById("zoomIn").addEventListener("click", function(){ manualZoom = true; applyScale(scale + 0.1); });
+  document.getElementById("zoomOut").addEventListener("click", function(){ manualZoom = true; applyScale(scale - 0.1); });
+  document.getElementById("zoomFit").addEventListener("click", function(){ manualZoom = false; fit(); });
+  document.getElementById("print").addEventListener("click", function(){ fit(); window.print(); });
+
+  document.getElementById("download").addEventListener("click", function(){
+    var clone = svg.cloneNode(true);
+    clone.setAttribute("width", VB_W);
+    clone.setAttribute("height", VB_H);
+    var src = '<?xml version="1.0" encoding="UTF-8"?>\n' + new XMLSerializer().serializeToString(clone);
+    var url = URL.createObjectURL(new Blob([src], { type:"image/svg+xml;charset=utf-8" }));
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = "aktivitaetsdiagramm-bestellprozess.svg";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
+
+  fit();
+  window.addEventListener("resize", function(){
+    if(!manualZoom) fit();
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+@startuml
+' BubbleSort-Aktivitätsdiagramm
+' Quelle: Java-Quellcode (for-Schleifen über newList)
+' UML 2.5: Verbindungsknoten vor jeder Schleifenbedingung, weil Init- und
+' Ruecksprungkante dort zusammenlaufen.
+
+skinparam DefaultFontName Arial
+skinparam ActivityBackgroundColor #FEFECE
+skinparam ActivityBorderColor #A80036
+skinparam NoteBackgroundColor #E8F8F5
+skinparam NoteBorderColor #1ABC9C
+skinparam conditionStyle diamond
+
+title BubbleSort ueber newList
+
+start
+
+:j = 0;
+
+label merge_j
+if (j < newList.size()?) then ([ja])
+
+  :i = 0;
+
+  label merge_i
+  if (i < newList.size() - 1?) then ([ja])
+
+    if (newList.get(i) > newList.get(i+1)?) then ([ja])
+      :Tausche Elemente an Index i und i+1;
+    else ([nein])
+    endif
+
+    :i++;
+    goto merge_i
+
+  else ([nein])
+
+    :System.out.println(newList);
+    note right
+      Quellcode-Kommentar:
+      Optimierung zweite Schleife (-j)
+      ist im vorliegenden Code nicht umgesetzt.
+      Innere Bedingung: i < newList.size() - 1
+    end note
+    :j++;
+    goto merge_j
+
+  endif
+
+else ([nein])
+endif
+
+stop
+
+@enduml

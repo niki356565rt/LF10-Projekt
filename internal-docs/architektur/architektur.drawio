@@ -1,0 +1,97 @@
+<mxfile host="app.diagrams.net" modified="2026-08-24T10:05:00.000Z" agent="Cursor" version="24.0.0" type="device">
+  <diagram id="ctx" name="Systemkontext">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="tb1" value="Trust Boundary: öffentliches Netz / Arbeitsplatz" style="rounded=0;dashed=1;dashPattern=8 8;html=1;fillColor=none;strokeColor=#B45309;strokeWidth=2;verticalAlign=top;align=left;spacingTop=8;spacingLeft=8;fontColor=#B45309;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="1520" height="820" as="geometry"/>
+        </mxCell>
+        <mxCell id="autor" value="Autor / Entwicklung&#10;Rolle: Dokumente und Generatoren" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#1D4ED8;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="80" y="120" width="200" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="service" value="Service (geplant)&#10;Tisch, Bestellung, Zahlung" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#1D4ED8" vertex="1" parent="1">
+          <mxGeometry x="80" y="240" width="200" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="kueche" value="Küche (geplant)&#10;Offene Speisen, Status" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFEDD5;strokeColor=#B45309" vertex="1" parent="1">
+          <mxGeometry x="80" y="340" width="200" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="bar" value="Bar (geplant)&#10;Offene Getränkepositionen" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#A16207" vertex="1" parent="1">
+          <mxGeometry x="80" y="440" width="200" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="admin" value="Administration (geplant)&#10;Mitarbeiter, Artikel, Tische" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0E7FF;strokeColor=#4338CA" vertex="1" parent="1">
+          <mxGeometry x="80" y="540" width="200" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="kern" value="Systemkern geplant&#10;Statusmaschine, Protokoll A-13&#10;keine Implementierung im Repo" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CCFBF1;strokeColor=#0F766E;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="420" y="280" width="260" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="db" value="Persistenz geplant&#10;Produkt nicht festgelegt" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#F1F5F9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry x="480" y="430" width="160" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="tb2" value="Trust Boundary: lokaler Dokumenten-Stack" style="rounded=0;dashed=1;dashPattern=8 8;html=1;fillColor=#FFF7ED;strokeColor=#C2410C;strokeWidth=2;verticalAlign=top;align=left;spacingTop=6;spacingLeft=8;fontColor=#C2410C;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="760" y="100" width="740" height="420" as="geometry"/>
+        </mxCell>
+        <mxCell id="docs" value="docs/&#10;Anforderungen, Planung, UML 07/08" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEFECE;strokeColor=#A80036" vertex="1" parent="1">
+          <mxGeometry x="800" y="160" width="220" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="abgabe" value="abgabe/&#10;DOCX/PDF Schulungsblätter" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEFECE;strokeColor=#A80036" vertex="1" parent="1">
+          <mxGeometry x="1060" y="160" width="220" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="tools" value="tools/*.js&#10;DOCX-Generator, SVG-HTML" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CCFBF1;strokeColor=#0F766E" vertex="1" parent="1">
+          <mxGeometry x="800" y="280" width="220" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="puml" value="PlantUML JAR&#10;lokal, gitignored" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#334155" vertex="1" parent="1">
+          <mxGeometry x="1060" y="280" width="220" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="chrome" value="Chrome Headless&#10;PDF-Druck" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#334155" vertex="1" parent="1">
+          <mxGeometry x="930" y="400" width="200" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="github" value="GitHub Remote&#10;niki356565rt/LF10-Projekt" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#B91C1C" vertex="1" parent="1">
+          <mxGeometry x="800" y="560" width="240" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="npm" value="npm Registry&#10;docx 9.7.1 + Transitive" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#B91C1C" vertex="1" parent="1">
+          <mxGeometry x="1080" y="560" width="240" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="int" value="Nicht im Umfang:&#10;Gäste-App, Kartenleser, Lager, Zahlungs-PSP" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#64748B;dashed=1" vertex="1" parent="1">
+          <mxGeometry x="80" y="660" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" style="endArrow=block;html=1;rounded=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#0F766E" edge="1" parent="1" source="service" target="kern">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" style="endArrow=block;html=1;rounded=0;strokeColor=#B45309" edge="1" parent="1" source="kueche" target="kern">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" style="endArrow=block;html=1;rounded=0;strokeColor=#4338CA" edge="1" parent="1" source="admin" target="kern">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="eBar" style="endArrow=block;html=1;rounded=0;strokeColor=#A16207" edge="1" parent="1" source="bar" target="kern">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" style="endArrow=block;html=1;rounded=0;strokeColor=#334155" edge="1" parent="1" source="kern" target="db">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" style="endArrow=block;html=1;rounded=0;strokeColor=#1D4ED8" edge="1" parent="1" source="autor" target="docs">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" style="endArrow=block;html=1;rounded=0;strokeColor=#0F766E" edge="1" parent="1" source="tools" target="abgabe">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7" style="endArrow=block;html=1;rounded=0;strokeColor=#334155" edge="1" parent="1" source="puml" target="docs">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e8" style="endArrow=block;html=1;rounded=0;strokeColor=#334155" edge="1" parent="1" source="chrome" target="docs">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e9" style="endArrow=block;html=1;rounded=0;dashed=1;strokeColor=#B91C1C" edge="1" parent="1" source="docs" target="github">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e10" style="endArrow=block;html=1;rounded=0;dashed=1;strokeColor=#B91C1C" edge="1" parent="1" source="tools" target="npm">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="flow" value="Datenfluss geplant: Bestellung + Status + Log&#10;Datenfluss Ist: Markdown/PUML → SVG/PDF/DOCX" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="420" y="160" width="320" height="50" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

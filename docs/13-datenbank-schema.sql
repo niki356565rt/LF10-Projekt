@@ -1,7 +1,8 @@
 -- Smart Restaurant – Datenbankschema nach dem relationalen Modell in 3NF
 -- Zielsystem: MariaDB/MySQL (XAMPP)
 
-CREATE DATABASE IF NOT EXISTS smart_restaurant
+DROP DATABASE IF EXISTS smart_restaurant;
+CREATE DATABASE smart_restaurant
     CHARACTER SET utf8mb4
     COLLATE utf8mb4_unicode_ci;
 
@@ -152,27 +153,3 @@ CREATE TABLE IF NOT EXISTS bestellposition (
         ON UPDATE CASCADE
         ON DELETE RESTRICT
 ) ENGINE=InnoDB;
-
--- Stammdaten aus den vorhandenen Aktivitäts- und Sequenzdiagrammen.
-INSERT INTO rolle (rolle_id, bezeichnung) VALUES
-    (1, 'Service'),
-    (2, 'Küche')
-ON DUPLICATE KEY UPDATE bezeichnung = VALUES(bezeichnung);
-
-INSERT INTO tischstatus (tischstatus_id, bezeichnung) VALUES
-    (1, 'frei'),
-    (2, 'belegt')
-ON DUPLICATE KEY UPDATE bezeichnung = VALUES(bezeichnung);
-
-INSERT INTO bestellstatus (bestellstatus_id, bezeichnung) VALUES
-    (1, 'aufgegeben'),
-    (2, 'in Bearbeitung'),
-    (3, 'fertig'),
-    (4, 'serviert'),
-    (5, 'bezahlt')
-ON DUPLICATE KEY UPDATE bezeichnung = VALUES(bezeichnung);
-
-INSERT INTO zubereitungsort (zubereitungsort_id, bezeichnung) VALUES
-    (1, 'Küche'),
-    (2, 'Bar')
-ON DUPLICATE KEY UPDATE bezeichnung = VALUES(bezeichnung);

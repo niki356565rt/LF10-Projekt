@@ -1,0 +1,8 @@
+{
+  "query": "mutation($ownerId:ID!,$repoId:ID!,$title:String!){createProjectV2(input:{ownerId:$ownerId,title:$title,repositoryId:$repoId}){projectV2{id number url public owner{... on User{login}}}}}",
+  "variables": {
+    "ownerId": "MDQ6VXNlcjUxOTI2NDkz",
+    "repoId": "R_kgDOT8VGHg",
+    "title": "Smart Restaurant Kanban"
+  }
+}

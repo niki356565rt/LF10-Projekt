@@ -1,0 +1,114 @@
+@startuml
+' UML-Sequenzdiagramm 10: Bestellung aufnehmen
+' Semantik analog docs/10-uml-sequenzdiagramm-bestellung-aufnehmen.drawio
+' DIN ISO/IEC 19505 / UML 2.x; Pfeile: -> sync (gefüllt), --> Reply (gestrichelt offen), ->> async (offen)
+' destroy-X am Ende = Belegsatz-Ende der Darstellung, keine Objekzerstörung zur Laufzeit.
+
+!pragma teoz true
+skinparam style strictuml
+skinparam DefaultFontName Arial
+skinparam DefaultFontSize 12
+skinparam ArrowColor #666666
+skinparam ActorBackgroundColor #FEFECE
+skinparam ActorBorderColor #A80036
+skinparam ParticipantBackgroundColor #FEFECE
+skinparam ParticipantBorderColor #A80036
+skinparam LifeLineBorderColor #A80036
+skinparam SequenceLifeLineBorderColor #A80036
+skinparam SequenceGroupBorderColor #A80036
+skinparam SequenceGroupHeaderFontColor #A80036
+skinparam SequenceDividerBorderColor #A80036
+hide footbox
+
+actor ":service" as service
+participant ":ui" as ui
+participant ":kern" as kern
+participant ":db" as db
+participant ":kueche" as kueche
+participant ":bar" as bar
+
+mainframe sd Bestellung aufnehmen
+
+service -> ui : tischAuswaehlen(tischNr)
+activate service
+activate ui
+ui -> kern : ladeTisch(tischNr)
+activate kern
+kern -> db : findeTisch(tischNr)
+activate db
+db --> kern : tisch:Tisch
+deactivate db
+kern --> ui : tisch
+deactivate kern
+ui --> service : tisch
+deactivate ui
+deactivate service
+
+service -> ui : neueBestellung(tisch)
+activate service
+activate ui
+ui -> kern : anlegeBestellung(tisch)
+activate kern
+kern -> db : speichereBestellung(bestellung)
+activate db
+db --> kern : bestellung:Bestellung
+deactivate db
+kern --> ui : bestellung
+deactivate kern
+ui --> service : bestellung
+deactivate ui
+deactivate service
+
+loop [weitere Positionen erfassen]
+  service -> ui : erfassePosition(artikel, menge)
+  activate service
+  activate ui
+  ui -> kern : ergaenzePosition(artikel, menge)
+  activate kern
+  kern -> db : speicherePosition(position)
+  activate db
+  db --> kern : position:Bestellposition
+  deactivate db
+  kern --> ui : position
+  deactivate kern
+  ui --> service : position
+  deactivate ui
+  deactivate service
+end
+
+service -> ui : bestellungAufgeben()
+activate service
+activate ui
+ui -> kern : aufgeben(bestellung)
+activate kern
+kern -> kern : setzeStatus(aufgegeben)
+activate kern
+kern --> kern : ok
+deactivate kern
+kern -> db : schreibeLog(aufgegeben, mitarbeiter, zeit)
+activate db
+db --> kern : logEintrag:Protokoll
+deactivate db
+par [Speisen enthalten]
+  kern ->> kueche : zeigeSpeisebestellung(bestellung)
+  activate kueche
+  deactivate kueche
+else [Getränke enthalten]
+  kern ->> bar : zeigeGetraenkebestellung(bestellung)
+  activate bar
+  deactivate bar
+end
+kern --> ui : bestellung
+deactivate kern
+ui --> service : bestellung
+deactivate ui
+deactivate service
+
+destroy service
+destroy ui
+destroy kern
+destroy db
+destroy kueche
+destroy bar
+
+@enduml

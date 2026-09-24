@@ -1,0 +1,89 @@
+@startuml
+' zoo.main – UML-Aktivitätsdiagramm
+' Quelle: Java-Klasse zoo (main, Landtier.steckbrief, Tierarzt.behandeln)
+' Erstellt: 2026-08-26
+' Modus: Technik (tatsächlicher Kontrollfluss von main, keine ungenutzten Klassen)
+' Pfeile: PlantUML-Standard-Activity-Pfeile (offene Spitzen)
+
+skinparam DefaultFontName Arial
+skinparam ActivityBackgroundColor #FEFECE
+skinparam ActivityBorderColor #A80036
+skinparam NoteBackgroundColor #E8F8F5
+skinparam NoteBorderColor #1ABC9C
+skinparam ArrowColor #666666
+
+title zoo.main – Erzeugung, Alias, Polymorphie, Überladung
+
+|zoo.main|
+start
+:Elefant e erzeugen\n("Elefant Freddy");
+
+|Landtier|
+:Name des Tiers ausgeben;
+:laufen();
+note right
+  Call Operation e.steckbrief()
+  dynamische Bindung: Landtier
+end note
+
+|zoo.main|
+:Delfin d erzeugen\n("Delfin Neo");
+note right
+  Kette Delfin → Wassertier → Tier.
+  new Tier(...) unmöglich (abstract).
+  d.steckbrief() wird nicht aufgerufen.
+end note
+
+:Alias t : Tier auf e setzen;
+note right
+  t und e zeigen auf dasselbe Objekt.
+end note
+
+|Landtier|
+:Name des Tiers ausgeben;
+:laufen();
+note right
+  Call Operation e.steckbrief()
+  erneut über Referenz e
+end note
+
+|zoo.main|
+:e.setName("Elefant Paul");
+:e.getName() und t.getName() ausgeben;
+:t.setName("Elefant Endy");
+:e.getName() und t.getName() ausgeben;
+
+:ArrayList<Tier> tierliste anlegen;
+:t in tierliste einfügen;
+:tierliste ausgeben;
+:e in tierliste einfügen;
+:tierliste ausgeben;
+note right
+  Dieselbe Instanz zweimal in der Liste.
+end note
+
+|Tierarzt|
+:Meldung: t wird behandelt\nvon Tierarzt Heilo;
+:t in tierList und tierSet eintragen;
+note right
+  behandeln(Tier)
+end note
+:Meldung: e wird behandelt\nvon Tierarzt Heilo;
+:e in tierList und tierSet eintragen;
+:Meldung: e und d werden behandelt\nvon Tierarzt Heilo;
+:e und d in tierList und tierSet eintragen;
+note right
+  überladenes behandeln(Tier, Tier)
+end note
+
+|zoo.main|
+:Tierarzt.tierList ausgeben;
+:Tierarzt.tierSet ausgeben;
+note right
+  Kommentar im Code: Set ohne Duplikate,
+  alphabetisch. HashSet ist ungeordnet;
+  Tier überschreibt equals/hashCode nicht.
+end note
+
+stop
+@enduml

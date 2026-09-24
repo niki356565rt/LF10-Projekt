@@ -1,0 +1,8 @@
+# Render-Werkzeug (22 MB, wird bei Bedarf neu geladen)
+tools/plantuml.jar
+
+# Zwischenergebnisse des Diagramm-Renderings
+out/
+~$*.docx
+
+node_modules/

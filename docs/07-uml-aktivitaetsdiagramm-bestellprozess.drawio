@@ -1,0 +1,307 @@
+<mxfile host="app.diagrams.net" modified="2026-08-25T12:10:00.000Z" agent="Cursor" version="24.0.0" type="device">
+  <diagram id="bestellprozess-uml" name="UML Aktivitätsdiagramm Bestellprozess">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1740" pageHeight="2920" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="partL" value="" style="endArrow=none;html=1;strokeWidth=1;strokeColor=#C4C4C4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="24" y="8" as="sourcePoint"/>
+            <mxPoint x="24" y="2900" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="partSK" value="" style="endArrow=none;html=1;strokeWidth=1;strokeColor=#C4C4C4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="575" y="8" as="sourcePoint"/>
+            <mxPoint x="575" y="2900" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="partKB" value="" style="endArrow=none;html=1;strokeWidth=1;strokeColor=#C4C4C4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1130" y="8" as="sourcePoint"/>
+            <mxPoint x="1130" y="2900" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="partR" value="" style="endArrow=none;html=1;strokeWidth=1;strokeColor=#C4C4C4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1700" y="8" as="sourcePoint"/>
+            <mxPoint x="1700" y="2900" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lblS" value="Service" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=16;fontColor=#555555;strokeColor=none;fillColor=none;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="230" y="12" width="120" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="lblK" value="Küche" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=16;fontColor=#555555;strokeColor=none;fillColor=none;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="785" y="12" width="120" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="lblB" value="Bar" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=16;fontColor=#555555;strokeColor=none;fillColor=none;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1365" y="12" width="80" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="nStart" value="" style="ellipse;fillColor=#333333;strokeColor=#333333;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="282" y="52" width="20" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="aTisch" value="Tisch auswählen" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=24;dashed=0;whiteSpace=wrap;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=11;strokeWidth=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="165" y="100" width="250" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="mOuter" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FEFECE;strokeColor=#A80036;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="168" width="20" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="aBest" value="Bestellung (Nachbestellung) anlegen" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=24;dashed=0;whiteSpace=wrap;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=11;strokeWidth=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="165" y="216" width="250" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="mInner" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FEFECE;strokeColor=#A80036;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="284" width="20" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="aPos" value="Position hinzufügen" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=24;dashed=0;whiteSpace=wrap;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=11;strokeWidth=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="165" y="332" width="250" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="aWunsch" value="Wunsch nach weiteren Positionen abfragen" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=24;dashed=0;whiteSpace=wrap;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=11;strokeWidth=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="165" y="400" width="250" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="dPos" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FEFECE;strokeColor=#A80036;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="262" y="468" width="56" height="56" as="geometry"/>
+        </mxCell>
+        <mxCell id="aSave" value="Bestellung speichern" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=24;dashed=0;whiteSpace=wrap;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=11;strokeWidth=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="165" y="560" width="250" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="aStAuf" value="Status -&gt; aufgegeben" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=24;dashed=0;whiteSpace=wrap;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=11;strokeWidth=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="165" y="628" width="250" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="aLogAuf" value="Log(Status='aufgegeben', Mitarbeiter='', Zeit='', Bestellung='')" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=24;dashed=0;whiteSpace=wrap;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=11;strokeWidth=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="165" y="696" width="250" height="52" as="geometry"/>
+        </mxCell>
+        <mxCell id="noteAuf" value="[Bestellstatus = aufgegeben]" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=12;verticalAlign=middle;align=center;fillColor=#E8F8F5;strokeColor=#1ABC9C;fontFamily=Arial;fontSize=11;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="431" y="702" width="132" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="aKat" value="Bestellpositionen nach Kategorie prüfen" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=24;dashed=0;whiteSpace=wrap;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=11;strokeWidth=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="165" y="776" width="250" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="dSpeisen" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FEFECE;strokeColor=#A80036;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="262" y="844" width="56" height="56" as="geometry"/>
+        </mxCell>
+        <mxCell id="aKAnz" value="Bestellung in Küchenansicht anzeigen" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=24;dashed=0;whiteSpace=wrap;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=11;strokeWidth=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="720" y="948" width="250" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="aKStB" value="Status -&gt; in Bearbeitung" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=24;dashed=0;whiteSpace=wrap;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=11;strokeWidth=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="720" y="1016" width="250" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="aKLogB" value="Log(Status='in Bearbeitung', Mitarbeiter='', Zeit='', Bestellung='')" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=24;dashed=0;whiteSpace=wrap;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=11;strokeWidth=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="720" y="1084" width="250" height="52" as="geometry"/>
+        </mxCell>
+        <mxCell id="noteKB" value="[Bestellstatus = in Bearbeitung]" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=12;verticalAlign=middle;align=center;fillColor=#E8F8F5;strokeColor=#1ABC9C;fontFamily=Arial;fontSize=11;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="986" y="1090" width="132" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="aKZub" value="Speisen zubereiten" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=24;dashed=0;whiteSpace=wrap;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=11;strokeWidth=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="720" y="1164" width="250" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="aKStF" value="Status -&gt; fertig" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=24;dashed=0;whiteSpace=wrap;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=11;strokeWidth=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="720" y="1232" width="250" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="aKLogF" value="Log(Status='fertig', Mitarbeiter='', Zeit='', Bestellung='')" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=24;dashed=0;whiteSpace=wrap;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=11;strokeWidth=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="720" y="1300" width="250" height="52" as="geometry"/>
+        </mxCell>
+        <mxCell id="noteKF" value="[Bestellstatus = fertig]" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=12;verticalAlign=middle;align=center;fillColor=#E8F8F5;strokeColor=#1ABC9C;fontFamily=Arial;fontSize=11;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="986" y="1306" width="132" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="mSpeisen" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FEFECE;strokeColor=#A80036;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="1392" width="20" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="dGetr" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FEFECE;strokeColor=#A80036;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="262" y="1440" width="56" height="56" as="geometry"/>
+        </mxCell>
+        <mxCell id="aBAnz" value="Bestellung in Baransicht anzeigen" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=24;dashed=0;whiteSpace=wrap;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=11;strokeWidth=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="1544" width="250" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="aBStB" value="Status -&gt; in Bearbeitung" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=24;dashed=0;whiteSpace=wrap;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=11;strokeWidth=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="1612" width="250" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="aBLogB" value="Log(Status='in Bearbeitung', Mitarbeiter='', Zeit='', Bestellung='')" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=24;dashed=0;whiteSpace=wrap;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=11;strokeWidth=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="1680" width="250" height="52" as="geometry"/>
+        </mxCell>
+        <mxCell id="noteBB" value="[Bestellstatus = in Bearbeitung]" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=12;verticalAlign=middle;align=center;fillColor=#E8F8F5;strokeColor=#1ABC9C;fontFamily=Arial;fontSize=11;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1546" y="1686" width="132" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="aBZub" value="Getränke zubereiten" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=24;dashed=0;whiteSpace=wrap;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=11;strokeWidth=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="1760" width="250" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="aBStF" value="Status -&gt; fertig" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=24;dashed=0;whiteSpace=wrap;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=11;strokeWidth=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="1828" width="250" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="aBLogF" value="Log(Status='fertig', Mitarbeiter='', Zeit='', Bestellung='')" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=24;dashed=0;whiteSpace=wrap;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=11;strokeWidth=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="1896" width="250" height="52" as="geometry"/>
+        </mxCell>
+        <mxCell id="noteBF" value="[Bestellstatus = fertig]" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=12;verticalAlign=middle;align=center;fillColor=#E8F8F5;strokeColor=#1ABC9C;fontFamily=Arial;fontSize=11;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1546" y="1902" width="132" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="mGetr" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FEFECE;strokeColor=#A80036;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="1988" width="20" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="aServ" value="Speisen/Getränke servieren" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=24;dashed=0;whiteSpace=wrap;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=11;strokeWidth=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="165" y="2036" width="250" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="aStServ" value="Status -&gt; serviert" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=24;dashed=0;whiteSpace=wrap;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=11;strokeWidth=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="165" y="2104" width="250" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="aLogServ" value="Log(Status='serviert', Mitarbeiter='', Zeit='', Bestellung='')" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=24;dashed=0;whiteSpace=wrap;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=11;strokeWidth=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="165" y="2172" width="250" height="52" as="geometry"/>
+        </mxCell>
+        <mxCell id="noteServ" value="[Bestellstatus = serviert]" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=12;verticalAlign=middle;align=center;fillColor=#E8F8F5;strokeColor=#1ABC9C;fontFamily=Arial;fontSize=11;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="431" y="2178" width="132" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="aGast" value="Gästewunsch bezüglich Rechnung oder Nachbestellung erfragen" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=24;dashed=0;whiteSpace=wrap;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=11;strokeWidth=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="165" y="2252" width="250" height="52" as="geometry"/>
+        </mxCell>
+        <mxCell id="dRech" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FEFECE;strokeColor=#A80036;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="262" y="2332" width="56" height="56" as="geometry"/>
+        </mxCell>
+        <mxCell id="aRechShow" value="Rechnung anzeigen" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=24;dashed=0;whiteSpace=wrap;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=11;strokeWidth=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="165" y="2424" width="250" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="aPay" value="Bezahlung entgegennehmen" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=24;dashed=0;whiteSpace=wrap;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=11;strokeWidth=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="165" y="2492" width="250" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="aStPay" value="Status -&gt; bezahlt" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=24;dashed=0;whiteSpace=wrap;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=11;strokeWidth=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="165" y="2560" width="250" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="aLogPay" value="Log(Status='bezahlt', Mitarbeiter='', Zeit='', Bestellung='')" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=24;dashed=0;whiteSpace=wrap;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=11;strokeWidth=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="165" y="2628" width="250" height="52" as="geometry"/>
+        </mxCell>
+        <mxCell id="notePay" value="[Bestellstatus = bezahlt]" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=12;verticalAlign=middle;align=center;fillColor=#E8F8F5;strokeColor=#1ABC9C;fontFamily=Arial;fontSize=11;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="431" y="2634" width="132" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="aFree" value="Tisch freigeben" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=24;dashed=0;whiteSpace=wrap;fillColor=#FEFECE;strokeColor=#A80036;fontFamily=Arial;fontSize=11;strokeWidth=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="165" y="2708" width="250" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="nStop" value="" style="ellipse;html=1;shape=endState;fillColor=#333333;strokeColor=#333333;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="278" y="2776" width="24" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="nStart" target="aTisch">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="aTisch" target="mOuter">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="mOuter" target="aBest">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="aBest" target="mInner">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="mInner" target="aPos">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="aPos" target="aWunsch">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="aWunsch" target="dPos">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e8" value="[Ja, weitere Position erfassen]" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="dPos" target="mInner">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e9" value="[Nein, Erfassung abgeschlossen]" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="dPos" target="aSave">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="aSave" target="aStAuf">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="aStAuf" target="aLogAuf">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="aLogAuf" target="aKat">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="aKat" target="dSpeisen">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e14" value="[Ja, Speisen vorhanden]" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="dSpeisen" target="aKAnz">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e15" value="[Nein, keine Speisen enthalten]" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="dSpeisen" target="mSpeisen">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="aKAnz" target="aKStB">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="aKStB" target="aKLogB">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="aKLogB" target="aKZub">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="aKZub" target="aKStF">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="aKStF" target="aKLogF">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="aKLogF" target="mSpeisen">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="mSpeisen" target="dGetr">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e23" value="[Ja, Getränke vorhanden]" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="dGetr" target="aBAnz">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e24" value="[Nein, keine Getränke enthalten]" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="dGetr" target="mGetr">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="aBAnz" target="aBStB">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="aBStB" target="aBLogB">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="aBLogB" target="aBZub">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="aBZub" target="aBStF">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="aBStF" target="aBLogF">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e30" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="aBLogF" target="mGetr">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e31" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="mGetr" target="aServ">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e32" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="aServ" target="aStServ">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="aStServ" target="aLogServ">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e34" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="aLogServ" target="aGast">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="aGast" target="dRech">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e36" value="[Nein, weitere Bestellung aufnehmen]" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="dRech" target="mOuter">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e37" value="[Ja, Rechnung erstellen]" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="dRech" target="aRechShow">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="aRechShow" target="aPay">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e39" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="aPay" target="aStPay">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="aStPay" target="aLogPay">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e41" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="aLogPay" target="aFree">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e42" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;endFill=0;endSize=12;strokeWidth=1;strokeColor=#666666;fontFamily=Arial;fontSize=10;fontColor=#555555;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="aFree" target="nStop">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
