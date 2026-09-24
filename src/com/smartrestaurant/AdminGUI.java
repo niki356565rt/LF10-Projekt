@@ -36,17 +36,18 @@ public class AdminGUI extends JFrame {
 
     public AdminGUI() {
         setTitle("Smart Restaurant – Admin- & Verwaltungssoftware");
-        setSize(900, 650);
+        setSize(950, 680);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
         tabbedPane = new JTabbedPane();
+        tabbedPane.setFont(new Font("Segoe UI", Font.PLAIN, 13));
 
-        tabbedPane.addTab("👥 Mitarbeiterverwaltung", createMitarbeiterPanel());
-        tabbedPane.addTab("🍕 Artikelverwaltung", createArtikelPanel());
-        tabbedPane.addTab("🪑 Tischverwaltung", createTischPanel());
-        tabbedPane.addTab("📋 Bestellübersicht", createBestellPanel());
-        tabbedPane.addTab("ℹ️ System & DB Status", createSystemPanel());
+        tabbedPane.addTab("Mitarbeiterverwaltung", createMitarbeiterPanel());
+        tabbedPane.addTab("Artikelverwaltung", createArtikelPanel());
+        tabbedPane.addTab("Tischverwaltung", createTischPanel());
+        tabbedPane.addTab("Bestellübersicht", createBestellPanel());
+        tabbedPane.addTab("System & DB Status", createSystemPanel());
 
         add(tabbedPane, BorderLayout.CENTER);
 
@@ -54,16 +55,33 @@ public class AdminGUI extends JFrame {
         refreshAllTables();
     }
 
+    /**
+     * Konfiguriert Zeilenhöhe, Schriftart und Gitterlinien für maximale Lesbarkeit.
+     */
+    private void configureTable(JTable table) {
+        table.setRowHeight(30);
+        table.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        table.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 14));
+        table.getTableHeader().setPreferredSize(new Dimension(0, 32));
+        table.setShowGrid(true);
+        table.setGridColor(new Color(220, 220, 220));
+        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    }
+
     // --- TAB 1: MITARBEITER ---
     private JPanel createMitarbeiterPanel() {
         JPanel panel = new JPanel(new BorderLayout(10, 10));
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        modelMitarbeiter = new DefaultTableModel(new String[]{"ID", "Name", "Benutzername", "Rolle", "Aktiv"}, 0);
+        modelMitarbeiter = new DefaultTableModel(new String[]{"ID", "Name", "Benutzername", "Rolle", "Aktiv"}, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) { return false; }
+        };
         tableMitarbeiter = new JTable(modelMitarbeiter);
+        configureTable(tableMitarbeiter);
         panel.add(new JScrollPane(tableMitarbeiter), BorderLayout.CENTER);
 
-        JPanel formPanel = new JPanel(new GridLayout(2, 5, 5, 5));
+        JPanel formPanel = new JPanel(new GridLayout(2, 5, 8, 8));
         formPanel.setBorder(BorderFactory.createTitledBorder("Neuen Mitarbeiter anlegen"));
 
         txtMitarbeiterName = new JTextField();
@@ -119,11 +137,15 @@ public class AdminGUI extends JFrame {
         JPanel panel = new JPanel(new BorderLayout(10, 10));
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        modelArtikel = new DefaultTableModel(new String[]{"ID", "Name", "Kategorie", "Preis (€)", "Aktiv"}, 0);
+        modelArtikel = new DefaultTableModel(new String[]{"ID", "Name", "Kategorie", "Preis (€)", "Aktiv"}, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) { return false; }
+        };
         tableArtikel = new JTable(modelArtikel);
+        configureTable(tableArtikel);
         panel.add(new JScrollPane(tableArtikel), BorderLayout.CENTER);
 
-        JPanel formPanel = new JPanel(new GridLayout(2, 5, 5, 5));
+        JPanel formPanel = new JPanel(new GridLayout(2, 5, 8, 8));
         formPanel.setBorder(BorderFactory.createTitledBorder("Neuen Artikel anlegen"));
 
         txtArtikelName = new JTextField();
@@ -179,11 +201,15 @@ public class AdminGUI extends JFrame {
         JPanel panel = new JPanel(new BorderLayout(10, 10));
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        modelTische = new DefaultTableModel(new String[]{"ID", "Tischnummer", "Kapazität", "Status"}, 0);
+        modelTische = new DefaultTableModel(new String[]{"ID", "Tischnummer", "Kapazität", "Status"}, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) { return false; }
+        };
         tableTische = new JTable(modelTische);
+        configureTable(tableTische);
         panel.add(new JScrollPane(tableTische), BorderLayout.CENTER);
 
-        JPanel formPanel = new JPanel(new GridLayout(2, 5, 5, 5));
+        JPanel formPanel = new JPanel(new GridLayout(2, 5, 8, 8));
         formPanel.setBorder(BorderFactory.createTitledBorder("Neuen Tisch anlegen"));
 
         txtTischNummer = new JTextField();
@@ -237,8 +263,12 @@ public class AdminGUI extends JFrame {
         JPanel panel = new JPanel(new BorderLayout(10, 10));
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        modelBestellungen = new DefaultTableModel(new String[]{"Bestell-ID", "Tisch #", "Erstellt von", "Status", "Erstellt am", "Gesamt (€)"}, 0);
+        modelBestellungen = new DefaultTableModel(new String[]{"Bestell-ID", "Tisch #", "Erstellt von", "Status", "Erstellt am", "Gesamt (€)"}, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) { return false; }
+        };
         tableBestellungen = new JTable(modelBestellungen);
+        configureTable(tableBestellungen);
         panel.add(new JScrollPane(tableBestellungen), BorderLayout.CENTER);
 
         JPanel btnPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -285,7 +315,7 @@ public class AdminGUI extends JFrame {
 
         JTextArea infoText = new JTextArea();
         infoText.setEditable(false);
-        infoText.setFont(new Font("Monospaced", Font.PLAIN, 13));
+        infoText.setFont(new Font("Consolas", Font.PLAIN, 14));
         infoText.setText("=== Smart Restaurant – System & Datenbank Status ===\n\n" +
                 "DBMS: SQLite 3 (über Standard JDBC Driver)\n" +
                 "Datenbank-Datei: smart_restaurant.db\n" +
