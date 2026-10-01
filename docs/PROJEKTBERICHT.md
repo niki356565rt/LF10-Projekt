@@ -60,6 +60,7 @@ Die entwickelte Administrationssoftware ist vollständig in **Java 17** ohne ext
 - **Projekttagebuch PDF:** [`abgabe/Projekttagebuch.pdf`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/abgabe/Projekttagebuch.pdf)
 - **Entwicklerdokumentation PDF:** [`abgabe/Entwicklerdokumentation.pdf`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/abgabe/Entwicklerdokumentation.pdf)
 - **Benutzerdokumentation PDF:** [`abgabe/Benutzerdokumentation.pdf`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/abgabe/Benutzerdokumentation.pdf)
+- **ISMS-Systemdokumentation (ISO 27001) PDF:** [`abgabe/ISMS-Systemdokumentation.pdf`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/abgabe/ISMS-Systemdokumentation.pdf)
 
 ---
 

@@ -36,5 +36,5 @@
 👉 **Vollständigen Bericht lesen:** [`docs/PROJEKTBERICHT.md`](docs/PROJEKTBERICHT.md)  
 👉 **Projekttagebuch PDF:** [`abgabe/Projekttagebuch.pdf`](abgabe/Projekttagebuch.pdf)  
 👉 **Entwicklerdoku PDF:** [`abgabe/Entwicklerdokumentation.pdf`](abgabe/Entwicklerdokumentation.pdf)  
-👉 **Benutzerdoku PDF:** [`abgabe/Benutzerdokumentation.pdf`](abgabe/Benutzerdokumentation.pdf)  
+👉 **ISMS-Systemdokumentation (ISO 27001) PDF:** [`abgabe/ISMS-Systemdokumentation.pdf`](abgabe/ISMS-Systemdokumentation.pdf)  
 👉 **Datenbank-Dump (.sql) abrufen:** [`smart_restaurant_dump.sql`](smart_restaurant_dump.sql)

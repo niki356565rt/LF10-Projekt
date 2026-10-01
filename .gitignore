@@ -6,3 +6,5 @@ out/
 ~$*.docx
 
 node_modules/
+scratch/
+
