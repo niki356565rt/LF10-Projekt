@@ -22,9 +22,9 @@ public class ArtikelWizardDialog extends JDialog {
     private final JLabel lblSummaryKategorie = new JLabel();
     private final JLabel lblSummaryPreis = new JLabel();
 
-    private final JButton btnBack = new JButton("‹ Zurück");
-    private final JButton btnNext = new JButton("Weiter ›");
-    private final JButton btnFinish = new JButton("✓ Fertigstellen");
+    private final JButton btnBack = new JButton("Zurück");
+    private final JButton btnNext = new JButton("Weiter");
+    private final JButton btnFinish = new JButton("Fertigstellen");
 
     private Artikel resultArtikel = null;
     private final Artikel editTarget;

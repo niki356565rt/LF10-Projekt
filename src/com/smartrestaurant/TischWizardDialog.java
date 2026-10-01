@@ -20,9 +20,9 @@ public class TischWizardDialog extends JDialog {
     private final JLabel lblSummaryKap = new JLabel();
     private final JLabel lblSummaryStatus = new JLabel();
 
-    private final JButton btnBack = new JButton("‹ Zurück");
-    private final JButton btnNext = new JButton("Weiter ›");
-    private final JButton btnFinish = new JButton("✓ Fertigstellen");
+    private final JButton btnBack = new JButton("Zurück");
+    private final JButton btnNext = new JButton("Weiter");
+    private final JButton btnFinish = new JButton("Fertigstellen");
 
     private Tisch resultTisch = null;
     private final Tisch editTarget;

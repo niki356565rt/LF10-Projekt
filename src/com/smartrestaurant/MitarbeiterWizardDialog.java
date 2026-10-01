@@ -21,9 +21,9 @@ public class MitarbeiterWizardDialog extends JDialog {
     private final JLabel lblSummaryUser = new JLabel();
     private final JLabel lblSummaryRolle = new JLabel();
 
-    private final JButton btnBack = new JButton("‹ Zurück");
-    private final JButton btnNext = new JButton("Weiter ›");
-    private final JButton btnFinish = new JButton("✓ Fertigstellen");
+    private final JButton btnBack = new JButton("Zurück");
+    private final JButton btnNext = new JButton("Weiter");
+    private final JButton btnFinish = new JButton("Fertigstellen");
 
     private Mitarbeiter resultMitarbeiter = null;
     private final Mitarbeiter editTarget;

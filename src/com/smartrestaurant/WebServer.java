@@ -52,7 +52,7 @@ public class WebServer {
 
             server.setExecutor(null); // Default Executor
             server.start();
-            System.out.println("✅ Dediziertes Web-Frontend gestartet unter: http://localhost:" + PORT);
+            System.out.println("Web-Frontend gestartet unter: http://localhost:" + PORT);
         } catch (IOException e) {
             System.err.println("Webserver konnte nicht gestartet werden: " + e.getMessage());
         }

@@ -417,29 +417,29 @@
     <header>
         <div class="logo-container">
             <div class="logo">
-                🍽️ Gastronovi Order Suite
+                Gastronovi Order Suite
             </div>
-            <span class="stitch-badge">🔗 Stitch Design System (Project 7353340643345089919)</span>
+            <span class="stitch-badge">Stitch Design System (Projekt 7353340643345089919)</span>
         </div>
         <div class="role-selector">
-            <button class="role-btn active" onclick="switchView('service')">📱 Kellner (POS)</button>
-            <button class="role-btn" onclick="switchView('kueche')">👨‍🍳 Küche (KDS)</button>
-            <button class="role-btn" onclick="switchView('bar')">🍹 Bar Display</button>
-            <button class="role-btn" onclick="switchView('admin')">⚙️ Admin Suite</button>
+            <button class="role-btn active" onclick="switchView('service')">Kellner</button>
+            <button class="role-btn" onclick="switchView('kueche')">Küche</button>
+            <button class="role-btn" onclick="switchView('bar')">Bar</button>
+            <button class="role-btn" onclick="switchView('admin')">Administration</button>
         </div>
     </header>
 
     <main>
         <!-- 1. SERVICE VIEW -->
         <section id="view-service" class="view-section active">
-            <h2 style="margin-bottom: 16px; font-weight: 800;">Tischplan & Bestellaufnahme (POS)</h2>
+            <h2 style="margin-bottom: 16px; font-weight: 800;">Tischplan und Bestellaufnahme</h2>
             <div class="grid-tische" id="tisch-container">
                 <!-- Tisch Cards dynamisch -->
             </div>
 
             <div class="order-layout">
                 <div class="catalog-box">
-                    <h3 style="margin-bottom: 14px; font-weight: 800;">Speisen- & Getränkekarte</h3>
+                    <h3 style="margin-bottom: 14px; font-weight: 800;">Speisen- und Getränkekarte</h3>
                     <div class="category-tabs" id="category-container">
                         <button class="cat-btn active" onclick="filterCategory('Alle')">Alle</button>
                         <button class="cat-btn" onclick="filterCategory('Vorspeisen')">Vorspeisen</button>
@@ -461,15 +461,15 @@
                         <span>Gesamtsumme:</span>
                         <span id="cart-total-price">0.00 €</span>
                     </div>
-                    <button class="btn-action" onclick="submitOrder()">🚀 Bestellung aufgeben</button>
-                    <button class="btn-action btn-success" onclick="checkoutTable()">💳 Rechnung erstellen & Bezahlen</button>
+                    <button class="btn-action" onclick="submitOrder()">Bestellung aufgeben</button>
+                    <button class="btn-action btn-success" onclick="checkoutTable()">Rechnung erstellen und Bezahlen</button>
                 </div>
             </div>
         </section>
 
         <!-- 2. KÜCHE VIEW -->
         <section id="view-kueche" class="view-section">
-            <h2 style="margin-bottom: 16px; font-weight: 800;">👨‍🍳 Küchen-Display (Offene Speisen-Tickets)</h2>
+            <h2 style="margin-bottom: 16px; font-weight: 800;">Küchendisplay (Offene Speisen-Tickets)</h2>
             <div class="tickets-grid" id="kueche-tickets">
                 <!-- Küchen Tickets (nur Speisen) -->
             </div>
@@ -477,7 +477,7 @@
 
         <!-- 3. BAR VIEW -->
         <section id="view-bar" class="view-section">
-            <h2 style="margin-bottom: 16px; font-weight: 800;">🍹 Bar-Display (Offene Getränke-Tickets)</h2>
+            <h2 style="margin-bottom: 16px; font-weight: 800;">Bardisplay (Offene Getränke-Tickets)</h2>
             <div class="tickets-grid" id="bar-tickets">
                 <!-- Bar Tickets -->
             </div>
@@ -485,7 +485,7 @@
 
         <!-- 4. ADMIN VIEW -->
         <section id="view-admin" class="view-section">
-            <h2 style="margin-bottom: 16px; font-weight: 800;">⚙️ Stamm- & Betriebsdaten Verwaltung</h2>
+            <h2 style="margin-bottom: 16px; font-weight: 800;">Stamm- und Betriebsdaten Verwaltung</h2>
             
             <div class="stats-grid">
                 <div class="stat-card">
@@ -505,7 +505,7 @@
             <!-- Tische Verwaltung -->
             <div class="catalog-box" style="margin-bottom: 24px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-                    <h3>🪑 Tische-Verwaltung</h3>
+                    <h3>Tisch-Verwaltung</h3>
                     <button class="btn-action" style="width: auto; padding: 8px 16px; min-height: 40px;" onclick="promptAddTisch()">+ Neuen Tisch anlegen</button>
                 </div>
                 <table class="admin-table">
@@ -527,7 +527,7 @@
             <!-- Menüpunkte / Artikel Verwaltung -->
             <div class="catalog-box" style="margin-bottom: 24px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-                    <h3>🍕 Menüpunkte / Artikel-Verwaltung</h3>
+                    <h3>Menüpunkte und Artikel-Verwaltung</h3>
                     <button class="btn-action" style="width: auto; padding: 8px 16px; min-height: 40px;" onclick="promptAddArtikel()">+ Neuen Artikel anlegen</button>
                 </div>
                 <table class="admin-table">
@@ -549,7 +549,7 @@
             <!-- Mitarbeiter Verwaltung -->
             <div class="catalog-box">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-                    <h3>👥 Mitarbeiter-Stammdaten</h3>
+                    <h3>Mitarbeiter-Stammdaten</h3>
                     <button class="btn-action" style="width: auto; padding: 8px 16px; min-height: 40px;" onclick="promptAddMitarbeiter()">+ Neuen Mitarbeiter anlegen</button>
                 </div>
                 <table class="admin-table">
@@ -712,7 +712,7 @@
                         </div>
                         <div style="display: flex; align-items: center; gap: 8px;">
                             <span style="font-weight: 600;">${subtotal.toFixed(2)} €</span>
-                            <button onclick="removeFromCart(${item.id})" style="background: none; border: none; color: var(--stitch-danger); cursor: pointer; font-size: 1.1rem; font-weight: bold;" title="Eintrag entfernen">🗑️</button>
+                            <button onclick="removeFromCart(${item.id})" style="background: none; border: none; color: var(--stitch-danger); cursor: pointer; font-size: 0.85rem; font-weight: bold;" title="Eintrag entfernen">Entfernen</button>
                         </div>
                     </div>
                 `;
@@ -859,8 +859,8 @@
                     <td>${t.kapazitaet} Personen</td>
                     <td><span class="badge-status badge-${t.status}">${t.status}</span></td>
                     <td>
-                        <button style="padding: 6px 12px; margin-right: 4px; cursor: pointer; border: 1px solid var(--border); border-radius: 4px; background: #fff;" onclick="editTisch(${t.id})">✏️ Bearbeiten</button>
-                        <button style="padding: 6px 12px; color: var(--stitch-danger); cursor: pointer; border: 1px solid #fca5a5; border-radius: 4px; background: #fef2f2;" onclick="deleteTisch(${t.id})">🗑️ Löschen</button>
+                        <button style="padding: 6px 12px; margin-right: 4px; cursor: pointer; border: 1px solid var(--border); border-radius: 4px; background: #fff;" onclick="editTisch(${t.id})">Bearbeiten</button>
+                        <button style="padding: 6px 12px; color: var(--stitch-danger); cursor: pointer; border: 1px solid #fca5a5; border-radius: 4px; background: #fef2f2;" onclick="deleteTisch(${t.id})">Löschen</button>
                     </td>
                 </tr>
             `).join('');
@@ -874,8 +874,8 @@
                     <td>${a.kategorie}</td>
                     <td>${a.preis.toFixed(2)} €</td>
                     <td>
-                        <button style="padding: 6px 12px; margin-right: 4px; cursor: pointer; border: 1px solid var(--border); border-radius: 4px; background: #fff;" onclick="editArtikel(${a.id})">✏️ Bearbeiten</button>
-                        <button style="padding: 6px 12px; color: var(--stitch-danger); cursor: pointer; border: 1px solid #fca5a5; border-radius: 4px; background: #fef2f2;" onclick="deleteArtikel(${a.id})">🗑️ Löschen</button>
+                        <button style="padding: 6px 12px; margin-right: 4px; cursor: pointer; border: 1px solid var(--border); border-radius: 4px; background: #fff;" onclick="editArtikel(${a.id})">Bearbeiten</button>
+                        <button style="padding: 6px 12px; color: var(--stitch-danger); cursor: pointer; border: 1px solid #fca5a5; border-radius: 4px; background: #fef2f2;" onclick="deleteArtikel(${a.id})">Löschen</button>
                     </td>
                 </tr>
             `).join('');
@@ -890,8 +890,8 @@
                     <td>${m.rolle}</td>
                     <td><span class="badge-status badge-frei">${m.aktiv ? 'Aktiv' : 'Inaktiv'}</span></td>
                     <td>
-                        <button style="padding: 6px 12px; margin-right: 4px; cursor: pointer; border: 1px solid var(--border); border-radius: 4px; background: #fff;" onclick="editMitarbeiter(${m.id})">✏️ Bearbeiten</button>
-                        <button style="padding: 6px 12px; color: var(--stitch-danger); cursor: pointer; border: 1px solid #fca5a5; border-radius: 4px; background: #fef2f2;" onclick="deleteMitarbeiter(${m.id})">🗑️ Löschen</button>
+                        <button style="padding: 6px 12px; margin-right: 4px; cursor: pointer; border: 1px solid var(--border); border-radius: 4px; background: #fff;" onclick="editMitarbeiter(${m.id})">Bearbeiten</button>
+                        <button style="padding: 6px 12px; color: var(--stitch-danger); cursor: pointer; border: 1px solid #fca5a5; border-radius: 4px; background: #fef2f2;" onclick="deleteMitarbeiter(${m.id})">Löschen</button>
                     </td>
                 </tr>
             `).join('');
@@ -919,9 +919,9 @@
             <div style="padding: 16px 20px; background: #f8fafc; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
                 <button class="btn-action" style="width: auto; margin: 0; background: #94a3b8; padding: 8px 16px; min-height: 40px;" onclick="closeWizard()">Abbrechen</button>
                 <div style="display: flex; gap: 8px;">
-                    <button class="btn-action" id="wizard-btn-prev" style="width: auto; margin: 0; background: #64748b; padding: 8px 16px; min-height: 40px;" onclick="wizardPrev()">‹ Zurück</button>
-                    <button class="btn-action" id="wizard-btn-next" style="width: auto; margin: 0; padding: 8px 16px; min-height: 40px;" onclick="wizardNext()">Weiter ›</button>
-                    <button class="btn-action btn-success" id="wizard-btn-finish" style="width: auto; margin: 0; padding: 8px 16px; min-height: 40px; display: none;" onclick="wizardFinish()">✓ Speichern</button>
+                    <button class="btn-action" id="wizard-btn-prev" style="width: auto; margin: 0; background: #64748b; padding: 8px 16px; min-height: 40px;" onclick="wizardPrev()">Zurück</button>
+                    <button class="btn-action" id="wizard-btn-next" style="width: auto; margin: 0; padding: 8px 16px; min-height: 40px;" onclick="wizardNext()">Weiter</button>
+                    <button class="btn-action btn-success" id="wizard-btn-finish" style="width: auto; margin: 0; padding: 8px 16px; min-height: 40px; display: none;" onclick="wizardFinish()">Speichern</button>
                 </div>
             </div>
         </div>
