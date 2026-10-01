@@ -899,102 +899,311 @@
             document.getElementById('stat-mitarbeiter').innerText = mitarbeiter.length + ' Personen';
         }
 
-        // Tische CRUD
-        function promptAddTisch() {
-            const nr = prompt('Tischnummer:');
-            if (!nr) return;
-            const kap = prompt('Kapazität (Personen):', '4');
-            if (!kap) return;
-            const newId = tische.length > 0 ? Math.max(...tische.map(t => t.id)) + 1 : 1;
-            tische.push({ id: newId, nummer: parseInt(nr), kapazitaet: parseInt(kap), status: 'frei' });
-            renderTische();
-            renderAdmin();
+    <!-- WIZARD MODAL DIALOG OVERLAY -->
+    <div id="wizard-modal-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.5); z-index: 1000; align-items: center; justify-content: center;">
+        <div style="background: #ffffff; border-radius: 12px; width: 90%; max-width: 520px; overflow: hidden; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);">
+            <!-- Header -->
+            <div style="background: var(--stitch-primary); color: #ffffff; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center;">
+                <h3 id="wizard-modal-title" style="margin: 0; font-size: 1.1rem;">Wizard Dialog</h3>
+                <button onclick="closeWizard()" style="background: none; border: none; color: #ffffff; font-size: 1.4rem; cursor: pointer;">&times;</button>
+            </div>
+            <!-- Progress Bar / Indicator -->
+            <div style="background: #f1f5f9; padding: 10px 20px; border-bottom: 1px solid var(--border); font-size: 0.85rem; font-weight: 600; color: var(--text-muted);" id="wizard-step-indicator">
+                Schritt 1 von 3
+            </div>
+            <!-- Body Step Pages -->
+            <div style="padding: 24px;" id="wizard-modal-body">
+                <!-- Step content injected dynamically -->
+            </div>
+            <!-- Footer Navigation -->
+            <div style="padding: 16px 20px; background: #f8fafc; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
+                <button class="btn-action" style="width: auto; margin: 0; background: #94a3b8; padding: 8px 16px; min-height: 40px;" onclick="closeWizard()">Abbrechen</button>
+                <div style="display: flex; gap: 8px;">
+                    <button class="btn-action" id="wizard-btn-prev" style="width: auto; margin: 0; background: #64748b; padding: 8px 16px; min-height: 40px;" onclick="wizardPrev()">‹ Zurück</button>
+                    <button class="btn-action" id="wizard-btn-next" style="width: auto; margin: 0; padding: 8px 16px; min-height: 40px;" onclick="wizardNext()">Weiter ›</button>
+                    <button class="btn-action btn-success" id="wizard-btn-finish" style="width: auto; margin: 0; padding: 8px 16px; min-height: 40px; display: none;" onclick="wizardFinish()">✓ Speichern</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- WIZARD MODAL SYSTEM ---
+        let wizardType = null; // 'tisch', 'artikel', 'mitarbeiter'
+        let wizardMode = 'add'; // 'add' or 'edit'
+        let wizardStep = 1;
+        let wizardData = {};
+
+        function openWizard(type, mode, targetData = null) {
+            wizardType = type;
+            wizardMode = mode;
+            wizardStep = 1;
+            wizardData = targetData ? { ...targetData } : {};
+
+            document.getElementById('wizard-modal-overlay').style.display = 'flex';
+            renderWizardStep();
         }
 
-        function editTisch(id) {
-            const t = tische.find(item => item.id === id);
-            if (!t) return;
-            const newKap = prompt(`Kapazität für Tisch #${t.nummer} ändern:`, t.kapazitaet);
-            if (newKap !== null) {
-                t.kapazitaet = parseInt(newKap);
-                renderTische();
-                renderAdmin();
+        function closeWizard() {
+            document.getElementById('wizard-modal-overlay').style.display = 'none';
+        }
+
+        function wizardPrev() {
+            if (wizardStep > 1) {
+                saveCurrentWizardStepInput();
+                wizardStep--;
+                renderWizardStep();
             }
         }
 
-        function deleteTisch(id) {
-            if (confirm('Tisch wirklich löschen?')) {
-                tische = tische.filter(t => t.id !== id);
-                renderTische();
-                renderAdmin();
+        function wizardNext() {
+            if (validateCurrentWizardStep()) {
+                saveCurrentWizardStepInput();
+                wizardStep++;
+                renderWizardStep();
             }
         }
 
-        // Artikel CRUD
-        function promptAddArtikel() {
-            const name = prompt('Artikelname:');
-            if (!name) return;
-            const kat = prompt('Kategorie (Vorspeisen, Hauptspeisen, Desserts, Getränke):', 'Hauptspeisen');
-            if (!kat) return;
-            const preis = prompt('Preis (€):', '12.50');
-            if (!preis) return;
-            const newId = artikel.length > 0 ? Math.max(...artikel.map(a => a.id)) + 1 : 1;
-            artikel.push({ id: newId, name: name, kategorie: kat, preis: parseFloat(preis.replace(',', '.')) });
-            renderArtikel();
-            renderAdmin();
+        function saveCurrentWizardStepInput() {
+            if (wizardType === 'tisch') {
+                if (wizardStep === 1) {
+                    const nr = document.getElementById('wiz-tisch-nr');
+                    if (nr) wizardData.nummer = parseInt(nr.value);
+                } else if (wizardStep === 2) {
+                    const kap = document.getElementById('wiz-tisch-kap');
+                    const st = document.getElementById('wiz-tisch-status');
+                    if (kap) wizardData.kapazitaet = parseInt(kap.value);
+                    if (st) wizardData.status = st.value;
+                }
+            } else if (wizardType === 'artikel') {
+                if (wizardStep === 1) {
+                    const nm = document.getElementById('wiz-art-name');
+                    const kat = document.getElementById('wiz-art-kat');
+                    if (nm) wizardData.name = nm.value.trim();
+                    if (kat) wizardData.kategorie = kat.value;
+                } else if (wizardStep === 2) {
+                    const pr = document.getElementById('wiz-art-preis');
+                    if (pr) wizardData.preis = parseFloat(pr.value.replace(',', '.'));
+                }
+            } else if (wizardType === 'mitarbeiter') {
+                if (wizardStep === 1) {
+                    const nm = document.getElementById('wiz-mit-name');
+                    const usr = document.getElementById('wiz-mit-user');
+                    if (nm) wizardData.name = nm.value.trim();
+                    if (usr) wizardData.user = usr.value.trim();
+                } else if (wizardStep === 2) {
+                    const rl = document.getElementById('wiz-mit-rolle');
+                    if (rl) wizardData.rolle = rl.value;
+                }
+            }
         }
 
-        function editArtikel(id) {
-            const a = artikel.find(item => item.id === id);
-            if (!a) return;
-            const newName = prompt('Artikelname ändern:', a.name);
-            if (!newName) return;
-            const newPreis = prompt('Preis (€) ändern:', a.preis.toFixed(2));
-            if (!newPreis) return;
-            a.name = newName;
-            a.preis = parseFloat(newPreis.replace(',', '.'));
-            renderArtikel();
-            renderAdmin();
+        function validateCurrentWizardStep() {
+            saveCurrentWizardStepInput();
+            if (wizardType === 'tisch') {
+                if (wizardStep === 1 && (!wizardData.nummer || wizardData.nummer <= 0)) {
+                    alert('Bitte eine gültige Tischnummer eingeben!');
+                    return false;
+                }
+                if (wizardStep === 2 && (!wizardData.kapazitaet || wizardData.kapazitaet <= 0)) {
+                    alert('Bitte eine gültige Sitzplatz-Kapazität eingeben!');
+                    return false;
+                }
+            } else if (wizardType === 'artikel') {
+                if (wizardStep === 1 && !wizardData.name) {
+                    alert('Bitte eine Artikelbezeichnung eingeben!');
+                    return false;
+                }
+                if (wizardStep === 2 && (isNaN(wizardData.preis) || wizardData.preis < 0)) {
+                    alert('Bitte einen gültigen Verkaufspreis eingeben!');
+                    return false;
+                }
+            } else if (wizardType === 'mitarbeiter') {
+                if (wizardStep === 1 && (!wizardData.name || !wizardData.user)) {
+                    alert('Bitte Name und Benutzername vollständig eingeben!');
+                    return false;
+                }
+            }
+            return true;
         }
 
-        function deleteArtikel(id) {
-            if (confirm('Artikel wirklich löschen?')) {
-                artikel = artikel.filter(a => a.id !== id);
+        function renderWizardStep() {
+            const titleEl = document.getElementById('wizard-modal-title');
+            const stepEl = document.getElementById('wizard-step-indicator');
+            const bodyEl = document.getElementById('wizard-modal-body');
+            const prevBtn = document.getElementById('wizard-btn-prev');
+            const nextBtn = document.getElementById('wizard-btn-next');
+            const finishBtn = document.getElementById('wizard-btn-finish');
+
+            const titlePrefix = wizardMode === 'add' ? 'Wizard: Neu anlegen' : 'Wizard: Bearbeiten';
+            const typeLabel = wizardType === 'tisch' ? 'Tisch' : (wizardType === 'artikel' ? 'Menüpunkt' : 'Mitarbeiter');
+            titleEl.innerText = `${titlePrefix} (${typeLabel})`;
+
+            stepEl.innerText = `Schritt ${wizardStep} von 3: ${getStepTitle(wizardType, wizardStep)}`;
+
+            prevBtn.style.display = wizardStep > 1 ? 'inline-flex' : 'none';
+            nextBtn.style.display = wizardStep < 3 ? 'inline-flex' : 'none';
+            finishBtn.style.display = wizardStep === 3 ? 'inline-flex' : 'none';
+
+            let html = '';
+            if (wizardType === 'tisch') {
+                if (wizardStep === 1) {
+                    html = `
+                        <label style="display: block; font-weight: 600; margin-bottom: 8px;">Tischnummer:</label>
+                        <input type="number" id="wiz-tisch-nr" value="${wizardData.nummer || ''}" placeholder="z. B. 7" style="width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 1rem;">
+                    `;
+                } else if (wizardStep === 2) {
+                    html = `
+                        <label style="display: block; font-weight: 600; margin-bottom: 8px;">Sitzplatz-Kapazität (Personen):</label>
+                        <input type="number" id="wiz-tisch-kap" value="${wizardData.kapazitaet || 4}" style="width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 1rem; margin-bottom: 16px;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 8px;">Status:</label>
+                        <select id="wiz-tisch-status" style="width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 1rem;">
+                            <option value="frei" ${wizardData.status === 'frei' ? 'selected' : ''}>frei</option>
+                            <option value="belegt" ${wizardData.status === 'belegt' ? 'selected' : ''}>belegt</option>
+                        </select>
+                    `;
+                } else if (wizardStep === 3) {
+                    html = `
+                        <div style="background: #f8fafc; padding: 16px; border-radius: 8px; border: 1px solid var(--border);">
+                            <h4 style="margin-bottom: 12px;">Zusammenfassung überprüfen:</h4>
+                            <p><strong>Tischnummer:</strong> Tisch #${wizardData.nummer}</p>
+                            <p><strong>Kapazität:</strong> ${wizardData.kapazitaet} Personen</p>
+                            <p><strong>Status:</strong> ${wizardData.status}</p>
+                        </div>
+                    `;
+                }
+            } else if (wizardType === 'artikel') {
+                if (wizardStep === 1) {
+                    html = `
+                        <label style="display: block; font-weight: 600; margin-bottom: 8px;">Artikelname:</label>
+                        <input type="text" id="wiz-art-name" value="${wizardData.name || ''}" placeholder="z. B. Tagliatelle al Salmone" style="width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 1rem; margin-bottom: 16px;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 8px;">Kategorie:</label>
+                        <select id="wiz-art-kat" style="width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 1rem;">
+                            <option value="Vorspeisen" ${wizardData.kategorie === 'Vorspeisen' ? 'selected' : ''}>Vorspeisen</option>
+                            <option value="Hauptspeisen" ${wizardData.kategorie === 'Hauptspeisen' || !wizardData.kategorie ? 'selected' : ''}>Hauptspeisen</option>
+                            <option value="Desserts" ${wizardData.kategorie === 'Desserts' ? 'selected' : ''}>Desserts</option>
+                            <option value="Getränke" ${wizardData.kategorie === 'Getränke' ? 'selected' : ''}>Getränke</option>
+                        </select>
+                    `;
+                } else if (wizardStep === 2) {
+                    html = `
+                        <label style="display: block; font-weight: 600; margin-bottom: 8px;">Verkaufspreis (€):</label>
+                        <input type="text" id="wiz-art-preis" value="${wizardData.preis !== undefined ? wizardData.preis.toFixed(2) : '12.50'}" style="width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 1rem;">
+                    `;
+                } else if (wizardStep === 3) {
+                    html = `
+                        <div style="background: #f8fafc; padding: 16px; border-radius: 8px; border: 1px solid var(--border);">
+                            <h4 style="margin-bottom: 12px;">Zusammenfassung überprüfen:</h4>
+                            <p><strong>Artikelname:</strong> ${wizardData.name}</p>
+                            <p><strong>Kategorie:</strong> ${wizardData.kategorie}</p>
+                            <p><strong>Preis:</strong> ${wizardData.preis ? wizardData.preis.toFixed(2) : '0.00'} €</p>
+                        </div>
+                    `;
+                }
+            } else if (wizardType === 'mitarbeiter') {
+                if (wizardStep === 1) {
+                    html = `
+                        <label style="display: block; font-weight: 600; margin-bottom: 8px;">Vollständiger Name:</label>
+                        <input type="text" id="wiz-mit-name" value="${wizardData.name || ''}" placeholder="z. B. Clara Kellnerin" style="width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 1rem; margin-bottom: 16px;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 8px;">System-Benutzername:</label>
+                        <input type="text" id="wiz-mit-user" value="${wizardData.user || ''}" placeholder="z. B. ckellnerin" style="width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 1rem;">
+                    `;
+                } else if (wizardStep === 2) {
+                    html = `
+                        <label style="display: block; font-weight: 600; margin-bottom: 8px;">Funktionsrolle:</label>
+                        <select id="wiz-mit-rolle" style="width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 1rem;">
+                            <option value="Service" ${wizardData.rolle === 'Service' || !wizardData.rolle ? 'selected' : ''}>Service</option>
+                            <option value="Küche" ${wizardData.rolle === 'Küche' ? 'selected' : ''}>Küche</option>
+                            <option value="Administration" ${wizardData.rolle === 'Administration' ? 'selected' : ''}>Administration</option>
+                        </select>
+                    `;
+                } else if (wizardStep === 3) {
+                    html = `
+                        <div style="background: #f8fafc; padding: 16px; border-radius: 8px; border: 1px solid var(--border);">
+                            <h4 style="margin-bottom: 12px;">Zusammenfassung überprüfen:</h4>
+                            <p><strong>Name:</strong> ${wizardData.name}</p>
+                            <p><strong>Benutzername:</strong> ${wizardData.user}</p>
+                            <p><strong>Rolle:</strong> ${wizardData.rolle}</p>
+                        </div>
+                    `;
+                }
+            }
+
+            bodyEl.innerHTML = html;
+        }
+
+        function getStepTitle(type, step) {
+            if (step === 1) return type === 'tisch' ? 'Tischnummer' : (type === 'artikel' ? 'Name & Kategorie' : 'Personendaten');
+            if (step === 2) return type === 'tisch' ? 'Kapazität & Status' : (type === 'artikel' ? 'Verkaufspreis' : 'Rolle festlegen');
+            return 'Überprüfen & Speichern';
+        }
+
+        function wizardFinish() {
+            if (!validateCurrentWizardStep()) return;
+
+            if (wizardType === 'tisch') {
+                if (wizardMode === 'add') {
+                    const newId = tische.length > 0 ? Math.max(...tische.map(t => t.id)) + 1 : 1;
+                    tische.push({ id: newId, nummer: wizardData.nummer, kapazitaet: wizardData.kapazitaet, status: wizardData.status || 'frei' });
+                } else {
+                    const t = tische.find(item => item.id === wizardData.id);
+                    if (t) {
+                        t.nummer = wizardData.nummer;
+                        t.kapazitaet = wizardData.kapazitaet;
+                        t.status = wizardData.status;
+                    }
+                }
+                renderTische();
+                renderAdmin();
+            } else if (wizardType === 'artikel') {
+                if (wizardMode === 'add') {
+                    const newId = artikel.length > 0 ? Math.max(...artikel.map(a => a.id)) + 1 : 1;
+                    artikel.push({ id: newId, name: wizardData.name, kategorie: wizardData.kategorie, preis: wizardData.preis });
+                } else {
+                    const a = artikel.find(item => item.id === wizardData.id);
+                    if (a) {
+                        a.name = wizardData.name;
+                        a.kategorie = wizardData.kategorie;
+                        a.preis = wizardData.preis;
+                    }
+                }
                 renderArtikel();
                 renderAdmin();
-            }
-        }
-
-        // Mitarbeiter CRUD
-        function promptAddMitarbeiter() {
-            const name = prompt('Mitarbeiter Name:');
-            if (!name) return;
-            const user = prompt('Benutzername:');
-            if (!user) return;
-            const rolle = prompt('Rolle (Service, Küche, Administration):', 'Service');
-            if (!rolle) return;
-            const newId = mitarbeiter.length > 0 ? Math.max(...mitarbeiter.map(m => m.id)) + 1 : 1;
-            mitarbeiter.push({ id: newId, name: name, user: user, rolle: rolle, aktiv: true });
-            renderAdmin();
-        }
-
-        function editMitarbeiter(id) {
-            const m = mitarbeiter.find(item => item.id === id);
-            if (!m) return;
-            const newName = prompt('Mitarbeiter Name ändern:', m.name);
-            if (!newName) return;
-            const newUser = prompt('Benutzername ändern:', m.user);
-            if (!newUser) return;
-            m.name = newName;
-            m.user = newUser;
-            renderAdmin();
-        }
-
-        function deleteMitarbeiter(id) {
-            if (confirm('Mitarbeiter wirklich löschen?')) {
-                mitarbeiter = mitarbeiter.filter(m => m.id !== id);
+            } else if (wizardType === 'mitarbeiter') {
+                if (wizardMode === 'add') {
+                    const newId = mitarbeiter.length > 0 ? Math.max(...mitarbeiter.map(m => m.id)) + 1 : 1;
+                    mitarbeiter.push({ id: newId, name: wizardData.name, user: wizardData.user, rolle: wizardData.rolle, aktiv: true });
+                } else {
+                    const m = mitarbeiter.find(item => item.id === wizardData.id);
+                    if (m) {
+                        m.name = wizardData.name;
+                        m.user = wizardData.user;
+                        m.rolle = wizardData.rolle;
+                    }
+                }
                 renderAdmin();
             }
+
+            closeWizard();
+        }
+
+        // Prompt replacement buttons
+        function promptAddTisch() { openWizard('tisch', 'add'); }
+        function editTisch(id) {
+            const t = tische.find(item => item.id === id);
+            if (t) openWizard('tisch', 'edit', t);
+        }
+
+        function promptAddArtikel() { openWizard('artikel', 'add'); }
+        function editArtikel(id) {
+            const a = artikel.find(item => item.id === id);
+            if (a) openWizard('artikel', 'edit', a);
+        }
+
+        function promptAddMitarbeiter() { openWizard('mitarbeiter', 'add'); }
+        function editMitarbeiter(id) {
+            const m = mitarbeiter.find(item => item.id === id);
+            if (m) openWizard('mitarbeiter', 'edit', m);
         }
     </script>
 </body>

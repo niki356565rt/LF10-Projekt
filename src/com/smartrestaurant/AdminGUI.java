@@ -108,16 +108,12 @@ public class AdminGUI extends JFrame {
         panel.add(formPanel, BorderLayout.SOUTH);
 
         btnAdd.addActionListener(e -> {
-            String name = txtMitarbeiterName.getText().trim();
-            String user = txtMitarbeiterUser.getText().trim();
-            String rolle = (String) cbMitarbeiterRolle.getSelectedItem();
-            if (!name.isEmpty() && !user.isEmpty()) {
-                DatabaseManager.addMitarbeiter(new Mitarbeiter(name, user, rolle));
-                txtMitarbeiterName.setText("");
-                txtMitarbeiterUser.setText("");
+            MitarbeiterWizardDialog wizard = new MitarbeiterWizardDialog(this, null);
+            wizard.setVisible(true);
+            Mitarbeiter newM = wizard.getResult();
+            if (newM != null) {
+                DatabaseManager.addMitarbeiter(newM);
                 refreshMitarbeiterTable();
-            } else {
-                JOptionPane.showMessageDialog(this, "Bitte alle Felder ausfüllen!", "Fehler", JOptionPane.ERROR_MESSAGE);
             }
         });
 
@@ -125,17 +121,18 @@ public class AdminGUI extends JFrame {
             int row = tableMitarbeiter.getSelectedRow();
             if (row >= 0) {
                 int id = (int) modelMitarbeiter.getValueAt(row, 0);
-                String currentName = (String) modelMitarbeiter.getValueAt(row, 1);
-                String currentUser = (String) modelMitarbeiter.getValueAt(row, 2);
-                String currentRolle = (String) modelMitarbeiter.getValueAt(row, 3);
-                
-                String newName = JOptionPane.showInputDialog(this, "Name bearbeiten:", currentName);
-                if (newName != null && !newName.trim().isEmpty()) {
-                    String newUser = JOptionPane.showInputDialog(this, "Benutzername bearbeiten:", currentUser);
-                    if (newUser != null && !newUser.trim().isEmpty()) {
-                        DatabaseManager.updateMitarbeiter(new Mitarbeiter(id, newName.trim(), newUser.trim(), currentRolle, true));
-                        refreshMitarbeiterTable();
-                    }
+                String name = (String) modelMitarbeiter.getValueAt(row, 1);
+                String user = (String) modelMitarbeiter.getValueAt(row, 2);
+                String rolle = (String) modelMitarbeiter.getValueAt(row, 3);
+                boolean aktiv = (boolean) modelMitarbeiter.getValueAt(row, 4);
+
+                Mitarbeiter current = new Mitarbeiter(id, name, user, rolle, aktiv);
+                MitarbeiterWizardDialog wizard = new MitarbeiterWizardDialog(this, current);
+                wizard.setVisible(true);
+                Mitarbeiter updated = wizard.getResult();
+                if (updated != null) {
+                    DatabaseManager.updateMitarbeiter(updated);
+                    refreshMitarbeiterTable();
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "Bitte eine Zeile zum Bearbeiten auswählen!", "Hinweis", JOptionPane.WARNING_MESSAGE);
@@ -170,13 +167,13 @@ public class AdminGUI extends JFrame {
         panel.add(new JScrollPane(tableArtikel), BorderLayout.CENTER);
 
         JPanel formPanel = new JPanel(new GridLayout(2, 6, 8, 8));
-        formPanel.setBorder(BorderFactory.createTitledBorder("Menüpunkt / Artikel verwalten (Anlegen / Bearbeiten)"));
+        formPanel.setBorder(BorderFactory.createTitledBorder("Menüpunkt / Artikel verwalten (Wizard-Dialoge)"));
 
         txtArtikelName = new JTextField();
         txtArtikelPreis = new JTextField();
         cbArtikelKategorie = new JComboBox<>(new String[]{"Vorspeisen", "Hauptspeisen", "Desserts", "Getränke"});
-        JButton btnAdd = new JButton("Hinzufügen");
-        JButton btnEdit = new JButton("Bearbeiten");
+        JButton btnAdd = new JButton("Wizard: Neu Anlegen");
+        JButton btnEdit = new JButton("Wizard: Bearbeiten");
         JButton btnDelete = new JButton("Löschen");
 
         formPanel.add(new JLabel("Artikelname:"));
@@ -196,18 +193,12 @@ public class AdminGUI extends JFrame {
         panel.add(formPanel, BorderLayout.SOUTH);
 
         btnAdd.addActionListener(e -> {
-            try {
-                String name = txtArtikelName.getText().trim();
-                String kat = (String) cbArtikelKategorie.getSelectedItem();
-                double preis = Double.parseDouble(txtArtikelPreis.getText().trim().replace(',', '.'));
-                if (!name.isEmpty() && preis >= 0) {
-                    DatabaseManager.addArtikel(new Artikel(name, kat, preis));
-                    txtArtikelName.setText("");
-                    txtArtikelPreis.setText("");
-                    refreshArtikelTable();
-                }
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "Gültigen Preis eingeben!", "Fehler", JOptionPane.ERROR_MESSAGE);
+            ArtikelWizardDialog wizard = new ArtikelWizardDialog(this, null);
+            wizard.setVisible(true);
+            Artikel newA = wizard.getResult();
+            if (newA != null) {
+                DatabaseManager.addArtikel(newA);
+                refreshArtikelTable();
             }
         });
 
@@ -215,22 +206,18 @@ public class AdminGUI extends JFrame {
             int row = tableArtikel.getSelectedRow();
             if (row >= 0) {
                 int id = (int) modelArtikel.getValueAt(row, 0);
-                String currentName = (String) modelArtikel.getValueAt(row, 1);
-                String currentKat = (String) modelArtikel.getValueAt(row, 2);
-                double currentPreis = (double) modelArtikel.getValueAt(row, 3);
+                String name = (String) modelArtikel.getValueAt(row, 1);
+                String kat = (String) modelArtikel.getValueAt(row, 2);
+                double preis = (double) modelArtikel.getValueAt(row, 3);
+                boolean aktiv = (boolean) modelArtikel.getValueAt(row, 4);
 
-                String newName = JOptionPane.showInputDialog(this, "Artikelname bearbeiten:", currentName);
-                if (newName != null && !newName.trim().isEmpty()) {
-                    String newPreisStr = JOptionPane.showInputDialog(this, "Preis (€) bearbeiten:", String.format(java.util.Locale.US, "%.2f", currentPreis));
-                    if (newPreisStr != null) {
-                        try {
-                            double newPreis = Double.parseDouble(newPreisStr.trim().replace(',', '.'));
-                            DatabaseManager.updateArtikel(new Artikel(id, newName.trim(), currentKat, newPreis, true));
-                            refreshArtikelTable();
-                        } catch (Exception ex) {
-                            JOptionPane.showMessageDialog(this, "Ungültiger Preis!", "Fehler", JOptionPane.ERROR_MESSAGE);
-                        }
-                    }
+                Artikel current = new Artikel(id, name, kat, preis, aktiv);
+                ArtikelWizardDialog wizard = new ArtikelWizardDialog(this, current);
+                wizard.setVisible(true);
+                Artikel updated = wizard.getResult();
+                if (updated != null) {
+                    DatabaseManager.updateArtikel(updated);
+                    refreshArtikelTable();
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "Bitte einen Artikel zum Bearbeiten auswählen!", "Hinweis", JOptionPane.WARNING_MESSAGE);
@@ -263,13 +250,13 @@ public class AdminGUI extends JFrame {
         panel.add(new JScrollPane(tableTische), BorderLayout.CENTER);
 
         JPanel formPanel = new JPanel(new GridLayout(2, 6, 8, 8));
-        formPanel.setBorder(BorderFactory.createTitledBorder("Tisch verwalten (Anlegen / Bearbeiten)"));
+        formPanel.setBorder(BorderFactory.createTitledBorder("Tisch verwalten (Wizard-Dialoge)"));
 
         txtTischNummer = new JTextField();
         txtTischKapazitaet = new JTextField();
         cbTischStatus = new JComboBox<>(new String[]{"frei", "belegt"});
-        JButton btnAdd = new JButton("Hinzufügen");
-        JButton btnEdit = new JButton("Bearbeiten");
+        JButton btnAdd = new JButton("Wizard: Neu Anlegen");
+        JButton btnEdit = new JButton("Wizard: Bearbeiten");
         JButton btnDelete = new JButton("Löschen");
 
         formPanel.add(new JLabel("Tischnummer:"));
@@ -289,16 +276,12 @@ public class AdminGUI extends JFrame {
         panel.add(formPanel, BorderLayout.SOUTH);
 
         btnAdd.addActionListener(e -> {
-            try {
-                int nr = Integer.parseInt(txtTischNummer.getText().trim());
-                int kap = Integer.parseInt(txtTischKapazitaet.getText().trim());
-                String status = (String) cbTischStatus.getSelectedItem();
-                DatabaseManager.addTisch(new Tisch(nr, kap, status));
-                txtTischNummer.setText("");
-                txtTischKapazitaet.setText("");
+            TischWizardDialog wizard = new TischWizardDialog(this, null);
+            wizard.setVisible(true);
+            Tisch newT = wizard.getResult();
+            if (newT != null) {
+                DatabaseManager.addTisch(newT);
                 refreshTischeTable();
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "Gültige Zahlen für Nummer und Kapazität eingeben!", "Fehler", JOptionPane.ERROR_MESSAGE);
             }
         });
 
@@ -306,19 +289,17 @@ public class AdminGUI extends JFrame {
             int row = tableTische.getSelectedRow();
             if (row >= 0) {
                 int id = (int) modelTische.getValueAt(row, 0);
-                int currentNr = (int) modelTische.getValueAt(row, 1);
-                int currentKap = (int) modelTische.getValueAt(row, 2);
-                String currentStatus = (String) modelTische.getValueAt(row, 3);
+                int nr = (int) modelTische.getValueAt(row, 1);
+                int kap = (int) modelTische.getValueAt(row, 2);
+                String status = (String) modelTische.getValueAt(row, 3);
 
-                String newKapStr = JOptionPane.showInputDialog(this, "Kapazität für Tisch #" + currentNr + " bearbeiten:", currentKap);
-                if (newKapStr != null) {
-                    try {
-                        int newKap = Integer.parseInt(newKapStr.trim());
-                        DatabaseManager.updateTisch(new Tisch(id, currentNr, newKap, currentStatus));
-                        refreshTischeTable();
-                    } catch (Exception ex) {
-                        JOptionPane.showMessageDialog(this, "Ungültige Kapazität!", "Fehler", JOptionPane.ERROR_MESSAGE);
-                    }
+                Tisch current = new Tisch(id, nr, kap, status);
+                TischWizardDialog wizard = new TischWizardDialog(this, current);
+                wizard.setVisible(true);
+                Tisch updated = wizard.getResult();
+                if (updated != null) {
+                    DatabaseManager.updateTisch(updated);
+                    refreshTischeTable();
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "Bitte einen Tisch zum Bearbeiten auswählen!", "Hinweis", JOptionPane.WARNING_MESSAGE);
