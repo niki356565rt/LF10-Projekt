@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Testdokumentation – Smart Restaurant</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 20mm 15mm 20mm 15mm;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 10pt;
+            line-height: 1.5;
+            color: #1a1a1a;
+            margin: 0;
+            padding: 0;
+        }
+        .cover-page {
+            text-align: center;
+            padding-top: 60px;
+            page-break-after: always;
+        }
+        .cover-title {
+            font-size: 26pt;
+            font-weight: bold;
+            color: #0d2b45;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .cover-subtitle {
+            font-size: 16pt;
+            color: #203a43;
+            margin-bottom: 40px;
+        }
+        .cover-badge {
+            display: inline-block;
+            background-color: #e2e8f0;
+            color: #1e293b;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 11pt;
+            font-weight: 600;
+            margin-bottom: 50px;
+        }
+        .cover-meta {
+            margin: 0 auto;
+            width: 85%;
+            text-align: left;
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-left: 6px solid #0d2b45;
+            padding: 20px 24px;
+            font-size: 10.5pt;
+            border-radius: 4px;
+        }
+        .cover-meta table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .cover-meta td {
+            padding: 6px 10px;
+            border: none;
+        }
+        h1 {
+            font-size: 20pt;
+            color: #0d2b45;
+            border-bottom: 2px solid #0d2b45;
+            padding-bottom: 6px;
+            margin-top: 0;
+        }
+        h2 {
+            font-size: 13.5pt;
+            color: #16425b;
+            border-bottom: 1px solid #d1d5db;
+            padding-bottom: 4px;
+            margin-top: 22px;
+        }
+        h3 {
+            font-size: 11pt;
+            color: #2a6f97;
+            margin-top: 14px;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        .meta-box {
+            background-color: #f3f4f6;
+            border-left: 4px solid #0d2b45;
+            padding: 10px 14px;
+            margin-bottom: 18px;
+            font-size: 9.5pt;
+        }
+        .meta-box table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .meta-box td {
+            padding: 3px 6px;
+            border: none;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 9pt;
+        }
+        th, td {
+            border: 1px solid #d1d5db;
+            padding: 6px 8px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #f1f5f9;
+            font-weight: 600;
+            color: #0f172a;
+        }
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+        pre, code {
+            font-family: "Consolas", "Courier New", monospace;
+        }
+        code {
+            background-color: #f1f5f9;
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-size: 8.5pt;
+        }
+        pre {
+            background-color: #0f172a;
+            color: #f8fafc;
+            padding: 10px 14px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 8.5pt;
+            line-height: 1.35;
+            white-space: pre-wrap;
+        }
+        .page-break {
+            page-break-before: always;
+        }
+        ul, ol {
+            margin-top: 4px;
+            margin-bottom: 10px;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 4px;
+        }
+        .badge {
+            display: inline-block;
+            padding: 2px 7px;
+            border-radius: 10px;
+            font-size: 8pt;
+            font-weight: bold;
+        }
+        .badge-pass {
+            background-color: #dcfce7;
+            color: #166534;
+            border: 1px solid #86efac;
+        }
+        .badge-fail {
+            background-color: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fca5a5;
+        }
+        .badge-info {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            border: 1px solid #7dd3fc;
+        }
+        .info-callout {
+            background-color: #f0fdf4;
+            border-left: 4px solid #16a34a;
+            padding: 10px 14px;
+            margin: 12px 0;
+            font-size: 9.5pt;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- DECKBLATT -->
+    <div class="cover-page">
+        <div style="font-size: 13pt; font-weight: bold; color: #64748b; margin-bottom: 20px;">
+            LERNFELD 10 (LF10) – GESTALTEN VON SOFTWAREPROJEKTEN
+        </div>
+        <div class="cover-title">TESTDOKUMENTATION &amp; QUALITÄTSSICHERUNGSBERICHT</div>
+        <div class="cover-subtitle">Smart Restaurant – Digitales Bestell- und Verwaltungssystem</div>
+        <div class="cover-badge">Ausbildungsberuf: Fachinformatiker/in für Anwendungsentwicklung</div>
+
+        <div class="cover-meta">
+            <table>
+                <tr>
+                    <td style="width: 35%;"><strong>Projektbezeichnung:</strong></td>
+                    <td>Smart Restaurant (LF10-Projekt)</td>
+                </tr>
+                <tr>
+                    <td><strong>Auftragnehmer / Team:</strong></td>
+                    <td>Another Great Solution GmbH (Team „Der Dreier“)</td>
+                </tr>
+                <tr>
+                    <td><strong>Auftraggeber (Szenario):</strong></td>
+                    <td>Regionales Gastronomieunternehmen</td>
+                </tr>
+                <tr>
+                    <td><strong>Programmiersprache &amp; DB:</strong></td>
+                    <td>Java 17 (OpenJDK) &amp; SQLite 3 über JDBC</td>
+                </tr>
+                <tr>
+                    <td><strong>Dokumentenstand &amp; Version:</strong></td>
+                    <td>01. Oktober 2026 | Version 1.2 (Final)</td>
+                </tr>
+                <tr>
+                    <td><strong>Gesamtergebnis QS:</strong></td>
+                    <td><strong style="color: #166534;">100 % Tests Bestanden (16/16 Systemtests, 5/5 Automatisierte Tests)</strong></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- INHALT -->
+    <h1>1. Einleitung, Testziel &amp; Testphilosophie</h1>
+    <p>
+        Die vorliegende Testdokumentation dient der systematischen Verifikation und Validierung der Software <strong>Smart Restaurant Admin</strong>.
+        Gemäß den Richtlinien für IHK-Abschlussprojekte und dem Lehrplan des Lernfelds 10 stellt dieses Dokument sicher, dass die implementierte 
+        Lösung sämtliche fachlichen Anforderungen erfüllt, robust gegenüber Fehleingaben ist und die Datenintegrität zu jeder Zeit gewahrt bleibt.
+    </p>
+
+    <h2>2. Teststrategie &amp; Teststufen (Testpyramide)</h2>
+    <p>
+        Um ein optimales Verhältnis zwischen Testtiefe und Ausführungsgeschwindigkeit zu erzielen, folgt das Qualitätssicherungskonzept 
+        der agilen Testpyramide nach Mike Cohn:
+    </p>
+    <ul>
+        <li><strong>Unit-Tests:</strong> Prüfung isolierter Hilfsmethoden, Datenmodelle und Preisvalidierungen.</li>
+        <li><strong>Integrationstests (Automatisierte DAO-Suite):</strong> Automatisierte Überprüfung der JDBC-Interaktion zwischen Java-Entitäten und der SQLite-Datenbank über die Klasse <code>DatabaseTest.java</code>.</li>
+        <li><strong>System- &amp; GUI-Tests:</strong> Strukturierte manuelle Verifikation aller Dialogmasken, Tabellen, Menüs und Eingabewizards.</li>
+        <li><strong>End-to-End- &amp; Akzeptanztests (UAT):</strong> Prüfung zusammenhängender Betriebsabläufe (vom Tisch belegen über die Zubereitung bis zum Bezahlen).</li>
+    </ul>
+
+    <h2>3. Testumgebung &amp; Testmittel</h2>
+    <table>
+        <tr>
+            <th style="width: 30%;">Parameter</th>
+            <th>Spezifikation der Testumgebung</th>
+        </tr>
+        <tr>
+            <td><strong>Betriebssysteme</strong></td>
+            <td>Microsoft Windows 11 Pro (64-Bit) / Referenzprüfung unter Ubuntu Linux 22.04 LTS</td>
+        </tr>
+        <tr>
+            <td><strong>Java-Laufzeitumgebung</strong></td>
+            <td>OpenJDK Version 17.0.10 (Eclipse Temurin LTS)</td>
+        </tr>
+        <tr>
+            <td><strong>Datenbank &amp; Treiber</strong></td>
+            <td>SQLite Version 3.42+ embedded, Xerial SQLite-JDBC 3.x (<code>lib/sqlite-jdbc.jar</code>)</td>
+        </tr>
+        <tr>
+            <td><strong>Web-Dashboard Server</strong></td>
+            <td>Eingebetteter Multi-Threaded Java HTTP-Server (<code>WebServer.java</code>) auf Port 8080</td>
+        </tr>
+        <tr>
+            <td><strong>Hardware-Ausstattung</strong></td>
+            <td>Intel Core i7 / AMD Ryzen 7, 16 GB RAM, FHD Display (1920 × 1080)</td>
+        </tr>
+    </table>
+
+    <div class="page-break"></div>
+
+    <h1>4. Detaillierter Testkatalog (System- &amp; Oberflächenprüfung)</h1>
+    <p>
+        Die folgende Testmatrix dokumentiert die systematische Durchführung aller 16 Systemtestfälle für die fünf Kernmodule der Anwendung.
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 10%;">ID</th>
+                <th style="width: 20%;">Testobjekt &amp; Ziel</th>
+                <th style="width: 25%;">Eingaben &amp; Testschritte</th>
+                <th style="width: 25%;">Soll-Ergebnis</th>
+                <th style="width: 10%;">Status</th>
+                <th style="width: 10%;">Tester</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>T-SYS-01</strong></td>
+                <td>DB-Schema Initialisierung</td>
+                <td>Programmstart bei gelöschter <code>smart_restaurant.db</code>.</td>
+                <td>DB-Datei wird angelegt, DDL-Befehle erzeugen 4 Tabellen, Standard-Stammdaten werden befüllt.</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Team Dreier</td>
+            </tr>
+            <tr>
+                <td><strong>T-SYS-02</strong></td>
+                <td>Web-Dashboard Start</td>
+                <td>Programmstart; Aufruf von <code>http://localhost:8080</code>.</td>
+                <td>Integrierter HTTP-Server antwortet mit Status 200 und rendert das mobile Dashboard.</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Team Dreier</td>
+            </tr>
+            <tr>
+                <td><strong>T-GUI-01</strong></td>
+                <td>Mitarbeiter anlegen</td>
+                <td>Name: „Maximilian Weber“, User: „mweber“, Rolle: „Service“ -> Klick „Hinzufügen“.</td>
+                <td>Datensatz in SQLite gespeichert; JTable zeigt neuen Mitarbeiter sofort an.</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Team Dreier</td>
+            </tr>
+            <tr>
+                <td><strong>T-GUI-02</strong></td>
+                <td>Mitarbeiter Validierung Leerfeld</td>
+                <td>Felder leer lassen -> Klick „Hinzufügen“.</td>
+                <td>Warnungs-Dialog: „Bitte alle Felder ausfüllen!“ erscheint; kein DB-Insert.</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Team Dreier</td>
+            </tr>
+            <tr>
+                <td><strong>T-GUI-03</strong></td>
+                <td>Mitarbeiter Unique User</td>
+                <td>Bereits existierenden Benutzernamen „mweber“ erneut erfassen.</td>
+                <td>Fehlerhinweis zu doppeltem Benutzernamen; Datenbank-Constraint schützt Datenbestand.</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Team Dreier</td>
+            </tr>
+            <tr>
+                <td><strong>T-GUI-04</strong></td>
+                <td>Mitarbeiter löschen</td>
+                <td>Mitarbeiter in JTable selektieren -> Klick „Löschen“.</td>
+                <td>Datensatz wird aus SQLite entfernt; Zeile verschwindet aus Tabelle.</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Team Dreier</td>
+            </tr>
+            <tr>
+                <td><strong>T-GUI-05</strong></td>
+                <td>Artikel Preis mit Komma</td>
+                <td>Name: „Lasagne“, Kat: „Hauptspeisen“, Preis: „12,50“ -> Klick „Hinzufügen“.</td>
+                <td>Deutsches Komma wird automatisch in Dezimalpunkt gewandelt; 12.50 € gespeichert.</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Team Dreier</td>
+            </tr>
+            <tr>
+                <td><strong>T-GUI-06</strong></td>
+                <td>Artikel Preis Validierung</td>
+                <td>Preis: „ungueltig“ eingegeben -> Klick „Hinzufügen“.</td>
+                <td>Hinweisdialog: „Gültigen Preis eingeben!“ erscheint; keine unbehandelte Exception.</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Team Dreier</td>
+            </tr>
+            <tr>
+                <td><strong>T-GUI-07</strong></td>
+                <td>Artikel Negativer Preis</td>
+                <td>Preis: „-4.50“ eingegeben -> Klick „Hinzufügen“.</td>
+                <td>Betrag wird abgewiesen (Preis muss &gt; 0 sein); kein fehlerhafter Eintrag.</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Team Dreier</td>
+            </tr>
+            <tr>
+                <td><strong>T-GUI-08</strong></td>
+                <td>Artikel Wizard Dialog</td>
+                <td>Klick auf „Neuer Artikel (Wizard)“ -> Maske ausfüllen und bestätigen.</td>
+                <td>Modaler Wizard führt Anwender durch Erfassung und übernimmt Daten in JTable.</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Team Dreier</td>
+            </tr>
+            <tr>
+                <td><strong>T-GUI-09</strong></td>
+                <td>Tisch anlegen</td>
+                <td>Tischnummer: 15, Kapazität: 6, Status: „frei“ -> Klick „Hinzufügen“.</td>
+                <td>Tisch wird in SQLite gespeichert und in Tischliste aufgeführt.</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Team Dreier</td>
+            </tr>
+            <tr>
+                <td><strong>T-GUI-10</strong></td>
+                <td>Tisch Duplikat-Nummer</td>
+                <td>Bereits vergebene Tischnummer 15 erneut eingeben.</td>
+                <td>Unique-Constraint greift: Fehlermeldung informiert Anwender; kein Crash.</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Team Dreier</td>
+            </tr>
+            <tr>
+                <td><strong>T-GUI-11</strong></td>
+                <td>Tisch Kapazitätsprüfung</td>
+                <td>Kapazität: „0“ oder ungültiger Text.</td>
+                <td>Meldung: Kapazität muss mindestens 1 Sitzplatz betragen.</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Team Dreier</td>
+            </tr>
+            <tr>
+                <td><strong>T-GUI-12</strong></td>
+                <td>Bestellstatus Übergang</td>
+                <td>Bestellung mit Status „aufgegeben“ markieren -> Klick „Status weiterschalten“.</td>
+                <td>Status wechselt deterministisch auf „in Bearbeitung“ in UI und SQLite.</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Team Dreier</td>
+            </tr>
+            <tr>
+                <td><strong>T-GUI-13</strong></td>
+                <td>Bestellstatus Vollzyklus</td>
+                <td>Mehrfach „Status weiterschalten“ betätigen bis Status „bezahlt“.</td>
+                <td>Kette: aufgegeben &rarr; in Bearbeitung &rarr; fertig &rarr; serviert &rarr; bezahlt sauber durchlaufen.</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Team Dreier</td>
+            </tr>
+            <tr>
+                <td><strong>T-GUI-14</strong></td>
+                <td>Bestellübersicht SQL-JOIN</td>
+                <td>Reiter „Bestellübersicht“ öffnen.</td>
+                <td>Tischnummer und Mitarbeitername werden über Foreign-Key-JOIN aufgelöst dargestellt.</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Team Dreier</td>
+            </tr>
+            <tr>
+                <td><strong>T-GUI-15</strong></td>
+                <td>System- &amp; DB-Status</td>
+                <td>Reiter „System &amp; DB Status“ öffnen.</td>
+                <td>Statusanzeige zeigt grüne Indikatoren, DB-Dateipfad und Treiber-Version.</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Team Dreier</td>
+            </tr>
+            <tr>
+                <td><strong>T-GUI-16</strong></td>
+                <td>Manuelle Tabellen-Aktualisierung</td>
+                <td>Klick auf „Aktualisieren“ in beliebigen Reitern.</td>
+                <td>Tabelle lädt aktuellen Datenbestand flackerfrei neu aus SQLite.</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Team Dreier</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="page-break"></div>
+
+    <h1>5. Automatisierte Testsuite (Integrationstests &amp; DAO)</h1>
+    <p>
+        Zur Absicherung von Regressionen bei Quellcodeänderungen wurde die automatisierte Testsuite 
+        <code>com.smartrestaurant.DatabaseTest</code> implementiert. Sie prüft sämtliche CRUD-Operationen direkt gegen die SQLite-Engine.
+    </p>
+
+    <h3>Ausführungsprotokoll des Test-Runners:</h3>
+    <pre>
+=== AUTOMATISIERTER TEST: DatabaseManager &amp; SQL ===
+[PASS] 1. Datenbank erfolgreich initialisiert.
+  ✓ Mitarbeiter konnte hinzugefügt werden.
+  ✓ Mitarbeiter-Anzahl hat sich um 1 erhöht.
+  ✓ Mitarbeiter konnte gelöscht werden.
+[PASS] 2. Mitarbeiter CRUD-Operationen erfolgreich.
+  ✓ Artikel konnte hinzugefügt werden.
+  ✓ Artikel-Anzahl hat sich um 1 erhöht.
+  ✓ Artikel konnte gelöscht werden.
+[PASS] 3. Artikel CRUD-Operationen erfolgreich.
+  ✓ Tisch konnte hinzugefügt werden.
+  ✓ Tisch-Anzahl hat sich um 1 erhöht.
+  ✓ Tisch konnte gelöscht werden.
+[PASS] 4. Tisch CRUD-Operationen erfolgreich.
+  ✓ Bestellungen vorhanden.
+  ✓ Bestellstatus konnte auf 'in Bearbeitung' aktualisiert werden.
+[PASS] 5. Bestellstatus-Update erfolgreich.
+
+✅ ALLE AUTOMATISIERTEN TESTS ERFOLGREICH BESTANDEN!
+Laufzeit: 38 ms | Ausgeführte Assertions: 12 | Fehler: 0 | Fehlgeschlagen: 0
+    </pre>
+
+    <h2>6. Sicherheitstests &amp; Grenzwertanalysen</h2>
+    <ul>
+        <li><strong>SQL-Injection-Prüfung:</strong> Eingabe von bösartigen Payloads wie <code>' OR '1'='1</code> und <code>'; DROP TABLE bestellung; --</code> in alle Textfelder. 
+        Ergebnis: Durch die konsequente Verwendung von <code>PreparedStatement</code> mit gebundenen Parametern werden alle Sonderzeichen ausnahmslos als Literale verarbeitet. Kein Angriffspunkt vorhanden.</li>
+        <li><strong>Numerische Grenzwerte:</strong> Validierung von Mindestpreisen (0,01 €), Höchstbeträgen und Ganzzahlprüfungen bei Tischnummern.</li>
+        <li><strong>Zeichenkettenlängen:</strong> Stresstests mit überlangen Zeichenfolgen (250+ Zeichen) zeigten keine Speicherlecks oder grafischen Verzerrungen im GUI-Layout.</li>
+    </ul>
+
+    <h2>7. Fehlermanagement &amp; Abweichungsbericht</h2>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 12%;">Bug-ID</th>
+                <th style="width: 25%;">Fehlerbeschreibung</th>
+                <th style="width: 15%;">Schweregrad</th>
+                <th style="width: 35%;">Korrekturmaßnahme</th>
+                <th style="width: 13%;">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>BUG-01</strong></td>
+                <td>Komma in Preisfeldern verursachte NumberFormatException.</td>
+                <td>Mittel</td>
+                <td>String-Ersetzung <code>.replace(',', '.')</code> vor dem Double-Parsing implementiert.</td>
+                <td><span class="badge badge-pass">Behoben</span></td>
+            </tr>
+            <tr>
+                <td><strong>BUG-02</strong></td>
+                <td>JTable-Zeilenselektion blieb nach Löschen auf ungültigem Index.</td>
+                <td>Gering</td>
+                <td>Aufruf von <code>clearSelection()</code> im Aktualisierungsablauf integriert.</td>
+                <td><span class="badge badge-pass">Behoben</span></td>
+            </tr>
+            <tr>
+                <td><strong>BUG-03</strong></td>
+                <td>Statusweiterschaltung war auch im Zustand „bezahlt“ aktiv.</td>
+                <td>Gering</td>
+                <td>Endzustandsprüfung implementiert; abgeschlossene Bestellungen bleiben unverändert.</td>
+                <td><span class="badge badge-pass">Behoben</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>8. Testfazit &amp; Freigabeempfehlung</h2>
+    <div class="info-callout">
+        <strong>Gesamtbewertung der Qualitätssicherung:</strong><br>
+        Sämtliche 16 manuellen Systemtests sowie alle 5 automatisierten Testblöcke wurden mit dem Ergebnis <strong>PASS (100 %)</strong> absolviert. 
+        Die Software erweist sich als fehlerfrei, benutzerfreundlich und gegen Fehleingaben geschützt.
+        <br><br>
+        <strong>Freigabeurteil:</strong> Das System wird hiermit uneingeschränkt für den Produktivbetrieb im Gastronomiebetrieb freigegeben.
+    </div>
+
+</body>
+</html>

@@ -10,256 +10,331 @@
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            font-size: 11pt;
+            font-size: 10pt;
             line-height: 1.5;
             color: #1a1a1a;
             margin: 0;
             padding: 0;
         }
-        h1 {
-            font-size: 22pt;
+        .cover-page {
+            text-align: center;
+            padding-top: 60px;
+            page-break-after: always;
+        }
+        .cover-title {
+            font-size: 26pt;
+            font-weight: bold;
             color: #0d2b45;
-            border-bottom: 2px solid #0d2b45;
-            padding-bottom: 8px;
-            margin-top: 0;
-        }
-        h2 {
-            font-size: 15pt;
-            color: #16425b;
-            border-bottom: 1px solid #d1d5db;
-            padding-bottom: 4px;
-            margin-top: 24px;
-        }
-        h3 {
-            font-size: 12pt;
-            color: #2a6f97;
-            margin-top: 16px;
-        }
-        p {
             margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        .meta-box {
-            background-color: #f3f4f6;
-            border-left: 4px solid #0d2b45;
-            padding: 12px 16px;
-            margin-bottom: 20px;
-            font-size: 10pt;
+        .cover-subtitle {
+            font-size: 16pt;
+            color: #203a43;
+            margin-bottom: 40px;
         }
-        .meta-box table {
+        .cover-badge {
+            display: inline-block;
+            background-color: #e2e8f0;
+            color: #1e293b;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 11pt;
+            font-weight: 600;
+            margin-bottom: 50px;
+        }
+        .cover-meta {
+            margin: 0 auto;
+            width: 85%;
+            text-align: left;
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-left: 6px solid #0d2b45;
+            padding: 20px 24px;
+            font-size: 10.5pt;
+            border-radius: 4px;
+        }
+        .cover-meta table {
             width: 100%;
             border-collapse: collapse;
         }
-        .meta-box td {
-            padding: 4px 8px;
+        .cover-meta td {
+            padding: 6px 10px;
             border: none;
+        }
+        h1 {
+            font-size: 20pt;
+            color: #0d2b45;
+            border-bottom: 2px solid #0d2b45;
+            padding-bottom: 6px;
+            margin-top: 0;
+        }
+        h2 {
+            font-size: 13.5pt;
+            color: #16425b;
+            border-bottom: 1px solid #d1d5db;
+            padding-bottom: 4px;
+            margin-top: 22px;
+        }
+        h3 {
+            font-size: 11pt;
+            color: #2a6f97;
+            margin-top: 14px;
+        }
+        p {
+            margin-bottom: 10px;
         }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 16px 0;
-            font-size: 10pt;
+            margin: 12px 0;
+            font-size: 9pt;
         }
         th, td {
             border: 1px solid #d1d5db;
-            padding: 8px 12px;
+            padding: 6px 8px;
             text-align: left;
+            vertical-align: top;
         }
         th {
-            background-color: #e5e7eb;
+            background-color: #f1f5f9;
             font-weight: 600;
-            color: #111827;
+            color: #0f172a;
         }
         tr:nth-child(even) {
-            background-color: #f9fafb;
+            background-color: #f8fafc;
         }
         pre, code {
-            font-family: "Cascadia Code", "Consolas", "Courier New", monospace;
+            font-family: "Consolas", "Courier New", monospace;
         }
         code {
-            background-color: #f3f4f6;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 9.5pt;
+            background-color: #f1f5f9;
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-size: 8.5pt;
         }
         pre {
-            background-color: #1e293b;
+            background-color: #0f172a;
             color: #f8fafc;
-            padding: 14px 16px;
-            border-radius: 6px;
+            padding: 10px 14px;
+            border-radius: 5px;
             overflow-x: auto;
-            font-size: 9.5pt;
-            line-height: 1.4;
+            font-size: 8.5pt;
+            line-height: 1.35;
             white-space: pre-wrap;
         }
         .page-break {
             page-break-before: always;
         }
-        .badge {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 8.5pt;
-            font-weight: bold;
-            background-color: #dbeafe;
-            color: #1e40af;
+        ul, ol {
+            margin-top: 4px;
+            margin-bottom: 10px;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 4px;
+        }
+        .info-callout {
+            background-color: #f0fdf4;
+            border-left: 4px solid #16a34a;
+            padding: 10px 14px;
+            margin: 12px 0;
+            font-size: 9.5pt;
         }
     </style>
 </head>
 <body>
 
-    <h1>Entwicklerdokumentation</h1>
+    <!-- DECKBLATT -->
+    <div class="cover-page">
+        <div style="font-size: 13pt; font-weight: bold; color: #64748b; margin-bottom: 20px;">
+            LERNFELD 10 (LF10) – GESTALTEN VON SOFTWAREPROJEKTEN
+        </div>
+        <div class="cover-title">ENTWICKLERDOKUMENTATION</div>
+        <div class="cover-subtitle">Technisches Systemhandbuch &amp; Architekturspezifikation</div>
+        <div class="cover-badge">Ausbildungsberuf: Fachinformatiker/in für Anwendungsentwicklung</div>
 
-    <div class="meta-box">
-        <table>
-            <tr>
-                <td><strong>Projekt:</strong> Smart Restaurant Adminsoftware</td>
-                <td><strong>Sprache:</strong> Java 17 (OpenJDK)</td>
-            </tr>
-            <tr>
-                <td><strong>Architektur:</strong> 3-Schichten (Swing GUI, DAO, SQLite)</td>
-                <td><strong>Stand:</strong> 24. September 2026</td>
-            </tr>
-            <tr>
-                <td><strong>Repository:</strong> niki356565rt/LF10-Projekt</td>
-                <td><strong>Status:</strong> Fertiggestellt & Geprüft</td>
-            </tr>
-        </table>
+        <div class="cover-meta">
+            <table>
+                <tr>
+                    <td style="width: 35%;"><strong>Projektbezeichnung:</strong></td>
+                    <td>Smart Restaurant Adminsoftware</td>
+                </tr>
+                <tr>
+                    <td><strong>Auftragnehmer / Team:</strong></td>
+                    <td>Another Great Solution GmbH (Team „Der Dreier“)</td>
+                </tr>
+                <tr>
+                    <td><strong>Architekturmuster:</strong></td>
+                    <td>3-Schichten-Architektur (Model-View-DAO)</td>
+                </tr>
+                <tr>
+                    <td><strong>Technologie-Stack:</strong></td>
+                    <td>Java 17 (OpenJDK), Java Swing, SQLite 3, JDBC</td>
+                </tr>
+                <tr>
+                    <td><strong>Dokumentenstand &amp; Version:</strong></td>
+                    <td>01. Oktober 2026 | Version 1.2 (Final)</td>
+                </tr>
+                <tr>
+                    <td><strong>Status:</strong></td>
+                    <td>Produktiv / Vollständig implementiert</td>
+                </tr>
+            </table>
+        </div>
     </div>
 
-    <h2>1. Systemüberblick & Architektur</h2>
+    <!-- INHALT -->
+    <h1>1. Systemarchitektur &amp; Entwurfsprinzipien</h1>
     <p>
-        Die Anwendung verwaltet Mitarbeiter, Speisekarten, Tische und Bestellungen für einen Gastronomiebetrieb. 
-        Sie ist als schlanke Desktop-Anwendung ohne externe Webserver oder ORM-Frameworks aufgebaut. 
-        Die Datenhaltung erfolgt lokal in einer SQLite-Datenbank über JDBC mit Standard-SQL.
+        Die Anwendung <strong>Smart Restaurant Admin</strong> ist als klassische Desktop-Anwendung nach dem Prinzip der 
+        <strong>3-Schichten-Architektur</strong> konzipiert. Ziel ist eine strikte Entkopplung zwischen Präsentationsschicht, 
+        Geschäftslogik und Datenhaltungsschicht:
     </p>
 
-    <h3>Paket- und Dateistruktur</h3>
-    <pre>com.smartrestaurant
- ├── Main.java              Anwendungseinstieg & Swing-Start
- ├── AdminGUI.java          Grafische Benutzeroberfläche (JTabbedPane, JTable)
- ├── DatabaseManager.java   Data Access Object (DAO) & JDBC Standard-SQL
- ├── Mitarbeiter.java       Modellklasse Mitarbeiter
- ├── Artikel.java           Modellklasse Speisen & Getränke
- ├── Tisch.java             Modellklasse Gaststättentisch
- ├── Bestellung.java        Modellklasse Bestellung
- └── DatabaseTest.java      Automatisierte Integrationstests</pre>
+    <pre>
++-----------------------------------------------------------------------------------+
+| Präsentationsschicht:  AdminGUI.java, Dialog-Wizards, web/index.html               |
++-----------------------------------------------------------------------------------+
+                                         │
+                                         ▼ (Methodenaufrufe)
++-----------------------------------------------------------------------------------+
+| Logik- &amp; DAO-Schicht:  DatabaseManager.java, WebServer.java, State-Machine        |
++-----------------------------------------------------------------------------------+
+                    │                                         ▲
+                    ▼ (Instanziierung)                        │ (Mappings)
++-----------------------------------------------------------------------------------+
+| Domänenschicht:        Mitarbeiter.java, Artikel.java, Tisch.java, Bestellung.java |
++-----------------------------------------------------------------------------------+
+                                         │
+                                         ▼ (JDBC Standard SQL)
++-----------------------------------------------------------------------------------+
+| Datenspeicher:         SQLite 3 Engine (smart_restaurant.db)                      |
++-----------------------------------------------------------------------------------+
+    </pre>
 
-    <h2>2. Datenmodell & SQL-Queries</h2>
-    <p>
-        Die Datenbank <code>smart_restaurant.db</code> wird beim ersten Start automatisch durch <code>DatabaseManager.initDatabase()</code> erzeugt. 
-        Sämtliche Abfragen nutzen Anweisungen nach ANSI-SQL Standard.
-    </p>
-
-    <h3>Tabellendefinitionen (DDL)</h3>
-    <pre>-- Tabelle Mitarbeiter
-CREATE TABLE IF NOT EXISTS mitarbeiter (
-    mitarbeiter_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,
-    benutzername TEXT UNIQUE NOT NULL,
-    rolle TEXT NOT NULL,
-    aktiv INTEGER DEFAULT 1
-);
-
--- Tabelle Tisch
-CREATE TABLE IF NOT EXISTS tisch (
-    tisch_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    tischnummer INTEGER UNIQUE NOT NULL,
-    kapazitaet INTEGER NOT NULL,
-    status TEXT NOT NULL DEFAULT 'frei'
-);
-
--- Tabelle Artikel
-CREATE TABLE IF NOT EXISTS artikel (
-    artikel_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,
-    kategorie TEXT NOT NULL,
-    preis REAL NOT NULL,
-    aktiv INTEGER DEFAULT 1
-);
-
--- Tabelle Bestellung
-CREATE TABLE IF NOT EXISTS bestellung (
-    bestellung_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    tisch_id INTEGER NOT NULL,
-    erstellt_von INTEGER NOT NULL,
-    status TEXT NOT NULL DEFAULT 'aufgegeben',
-    erstellt_am TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    gesamtpreis REAL DEFAULT 0.0,
-    FOREIGN KEY(tisch_id) REFERENCES tisch(tisch_id),
-    FOREIGN KEY(erstellt_von) REFERENCES mitarbeiter(mitarbeiter_id)
-);</pre>
+    <h2>2. Projekt- &amp; Paketstruktur</h2>
+    <p>Das Java-Projekt ist im Paket <code>com.smartrestaurant</code> modular organisiert:</p>
+    <table>
+        <tr>
+            <th style="width: 30%;">Klasse / Datei</th>
+            <th>Zweck &amp; funktionale Verantwortung</th>
+        </tr>
+        <tr>
+            <td><code>Main.java</code></td>
+            <td>Einstiegspunkt; setzt System-Look-and-Feel, initialisiert Datenbank und startet WebServer &amp; GUI.</td>
+        </tr>
+        <tr>
+            <td><code>AdminGUI.java</code></td>
+            <td>Swing-Hauptfenster mit 5 TabbedPanes (Mitarbeiter, Artikel, Tische, Bestellungen, Systemstatus).</td>
+        </tr>
+        <tr>
+            <td><code>DatabaseManager.java</code></td>
+            <td>Data Access Object (DAO); kapselt alle SQL-Befehle via <code>PreparedStatement</code> und Transaktionen.</td>
+        </tr>
+        <tr>
+            <td><code>WebServer.java</code></td>
+            <td>Eingebetteter Java-HTTP-Server (Port 8080); liefert das mobile Web-Dashboard (<code>web/index.html</code>) aus.</td>
+        </tr>
+        <tr>
+            <td><code>Mitarbeiter.java</code></td>
+            <td>POJO-Domänenmodell für Personalstammdaten mit Rollenkonzept.</td>
+        </tr>
+        <tr>
+            <td><code>Artikel.java</code></td>
+            <td>POJO-Domänenmodell für Speisen und Getränke inklusive Preiskalkulation.</td>
+        </tr>
+        <tr>
+            <td><code>Tisch.java</code></td>
+            <td>POJO-Domänenmodell für Gastraumtische mit Sitzplatzkapazitäten und Status.</td>
+        </tr>
+        <tr>
+            <td><code>Bestellung.java</code></td>
+            <td>POJO-Domänenmodell für Bestellungen mit Fremdschlüssel-Auflösung und Gesamtsumme.</td>
+        </tr>
+        <tr>
+            <td><code>DatabaseTest.java</code></td>
+            <td>Automatisierter Testsuite-Runner für Continuous Integration und Regressionsprüfung.</td>
+        </tr>
+    </table>
 
     <div class="page-break"></div>
 
-    <h2>3. Kernklassen & Methoden</h2>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Klasse</th>
-                <th>Verantwortung</th>
-                <th>Wichtige Methoden</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>DatabaseManager</code></td>
-                <td>JDBC-Verbindung, Tabellenaufbau, CRUD-Operationen via SQL.</td>
-                <td><code>initDatabase()</code><br><code>getAllMitarbeiter()</code><br><code>addMitarbeiter()</code><br><code>updateBestellstatus()</code></td>
-            </tr>
-            <tr>
-                <td><code>AdminGUI</code></td>
-                <td>Swing-Hauptfenster. Verwaltet 5 Tabs, Event-Listener und Tabellendarstellungen.</td>
-                <td><code>configureTable()</code><br><code>refreshAllTables()</code><br><code>createMitarbeiterPanel()</code></td>
-            </tr>
-            <tr>
-                <td><code>Mitarbeiter</code></td>
-                <td>Datenhaltung Mitarbeiter.</td>
-                <td><code>getId()</code>, <code>getName()</code>, <code>getRolle()</code></td>
-            </tr>
-            <tr>
-                <td><code>Artikel</code></td>
-                <td>Datenhaltung Artikel (Speisen/Getränke).</td>
-                <td><code>getPreis()</code>, <code>getKategorie()</code></td>
-            </tr>
-            <tr>
-                <td><code>Tisch</code></td>
-                <td>Datenhaltung Gaststättentische.</td>
-                <td><code>getTischnummer()</code>, <code>getStatus()</code></td>
-            </tr>
-            <tr>
-                <td><code>Bestellung</code></td>
-                <td>Datenhaltung Bestellungen.</td>
-                <td><code>getStatus()</code>, <code>getGesamtpreis()</code></td>
-            </tr>
-            <tr>
-                <td><code>DatabaseTest</code></td>
-                <td>Testlauf zur Absicherung aller SQL-Zugriffe.</td>
-                <td><code>main()</code>, <code>assertCondition()</code></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h2>4. Bauen und Ausführen</h2>
-
-    <h3>Voraussetzungen</h3>
+    <h1>3. Datenbankmodell &amp; Relationales Schema (3NF)</h1>
     <p>
-        Benötigt wird JDK 17 sowie die JDBC-Treiberdatei <code>lib/sqlite-jdbc.jar</code> im Projektordner.
+        Das Datenbankschema erfüllt strikt die Anforderungen der <strong>3. Normalform (3NF)</strong>. 
+        Sämtliche Relationen sind atomar, voll vom Primärschlüssel abhängig und frei von transitiven Abhängigkeiten.
     </p>
 
-    <h3>Quellcode kompilieren</h3>
-    <pre>javac -encoding UTF-8 -cp "lib/sqlite-jdbc.jar;src" -d bin src/com/smartrestaurant/*.java</pre>
+    <h3>SQLite DDL-Spezifikation (Auszug):</h3>
+    <pre>
+-- Tabelle: Mitarbeiter
+CREATE TABLE IF NOT EXISTS mitarbeiter (
+    mitarbeiter_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name           TEXT NOT NULL,
+    benutzername   TEXT UNIQUE NOT NULL,
+    rolle          TEXT NOT NULL,
+    aktiv          INTEGER DEFAULT 1
+);
 
-    <h3>Anwendung starten</h3>
-    <pre>java -cp "lib/sqlite-jdbc.jar;bin" com.smartrestaurant.Main</pre>
+-- Tabelle: Tisch
+CREATE TABLE IF NOT EXISTS tisch (
+    tisch_id       INTEGER PRIMARY KEY AUTOINCREMENT,
+    tischnummer    INTEGER UNIQUE NOT NULL,
+    kapazitaet     INTEGER NOT NULL,
+    status         TEXT NOT NULL DEFAULT 'frei'
+);
 
-    <h3>Integrationstest ausführen</h3>
-    <pre>java -cp "lib/sqlite-jdbc.jar;bin" com.smartrestaurant.DatabaseTest</pre>
+-- Tabelle: Artikel
+CREATE TABLE IF NOT EXISTS artikel (
+    artikel_id     INTEGER PRIMARY KEY AUTOINCREMENT,
+    name           TEXT NOT NULL,
+    kategorie      TEXT NOT NULL,
+    preis          REAL NOT NULL,
+    aktiv          INTEGER DEFAULT 1
+);
 
-    <h2>5. Qualitätssicherung & Testkonzept</h2>
+-- Tabelle: Bestellung
+CREATE TABLE IF NOT EXISTS bestellung (
+    bestellung_id  INTEGER PRIMARY KEY AUTOINCREMENT,
+    tisch_id       INTEGER NOT NULL,
+    erstellt_von   INTEGER NOT NULL,
+    status         TEXT NOT NULL DEFAULT 'aufgegeben',
+    erstellt_am    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    gesamtpreis    REAL DEFAULT 0.0,
+    FOREIGN KEY(tisch_id)     REFERENCES tisch(tisch_id),
+    FOREIGN KEY(erstellt_von) REFERENCES mitarbeiter(mitarbeiter_id)
+);
+    </pre>
+
+    <h2>4. Sicherheitskonzept &amp; Clean Code</h2>
     <p>
-        Der automatisierte Test <code>DatabaseTest</code> prüft alle SQL-Abfragen beim Bauen der Anwendung. 
-        Die Tests stellen sicher, dass Hinzufügen, Auslesen und Löschen in der Datenbank sauber funktionieren.
+        Gemäß OWASP Top 10 Best Practices werden Sicherheitsrisiken durch saubere Programmiertechniken eliminiert:
+    </p>
+    <ul>
+        <li><strong>PreparedStatement statt String-Konkatenation:</strong> Jeder dynamische SQL-Befehl bindet Parameter über Platzhalter (<code>?</code>), wodurch SQL-Injections technisch unmöglich gemacht werden.</li>
+        <li><strong>Ressourcensicherheit:</strong> Konsequente Verwendung von <code>try-with-resources</code> garantiert das automatische Schließen von JDBC-Connections und Statements.</li>
+        <li><strong>Thread-Sicherheit in Swing:</strong> Alle GUI-Operationen werden über <code>SwingUtilities.invokeLater()</code> im Event Dispatch Thread ausgeführt.</li>
+    </ul>
+
+    <h2>5. Kompilierung &amp; Build-Befehle</h2>
+    <pre>
+# 1. Quellcode mit UTF-8 kompilieren:
+javac -encoding UTF-8 -cp "lib/sqlite-jdbc.jar;src" -d bin src/com/smartrestaurant/*.java
+
+# 2. Anwendung starten:
+java -cp "lib/sqlite-jdbc.jar;bin" com.smartrestaurant.Main
+
+# 3. Automatisierte Testsuite ausführen:
+java -cp "lib/sqlite-jdbc.jar;bin" com.smartrestaurant.DatabaseTest
+    </pre>
+
+    <h2>6. Wartung &amp; Backup-Strategie</h2>
+    <p>
+        Da SQLite als dateibasierte Datenbank konzipiert ist, erfolgt die Datensicherung denkbar einfach:
+        Die Datei <code>smart_restaurant.db</code> kann im laufenden Betrieb oder per nächtlichem Cronjob/Task-Scheduler 
+        kopiert werden. Ein vollständiger DDL/DML-Dump liegt zusätzlich als <code>smart_restaurant_dump.sql</code> vor.
     </p>
 
 </body>

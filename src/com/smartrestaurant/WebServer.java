@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 
+import java.util.concurrent.Executors;
+
 /**
  * Leichtgewichtiger eingebetteter Java HTTP Server (ohne externe Frameworks).
  * Stellt das dedizierte Web-Frontend unter http://localhost:8080 bereit.
@@ -50,7 +52,7 @@ public class WebServer {
                 }
             });
 
-            server.setExecutor(null); // Default Executor
+            server.setExecutor(Executors.newCachedThreadPool()); // Multi-threaded Executor
             server.start();
             System.out.println("Web-Frontend gestartet unter: http://localhost:" + PORT);
         } catch (IOException e) {

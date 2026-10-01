@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/niki356565rt/LF10-Projekt#readme",
   "dependencies": {
-    "docx": "^9.7.1"
+    "docx": "^9.7.1",
+    "pptxgenjs": "^4.0.1"
   }
 }

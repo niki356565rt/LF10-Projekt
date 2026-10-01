@@ -7,7 +7,7 @@
 **Auftragnehmer (Szenario):** Another Great Solution GmbH (Team „Der Dreier“)  
 **Auftraggeber (Szenario):** Regionales Gastronomieunternehmen  
 **Projektlaufzeit:** 2 Wochen (10 Arbeitstage / 320 Personenstunden)  
-**Dokumentenstand:** 24. September 2026  
+**Dokumentenstand:** 01. Oktober 2026  
 **Status:** Vollständige Projektdokumentation, Java-Implementierung & Konsolidierter Bericht  
 
 ---
@@ -34,7 +34,9 @@
 10. **Projektergebnis & Ausblick:** Zusammenfassung & Erweiterungsmöglichkeiten.
 
 👉 **Vollständigen Bericht lesen:** [`docs/PROJEKTBERICHT.md`](docs/PROJEKTBERICHT.md)  
-👉 **Projekttagebuch PDF:** [`abgabe/Projekttagebuch.pdf`](abgabe/Projekttagebuch.pdf)  
-👉 **Entwicklerdoku PDF:** [`abgabe/Entwicklerdokumentation.pdf`](abgabe/Entwicklerdokumentation.pdf)  
-👉 **ISMS-Systemdokumentation (ISO 27001) PDF:** [`abgabe/ISMS-Systemdokumentation.pdf`](abgabe/ISMS-Systemdokumentation.pdf)  
+👉 **Testdokumentation (PDF):** [`abgabe/Testdokumentation.pdf`](abgabe/Testdokumentation.pdf)  
+👉 **Entwicklerdokumentation (PDF):** [`abgabe/Entwicklerdokumentation.pdf`](abgabe/Entwicklerdokumentation.pdf)  
+👉 **Benutzerdokumentation (PDF):** [`abgabe/Benutzerdokumentation.pdf`](abgabe/Benutzerdokumentation.pdf)  
+👉 **Projekttagebuch (PDF):** [`abgabe/Projekttagebuch.pdf`](abgabe/Projekttagebuch.pdf)  
+👉 **ISMS-Systemdokumentation (ISO 27001) (PDF):** [`abgabe/ISMS-Systemdokumentation.pdf`](abgabe/ISMS-Systemdokumentation.pdf)  
 👉 **Datenbank-Dump (.sql) abrufen:** [`smart_restaurant_dump.sql`](smart_restaurant_dump.sql)

@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>IHK-Präsentationsleitfaden & Fachgesprächs-Katalog – Smart Restaurant</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 18mm 15mm 18mm 15mm;
+            @bottom-right {
+                content: counter(page) " / " counter(pages);
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                font-size: 8pt;
+                color: #64748b;
+            }
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 9.5pt;
+            line-height: 1.45;
+            color: #1e293b;
+            margin: 0;
+            padding: 0;
+        }
+        .cover-page {
+            text-align: center;
+            padding-top: 50px;
+            page-break-after: always;
+        }
+        .cover-title {
+            font-size: 24pt;
+            font-weight: 800;
+            color: #0d2b45;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .cover-subtitle {
+            font-size: 14pt;
+            color: #208b80;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        .cover-badge {
+            display: inline-block;
+            background-color: #0d2b45;
+            color: #ffffff;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 10pt;
+            font-weight: 600;
+            margin-bottom: 35px;
+        }
+        .cover-meta {
+            margin: 0 auto;
+            width: 90%;
+            text-align: left;
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-left: 6px solid #208b80;
+            padding: 16px 20px;
+            font-size: 9.5pt;
+            border-radius: 4px;
+        }
+        .cover-meta table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .cover-meta td {
+            padding: 4px 6px;
+            border: none;
+        }
+        h1 {
+            font-size: 18pt;
+            color: #0d2b45;
+            border-bottom: 2px solid #0d2b45;
+            padding-bottom: 6px;
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+        h2 {
+            font-size: 13pt;
+            color: #16425b;
+            border-bottom: 1px solid #cbd5e1;
+            padding-bottom: 4px;
+            margin-top: 18px;
+            margin-bottom: 8px;
+        }
+        h3 {
+            font-size: 10.5pt;
+            color: #208b80;
+            margin-top: 10px;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        p {
+            margin-bottom: 8px;
+        }
+        .slide-card {
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 14px 18px;
+            margin-bottom: 18px;
+            background-color: #ffffff;
+            page-break-inside: avoid;
+        }
+        .slide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #208b80;
+            padding-bottom: 6px;
+            margin-bottom: 10px;
+        }
+        .slide-num {
+            background-color: #0d2b45;
+            color: #ffffff;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 9.5pt;
+        }
+        .slide-title {
+            font-size: 12.5pt;
+            font-weight: 700;
+            color: #0d2b45;
+            margin-left: 10px;
+            flex-grow: 1;
+        }
+        .slide-time {
+            font-size: 9pt;
+            font-weight: 600;
+            color: #d97706;
+            background-color: #fef3c7;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+        .section-box {
+            background-color: #f8fafc;
+            border-left: 3px solid #208b80;
+            padding: 8px 12px;
+            margin-bottom: 10px;
+            font-size: 9pt;
+        }
+        .qa-box {
+            background-color: #f0f7ff;
+            border: 1px solid #bfdbfe;
+            border-left: 4px solid #2563eb;
+            border-radius: 4px;
+            padding: 10px 14px;
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+        .question {
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+        }
+        .answer {
+            color: #1e293b;
+            font-size: 9pt;
+        }
+        .tip-badge {
+            display: inline-block;
+            background-color: #dcfce7;
+            color: #166534;
+            font-size: 7.5pt;
+            font-weight: 700;
+            padding: 1px 6px;
+            border-radius: 3px;
+            margin-right: 4px;
+        }
+        .warn-badge {
+            display: inline-block;
+            background-color: #fee2e2;
+            color: #991b1b;
+            font-size: 7.5pt;
+            font-weight: 700;
+            padding: 1px 6px;
+            border-radius: 3px;
+            margin-right: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 8.5pt;
+        }
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 5px 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f1f5f9;
+            color: #0f172a;
+            font-weight: 600;
+        }
+        .page-break {
+            page-break-before: always;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- DECKBLATT -->
+    <div class="cover-page">
+        <div style="font-size: 12pt; font-weight: bold; color: #64748b; margin-bottom: 15px;">
+            IHK ABSCHLUSSPRÜFUNG / PROJEKTARBEIT (LF10)
+        </div>
+        <div class="cover-title">PRÄSENTATIONSLEITFADEN &amp; FRAGENKATALOG</div>
+        <div class="cover-subtitle">Foliengenaue Moderationsanleitung &amp; Erwartbare Fragen für das IHK-Fachgespräch</div>
+        <div class="cover-badge">Projekt: Smart Restaurant – Digitales Bestell- und Verwaltungssystem</div>
+
+        <div class="cover-meta">
+            <table>
+                <tr>
+                    <td style="width: 32%;"><strong>Prüfungsprojekt:</strong></td>
+                    <td>Smart Restaurant (Another Great Solution GmbH / Team „Der Dreier“)</td>
+                </tr>
+                <tr>
+                    <td><strong>Präsentationsdauer:</strong></td>
+                    <td>20 Minuten (strikte Zeiteinhaltung: ca. 85 Sek. pro Folie)</td>
+                </tr>
+                <tr>
+                    <td><strong>Fachgespräch:</strong></td>
+                    <td>10 bis 15 Minuten Fachdiskussion mit dem IHK-Prüfungsausschuss</td>
+                </tr>
+                <tr>
+                    <td><strong>Zielgruppe:</strong></td>
+                    <td>Prüfungskandidaten / Fachinformatiker für Anwendungsentwicklung &amp; Systemintegration</td>
+                </tr>
+                <tr>
+                    <td><strong>Dokumentenstand:</strong></td>
+                    <td>Oktober 2026 | Version 2.0 (Final)</td>
+                </tr>
+            </table>
+        </div>
+
+        <div style="margin-top: 40px; font-size: 9pt; color: #64748b; text-align: center;">
+            Dieses Dokument dient der optimalen Vorbereitung auf die mündliche IHK-Prüfung.<br>
+            Es enthält zu allen 14 Präsentationsfolien konkrete Sprechanleitungen, Zeitfenster sowie antizipierte Prüferfragen mit Musterantworten.
+        </div>
+    </div>
+
+    <!-- STRATEGISCHE PRÜFUNGSREGELN -->
+    <h1>1. Grundregeln für die 20-minütige IHK-Gruppenprüfung</h1>
+    
+    <div class="section-box">
+        <strong>1. Das Staffellauf-Prinzip (Nahtlose Übergaben):</strong><br>
+        Obwohl die Folien keine starren Sprecher-Tags aufweisen, muss das Team im Vortrag wie ein Uhrwerk agieren. Bei 3 Personen spricht jeder idealerweise ca. 6 bis 6,5 Minuten. Jeder Sprecher kündigt bei der Staffelübergabe den nächsten Themenblock mit einem eleganten Moderationssatz an.
+    </div>
+    <div class="section-box">
+        <strong>2. Fachlichkeit &amp; Begründungskompetenz statt Funktions-Show:</strong><br>
+        Prüfer wollen keine Werbeshow für Gastronomen sehen. Bewertet wird die <em>fachliche Tiefe</em>: Warum wurde die 3. Normalform gewählt? Warum Prepared Statements? Wie wurden die 20 % Gemeinkosten und Stromkosten ermittelt?
+    </div>
+    <div class="section-box">
+        <strong>3. Souveränes Teamverhalten im Fachgespräch:</strong><br>
+        Kein Sprecher darf das Fachgespräch monopolisieren. Fragen des Ausschusses sollten primär von demjenigen beantwortet werden, der den Schwerpunkt betreut hat. Die Kollegen können jedoch gezielt ergänzen („Ergänzend zu Kollegen X haben wir datenbankseitig noch...“).
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- FOLIENLEITFADEN & FRAGENKATALOG (14 FOLIEN) -->
+    <h1>2. Foliengenaue Sprechanleitung &amp; Erwartbare Fachfragen</h1>
+
+    <!-- FOLIE 1 -->
+    <div class="slide-card">
+        <div class="slide-header">
+            <span class="slide-num">Folie 1</span>
+            <span class="slide-title">Titelfolie – Projektvorstellung &amp; Eckdaten</span>
+            <span class="slide-time">00:00 – 01:00 min</span>
+        </div>
+        <p><strong>Ziel der Folie:</strong> Professioneller Ersteindruck, Begrüßung des Prüfungsausschusses, Abstecken der Rahmenbedingungen (Auftraggeber, Auftragnehmer, Aufwand von 320h, 10 Tage).</p>
+        
+        <div class="section-box">
+            <strong>Wie man die Folie präsentiert:</strong><br>
+            • Freundliche, verbindliche Begrüßung der Prüfungskommission mit Blickkontakt.<br>
+            • Kurze Nennung des Teamnamens („Der Dreier“) und der Another Great Solution GmbH.<br>
+            • Kernaussage: „Wir haben in 10 Arbeitstagen (320h) ein vollständiges, digitales Bestell- und Verwaltungssystem mit Java 17, relationaler SQL-Datenbank und ISO 27001-Sicherheitskonzept umgesetzt.“<br>
+            <span class="tip-badge">TIPP</span> Nicht in Details verlieren – die Folie dient nur der Einstimmung und dem Vertrauensaufbau.
+        </div>
+
+        <div class="qa-box">
+            <div class="question">❓ Erwartbare Prüferfrage: „Wie kam die Teamgröße von 4 Personen im Szenario bei 3 Vortragenden zustande?“</div>
+            <div class="answer">💡 <strong>Musterantwort:</strong> „Das Szenario Another Great Solution GmbH kalkuliert mit 4 Rollen-Äquivalenten (Projektleitung, Analyse, Backend, Frontend) über 320 Personenstunden, um alle Gewerke abzubilden. In unserem Realteam haben wir die Verantwortungsbereiche auf uns drei Prüflinge aufgeteilt und arbeitsteilig umgesetzt.“</div>
+        </div>
+    </div>
+
+    <!-- FOLIE 2 -->
+    <div class="slide-card">
+        <div class="slide-header">
+            <span class="slide-num">Folie 2</span>
+            <span class="slide-title">Agenda &amp; Gliederung (3 Kernblöcke)</span>
+            <span class="slide-time">01:00 – 01:45 min</span>
+        </div>
+        <p><strong>Ziel der Folie:</strong> Den Prüfern den roten Faden der Präsentation visualisieren (6 Min. Rahmen &amp; Wirtschaftlichkeit, 7 Min. Architektur &amp; Code, 7 Min. Qualität &amp; Controlling).</p>
+        
+        <div class="section-box">
+            <strong>Wie man die Folie präsentiert:</strong><br>
+            • Die drei Säulen kurz vorstellen: 1. Wirtschaftlicher &amp; organisatorischer Rahmen, 2. Technische Architektur, Entwurfsmuster &amp; Modellierung, 3. Qualitätssicherung, ISMS &amp; Controlling.<br>
+            • Betonen, dass für alle drei Blöcke sowohl theoretische Konzepte als auch lauffähige Artefakte vorliegen.
+        </div>
+
+        <div class="qa-box">
+            <div class="question">❓ Erwartbare Prüferfrage: „Warum haben Sie dem Test- und Qualitätsbereich einen so großen zeitlichen Anteil eingeräumt?“</div>
+            <div class="answer">💡 <strong>Musterantwort:</strong> „In der Gastronomie führen Systemausfälle im laufenden Abendbetrieb zu direktem Umsatzverlust und Reputationsschäden. Daher war ein belastbares Test- und Sicherheitskonzept ein zwingendes Kernkriterium der Fachabnahme.“</div>
+        </div>
+    </div>
+
+    <!-- FOLIE 3 -->
+    <div class="slide-card">
+        <div class="slide-header">
+            <span class="slide-num">Folie 3</span>
+            <span class="slide-title">Ausgangslage: Problemstellung (IST) vs. Lösungsziel (SOLL)</span>
+            <span class="slide-time">01:45 – 02:45 min</span>
+        </div>
+        <p><strong>Ziel der Folie:</strong> Den geschäftlichen Mehrwert der Digitalisierung aufzeigen. Problemfelder der Zettelwirtschaft messbar machen.</p>
+        
+        <div class="section-box">
+            <strong>Wie man die Folie präsentiert:</strong><br>
+            • Links die Risiken des IST-Zustands ansprechen: Lesefehler von Bons, zeitraubende Laufwege zwischen Tisch und Küche, Bonschwund bei Stoßzeiten.<br>
+            • Rechts die digitale Lösung gegenüberstellen: Direkte Erfassung am Terminal, Routing an Küche/Bar, Echtzeit-Synchronisation, revisionssichere Abrechnung.
+        </div>
+
+        <div class="qa-box">
+            <div class="question">❓ Erwartbare Prüferfrage: „Haben Sie den Zeitverlust der Servicekräfte im Vorfeld quantifiziert?“</div>
+            <div class="answer">💡 <strong>Musterantwort:</strong> „Ja, in der Anforderungsanalyse ergab eine Stichprobe im IST-Zustand ca. 2 bis 3 Minuten Laufweg pro Bestellung allein für die Bon-Überbringung. Bei 150 Tischen pro Abend summiert sich das auf über 5 Stunden reine Laufzeit, die nun für die Gästebetreuung frei werden.“</div>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- FOLIE 4 -->
+    <div class="slide-card">
+        <div class="slide-header">
+            <span class="slide-num">Folie 4</span>
+            <span class="slide-title">Strategische Entscheidung: Make-or-Buy &amp; TCO-Vergleich</span>
+            <span class="slide-time">02:45 – 04:15 min</span>
+        </div>
+        <p><strong>Ziel der Folie:</strong> Nachweis fundierter wirtschaftlicher Entscheidungsfindung. Gegenüberstellung der laufenden Energiekosten, Lizenzen und TCO über 3 Jahre.</p>
+        
+        <div class="section-box">
+            <strong>Wie man die Folie präsentiert:</strong><br>
+            • Erläutern, warum eine Standard-SaaS verworfen wurde (Dauerhafte Abokosten von über 2.100 €/Jahr, Vendor-Lock-in, DSGVO-Risiken auf externen Servern).<br>
+            • Auf die Betriebskosten eingehen: Die Eigenentwicklung benötigt lokal nur ca. 203 € Stromkosten/Jahr (Server + 3 Terminals) und ca. 240 € Wartung/Backup.<br>
+            • Kernaussage hervorheben: <strong>1.801 € jährliche Ersparnis ab Jahr 4</strong>; Amortisation nach 18 Monaten.
+        </div>
+
+        <div class="qa-box">
+            <div class="question">❓ Erwartbare Prüferfrage: „Wie berechnen sich die 203 € Stromkosten pro Jahr konkret?“</div>
+            <div class="answer">💡 <strong>Musterantwort:</strong> „Wir rechnen mit einem energieeffizienten Mini-Server (25 W Dauerbetrieb 24/7 = 219 kWh/a) und 3 Touch-Terminals (je 35 W × 10 h/Tag × 300 Betriebstage = 315 kWh/a). Bei einem gewerblichen Strompreis von 0,38 €/kWh ergeben 534 kWh exakt 202,92 € pro Jahr.“</div>
+        </div>
+        <div class="qa-box">
+            <div class="question">❓ Erwartbare Prüferfrage: „Warum ist die Eigenentwicklung für 19.668 € wirtschaftlich, wenn SaaS initial günstiger ist?“</div>
+            <div class="answer">💡 <strong>Musterantwort:</strong> „Betrachtet man die Total Cost of Ownership (TCO), steigen SaaS-Kosten durch Terminal-Lizenzen, Schnittstellengebühren und Preiserhöhungen stetig an. Die Eigenentwicklung verschafft dem Betrieb dauerhafte Unabhängigkeit, 100 % Prozesskonformität und spart ab dem Break-Even jedes Jahr über 1.800 €.“</div>
+        </div>
+    </div>
+
+    <!-- FOLIE 5 -->
+    <div class="slide-card">
+        <div class="slide-header">
+            <span class="slide-num">Folie 5</span>
+            <span class="slide-title">Ressourcen- &amp; Angebotskalkulation (IHK-Zuschlagskalkulation)</span>
+            <span class="slide-time">04:15 – 06:15 min</span>
+        </div>
+        <p><strong>Ziel der Folie:</strong> Beherrschung der kaufmännischen Zuschlagskalkulation, Trennung von Einzel-, Sach- und Gemeinkosten inklusive Projekt-Stromkosten.</p>
+        
+        <div class="section-box">
+            <strong>Wie man die Folie präsentiert:</strong><br>
+            • Links die Phasenstruktur zeigen (Schwerpunkt Implementierung 50 % / 160h).<br>
+            • Den Sachkostenblock (500 €) detaillieren: 28 € Stromkosten der Entwicklungsarbeitsplätze &amp; Server (64 kWh à 0,40 €), 172 € Rechnerabschreibung, 200 € Tools/Repo, 100 € Puffer.<br>
+            • Die Zuschlagsstufen erläutern: Herstellkosten 14.900 € + 20 % Gemeinkosten (2.980 €, deckt Raummiete, Heizung, Büro-Strom) = Selbstkosten 17.880 € + 10 % Gewinn = 19.668 € Nettoangebotspreis.<br>
+            • <em>Staffelstab-Übergabe:</em> „Wie wir diese Anforderungen nun technisch modelliert und umgesetzt haben, zeigt Ihnen mein Kollege im nächsten Block.“
+        </div>
+
+        <div class="qa-box">
+            <div class="question">❓ Erwartbare Prüferfrage: „Warum wurden Stromkosten für Entwicklungs-PCs als Sachkosten angesetzt und nicht in den Gemeinkosten?“</div>
+            <div class="answer">💡 <strong>Musterantwort:</strong> „Wir haben sauber getrennt: Der direkte Stromverbrauch der Entwickler-Workstations und des Testservers (64 kWh = ca. 28 €) ist dem Projekt direkt zurechenbar. Die allgemeinen Grundlasten wie Büro-Beleuchtung, Heizung, Gebäudestrom und Serverraum-Kühlung fließen sachgerecht in den Gemeinkostenzuschlag von 20 % ein.“</div>
+        </div>
+    </div>
+
+    <!-- FOLIE 6 -->
+    <div class="slide-card">
+        <div class="slide-header">
+            <span class="slide-num">Folie 6</span>
+            <span class="slide-title">Geschäftsprozess: Ablauf in UML (Aktivitätsdiagramm)</span>
+            <span class="slide-time">06:15 – 07:45 min</span>
+        </div>
+        <p><strong>Ziel der Folie:</strong> Nachweis fundierter Geschäftsprozessmodellierung mittels standardisierter UML-Notationsformen.</p>
+        
+        <div class="section-box">
+            <strong>Wie man die Folie präsentiert:</strong><br>
+            • Blick auf die 4 Prozessstufen lenken: 1. Aufnahme am Gasttisch, 2. Automatisches Routing an Küche (Speisen) und Bar (Getränke), 3. Zubereitung &amp; optisches Fertigmeldungs-Signal, 4. Servieren &amp; Sammelrechnung.<br>
+            • Auf dem eingebetteten Diagramm kurz die Swimlanes (Servicekraft, Küche/Bar, System/DB) und Synchronisationsbalken (Fork/Join) erklären.
+        </div>
+
+        <div class="qa-box">
+            <div class="question">❓ Erwartbare Prüferfrage: „Was passiert im Prozess, wenn ein Gast einen Sonderwunsch äußert oder einen Artikel stornieren möchte?“</div>
+            <div class="answer">💡 <strong>Musterantwort:</strong> „Im Aktivitätsdiagramm ist dafür ein Verzweigungsknoten definiert: Solange der Status noch auf 'OFFEN' steht, kann der Kellner Positionen modifizieren. Befindet sich der Bon bereits 'IN_BEARBEITUNG' in der Küche, erfordert ein Storno eine Freigabebestätigung durch die Küchenleitung.“</div>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- FOLIE 7 -->
+    <div class="slide-card">
+        <div class="slide-header">
+            <span class="slide-num">Folie 7</span>
+            <span class="slide-title">Relationales Datenmodell (3NF) &amp; SQL-DDL</span>
+            <span class="slide-time">07:45 – 09:30 min</span>
+        </div>
+        <p><strong>Ziel der Folie:</strong> Datenbankkompetenz demonstrieren: Beseitigung von Redundanzen, Fremdschlüssel-Beziehungen, Preis-Historisierung.</p>
+        
+        <div class="section-box">
+            <strong>Wie man die Folie präsentiert:</strong><br>
+            • Die Normalisierungsstufen erklären: 1NF (Atomarität), 2NF (voll funktionale Abhängigkeit vom PK), 3NF (keine transitiven Abhängigkeiten).<br>
+            • Die Kreuztabelle <code>bestellposition</code> im SQL-Code hervorheben: Verknüpft <code>bestellung</code> und <code>artikel</code> mit Fremdschlüsseln und <code>ON DELETE CASCADE</code>.<br>
+            • <strong>Highlight betonen:</strong> Das Attribut <code>einzelpreis DECIMAL(10,2)</code> in der Bestellposition ist historisiert! Dadurch verändern spätere Speisekarten-Preisanpassungen nicht rückwirkend alte Rechnungen.
+        </div>
+
+        <div class="qa-box">
+            <div class="question">❓ Erwartbare Prüferfrage: „Warum ist ein historisierter Einzelpreis in der Bestellposition ein Verstoß oder kein Verstoß gegen die 3NF?“</div>
+            <div class="answer">💡 <strong>Musterantwort:</strong> „Es ist kein Verstoß, sondern fachliche Notwendigkeit: Der Preis in der Tabelle Artikel ist der <em>aktuelle</em> Katalogpreis, während der Einzelpreis in der Bestellposition ein <em>zeitpunktbezogenes Faktum</em> des Verkaufsabschlusses darstellt. Er hängt voll vom Primärschlüssel der Position zum Bestellzeitpunkt ab.“</div>
+        </div>
+        <div class="qa-box">
+            <div class="question">❓ Erwartbare Prüferfrage: „Wann würden Sie ON DELETE CASCADE und wann RESTRICT einsetzen?“</div>
+            <div class="answer">💡 <strong>Musterantwort:</strong> „Bei abhängigen Detaildatensätzen wie <code>bestellposition</code> nutzen wir <code>CASCADE</code>, da eine Position ohne Bestellung keinen Sinn ergibt. Bei Stammdaten wie <code>tisch</code> oder <code>artikel</code> nutzen wir <code>RESTRICT</code>, um versehentliches Löschen von Tischen mit aktiven offenen Bestellungen zu verhindern.“</div>
+        </div>
+    </div>
+
+    <!-- FOLIE 8 -->
+    <div class="slide-card">
+        <div class="slide-header">
+            <span class="slide-num">Folie 8</span>
+            <span class="slide-title">Java 17-Softwarearchitektur: DAO-Pattern &amp; Prepared Statements</span>
+            <span class="slide-time">09:30 – 11:15 min</span>
+        </div>
+        <p><strong>Ziel der Folie:</strong> Sauberes objektorientiertes Softwaredesign (OOP), Schichtentrennung und Absicherung gegen SQL-Injection beweisen.</p>
+        
+        <div class="section-box">
+            <strong>Wie man die Folie präsentiert:</strong><br>
+            • Links das Klassendiagramm erläutern: Trennung von View (<code>AdminGUI</code>), Model/Entities (<code>Mitarbeiter</code>, <code>Tisch</code>, <code>Artikel</code>, <code>Bestellung</code>) und Controller/DAO (<code>DatabaseManager</code>).<br>
+            • Rechts den Java-Code zeigen: SQL-Queries existieren ausschließlich im <code>DatabaseManager</code>. Es werden ausnahmslos <code>PreparedStatement</code> mit Platzhaltern (<code>?</code>) verwendet.<br>
+            • Loose Coupling betonen: Durch Standard-SQL und JDBC kann die Datenbank von SQLite auf MariaDB/PostgreSQL gewechselt werden, ohne die Benutzeroberfläche anzupassen.
+        </div>
+
+        <div class="qa-box">
+            <div class="question">❓ Erwartbare Prüferfrage: „Wie schützen Prepared Statements technisch vor SQL-Injection?“</div>
+            <div class="answer">💡 <strong>Musterantwort:</strong> „Bei einem PreparedStatement wird das SQL-Gerüst vorkompiliert an die Datenbank gesendet. Die über <code>ps.setInt()</code> oder <code>ps.setString()</code> übergebenen Parameter werden als reine Literaldaten behandelt und können die logische Syntax des SQL-Parsers niemals manipulieren.“</div>
+        </div>
+        <div class="qa-box">
+            <div class="question">❓ Erwartbare Prüferfrage: „Warum haben Sie kein ORM wie Hibernate oder Spring Data JPA eingesetzt?“</div>
+            <div class="answer">💡 <strong>Musterantwort:</strong> „Für den Projektumfang von 10 Tagen wollten wir keinen unnötigen Framework-Overhead und komplexe Mapping-Konfigurationen. JDBC bietet maximale Transparenz, geringe Startzeiten, volle Kontrolle über generierte SQL-Befehle und minimale Ressourcenlast auf dem Gastronomie-Server.“</div>
+        </div>
+    </div>
+
+    <!-- FOLIE 9 -->
+    <div class="slide-card">
+        <div class="slide-header">
+            <span class="slide-num">Folie 9</span>
+            <span class="slide-title">Benutzeroberfläche &amp; Ergonomie (DIN EN ISO 9241-110)</span>
+            <span class="slide-time">11:15 – 12:45 min</span>
+        </div>
+        <p><strong>Ziel der Folie:</strong> Usability und Praxisgerechtigkeit der Software für den harten Gastronomie-Einsatz begründen.</p>
+        
+        <div class="section-box">
+            <strong>Wie man die Folie präsentiert:</strong><br>
+            • Die 3 Funktionsmodule vorstellen: Tischplan (Service), Artikelverwaltung (Stammdaten), Live-Monitor (Küche/Management).<br>
+            • Die Ergonomiegrundsätze nach DIN EN ISO 9241-110 anführen:<br>
+              - <em>Aufgabenangemessenheit:</em> Maximal 2 Klicks zur Bestellauslösung im Stoßbetrieb.<br>
+              - <em>Fehlertoleranz:</em> Eingabefilter fangen negative Zahlen oder ungültige Zeichen sofort im GUI-Event ab.<br>
+            • <em>Staffelstab-Übergabe:</em> „Eine Software ist nur so gut wie ihre Verlässlichkeit. Wie wir die Softwarequalität geprüft und abgesichert haben, stellt mein Kollege vor.“
+        </div>
+
+        <div class="qa-box">
+            <div class="question">❓ Erwartbare Prüferfrage: „Wie haben Sie in Java Swing sichergestellt, dass die Oberfläche bei Datenbankabfragen nicht einfriert?“</div>
+            <div class="answer">💡 <strong>Musterantwort:</strong> „Längere Datenbankoperationen und Hintergrundabfragen werden vom Event Dispatch Thread (EDT) entkoppelt – beispielsweise über <code>SwingWorker</code> oder asynchrone Threads –, damit die Benutzeroberfläche jederzeit flüssig und bedienbar bleibt.“</div>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- FOLIE 10 -->
+    <div class="slide-card">
+        <div class="slide-header">
+            <span class="slide-num">Folie 10</span>
+            <span class="slide-title">Automatisierte Qualitätssicherung &amp; Testcode (DatabaseTest.java)</span>
+            <span class="slide-time">12:45 – 14:15 min</span>
+        </div>
+        <p><strong>Ziel der Folie:</strong> Testkompetenz und Regressionssicherheit nachweisen (100 % Erfolgsquote der Testsuite).</p>
+        
+        <div class="section-box">
+            <strong>Wie man die Folie präsentiert:</strong><br>
+            • Links auf die Testmatrix und die 100 %-Erfolgsquote hinweisen (TC-01 bis TC-05).<br>
+            • Rechts den konkreten Testcode aus <code>DatabaseTest.java</code> erläutern:<br>
+              - Test auf SQL-Injection-Resistenz mittels bösartiger Strings (<code>' DROP TABLE ...</code>).<br>
+              - Verifikation der Fremdschlüsselprüfung (ungültige Tisch-ID 999 wird abgewiesen).<br>
+            • Betonen, dass die Testsuite vor jedem Release automatisiert ausgeführt wird.
+        </div>
+
+        <div class="qa-box">
+            <div class="question">❓ Erwartbare Prüferfrage: „Wie trennen Sie Testdaten von echten Produktivdaten?“</div>
+            <div class="answer">💡 <strong>Musterantwort:</strong> „Die automatisierte Testsuite initialisiert für jeden Testlauf eine isolierte Testdatenbank (bzw. eine In-Memory-Instanz), führt das Schema aus <code>13-datenbank-schema.sql</code> aus und rollt alle Test-Transaktionen am Ende wieder zurück.“</div>
+        </div>
+    </div>
+
+    <!-- FOLIE 11 -->
+    <div class="slide-card">
+        <div class="slide-header">
+            <span class="slide-num">Folie 11</span>
+            <span class="slide-title">IT-Sicherheit, ISMS &amp; Compliance nach ISO/IEC 27001</span>
+            <span class="slide-time">14:15 – 15:45 min</span>
+        </div>
+        <p><strong>Ziel der Folie:</strong> Demonstrieren von Professionalität und Sicherheitsbewusstsein über den Tellerrand hinaus (ISMS &amp; DSGVO).</p>
+        
+        <div class="section-box">
+            <strong>Wie man die Folie präsentiert:</strong><br>
+            • Die ISO 27001 Annex A Kontrollen benennen: A.5/A.8 (Rollenbasierte Zugriffskontrolle RBAC: Kellner können keine Artikelpreise ändern), A.8.12 (Datensicherung mit Backup-Dump).<br>
+            • Den Hashing-Code zeigen: Passwörter werden mit <code>PBKDF2WithHmacSHA256</code> und Zufalls-Salt gehasht. Kein Klartext in der DB.<br>
+            • RPO (&lt; 24h) und RTO (&lt; 60 Min.) für die Wiederherstellung im Gastronomiebetrieb nennen.
+        </div>
+
+        <div class="qa-box">
+            <div class="question">❓ Erwartbare Prüferfrage: „Was ist der Unterschied zwischen Verschlüsselung und Hashing, und warum nutzt man Salt?“</div>
+            <div class="answer">💡 <strong>Musterantwort:</strong> „Verschlüsselung ist bijektiv und umkehrbar (mit Schlüssel). Hashing ist eine Einwegfunktion. Das Salt (Zufallswert) verhindert Rainbow-Table-Angriffe, da identische Passwörter zweier Mitarbeiter völlig unterschiedliche Hashwerte erzeugen.“</div>
+        </div>
+    </div>
+
+    <!-- FOLIE 12 -->
+    <div class="slide-card">
+        <div class="slide-header">
+            <span class="slide-num">Folie 12</span>
+            <span class="slide-title">Soll-Ist-Vergleich &amp; Projektcontrolling</span>
+            <span class="slide-time">15:45 – 17:00 min</span>
+        </div>
+        <p><strong>Ziel der Folie:</strong> Ehrliches, professionelles Projektmanagement und Umgang mit Planabweichungen.</p>
+        
+        <div class="section-box">
+            <strong>Wie man die Folie präsentiert:</strong><br>
+            • Die 3 Kernmetriken hervorheben: 100 % Scope (26/26 Anforderungen), 320h Zeitbudget eingehalten, 14.900 € Herstellkosten-Punktlandung.<br>
+            • Die transparente Abweichungsanalyse erklären: Swing Table-Rendering benötigte +8h Mehraufwand; dieser wurde durch zügige Vorarbeiten im DB-Design (-8h) voll neutralisiert.<br>
+            • Zusätzlicher Mehrwert: Automatisierte Testsuite und ISMS-Dokumentation im Budget realisiert.
+        </div>
+
+        <div class="qa-box">
+            <div class="question">❓ Erwartbare Prüferfrage: „Wie hätten Sie reagiert, wenn die 8 Stunden Verzögerung nicht kompensierbar gewesen wären?“</div>
+            <div class="answer">💡 <strong>Musterantwort:</strong> „Wir hätten nach MoSCoW-Priorisierung entschieden: Optionale Kann-Kriterien (z. B. zusätzliche Filterfunktionen im Admin-Dashboard) wären in eine Folgephase verschoben worden, um den Liefertermin der Kernfunktionen für Service und Küche niemals zu gefährden.“</div>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- FOLIE 13 -->
+    <div class="slide-card">
+        <div class="slide-header">
+            <span class="slide-num">Folie 13</span>
+            <span class="slide-title">Lessons Learned &amp; Zukunftsausblick (Roadmap)</span>
+            <span class="slide-time">17:00 – 18:30 min</span>
+        </div>
+        <p><strong>Ziel der Folie:</strong> Reflexionsvermögen und Zukunftsfähigkeit des Produkts darstellen.</p>
+        
+        <div class="section-box">
+            <strong>Wie man die Folie präsentiert:</strong><br>
+            • <em>Lessons Learned:</em> Paralleles Führen des Projekttagebuchs verhinderte Stress; strikte Schichtentrennung (DAO) ermöglichte gleichzeitiges Arbeiten.<br>
+            • <em>Roadmap:</em> Phase 2 (Mobile Kellner-Handhelds per Web-Interface), Phase 3 (Gesetzliche KassenSichV- &amp; TSE-Zertifizierung), Phase 4 (Küchen-Monitor mit akustischem Signal).
+        </div>
+
+        <div class="qa-box">
+            <div class="question">❓ Erwartbare Prüferfrage: „Was fordert die KassenSichV (Kassensicherungsverordnung) für Ihr System?“</div>
+            <div class="answer">💡 <strong>Musterantwort:</strong> „Die KassenSichV verlangt eine zertifizierte Technische Sicherheitseinrichtung (TSE – Hardware-USB oder Cloud-TSE), die jede Transaktion kryptographisch signiert, einen manipulationssicheren Prüfwert generiert und die Belegausgabepflicht erfüllt.“</div>
+        </div>
+    </div>
+
+    <!-- FOLIE 14 -->
+    <div class="slide-card">
+        <div class="slide-header">
+            <span class="slide-num">Folie 14</span>
+            <span class="slide-title">Projektabschluss &amp; Überleitung zum Fachgespräch</span>
+            <span class="slide-time">18:30 – 20:00 min</span>
+        </div>
+        <p><strong>Ziel der Folie:</strong> Souveräner Abschluss, Dank an die Prüfer und nahtlose Einladung zum IHK-Fachgespräch.</p>
+        
+        <div class="section-box">
+            <strong>Wie man die Folie präsentiert:</strong><br>
+            • Resümee ziehen: „Smart Restaurant ist ein vollständiges, getestetes und wirtschaftliches System, das den Gastronomiebetrieb digitalisiert.“<br>
+            • Verweis auf die abgegebenen Dokumente: Projekttagebuch, Entwicklerdoku, Benutzerhandbuch, ISMS-Bericht, Quellcode und SQL-Dumps.<br>
+            • Blick zu allen Prüfern: „Wir bedanken uns für Ihre Aufmerksamkeit und freuen uns nun auf Ihre Fragen im Fachgespräch.“<br>
+            <span class="tip-badge">TIPP</span> Stoppuhr im Blick behalten – bei exakt 19:30 bis 19:50 min schließen!
+        </div>
+
+        <div class="qa-box">
+            <div class="question">❓ Typische Eröffnungsfrage im Fachgespräch: „Was war für Sie persönlich die größte Herausforderung im Projekt?“</div>
+            <div class="answer">💡 <strong>Musterantwort (je nach Rolle):</strong><br>
+            • <em>Wirtschaftlichkeit/Leitung:</em> „Die realistische Kostenstellen-Umlage von Strom- und Gemeinkosten und das Aufsetzen der agilen Sprints.“<br>
+            • <em>Architektur/DB:</em> „Das synchrone Zustandsmanagement zwischen Service und Küche sowie die 3NF-Modellierung ohne Datenverlust.“<br>
+            • <em>Qualität/Security:</em> „Die lückenlose Absicherung gegen SQL-Injections und das Erstellen automatisierter Testfälle mit Rollbacks.“</div>
+        </div>
+    </div>
+
+    <hr style="border: none; border-top: 1px solid #cbd5e1; margin: 25px 0;">
+
+    <!-- CHECKLISTE ZUM FACHGESPRÄCH -->
+    <h2>3. Notfall-Strategien &amp; Verhaltenstipps für das Fachgespräch</h2>
+    
+    <table>
+        <tr>
+            <th style="width: 30%;">Situation</th>
+            <th style="width: 70%;">Empfohlene Reaktion / Formulierung</th>
+        </tr>
+        <tr>
+            <td><strong>Eine Frage nicht sofort verstanden:</strong></td>
+            <td>Ruhig und professionell nachhaken: <em>„Meinen Sie damit die datenbankseitige Transaktionsklammer oder die Fehlerbehandlung in der Swing-GUI?“</em> Das verschafft 10 Sekunden Bedenkzeit.</td>
+        </tr>
+        <tr>
+            <td><strong>Eine Antwort nicht genau gewusst:</strong></td>
+            <td>Niemals raten oder erfinden! Brücken bauen: <em>„Die exakte Spezifikation dieser Methode habe ich gerade nicht auswendig parat, aber vom Architekturprinzip her löst man das über...“</em></td>
+        </tr>
+        <tr>
+            <td><strong>Ein Kollege gerät ins Stocken:</strong></td>
+            <td>Teamgeist zeigen, aber nicht unhöflich ins Wort fallen: <em>„Ergänzend zu dem, was Kollege X gerade erläutert hat, haben wir im Datenbank-Layer noch...“</em></td>
+        </tr>
+        <tr>
+            <td><strong>Kritische Rückfrage zu einer Entscheidung:</strong></td>
+            <td>Nicht defensiv oder beleidigt reagieren, sondern sachlich begründen: <em>„Das ist ein berechtigter Einwand. Für das 10-Tage-Szenario war Option A pragmatischer; in einer Enterprise-Version würden wir genau Ihren Vorschlag wählen.“</em></td>
+        </tr>
+    </table>
+
+</body>
+</html>

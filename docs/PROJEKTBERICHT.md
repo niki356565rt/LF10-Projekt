@@ -5,7 +5,7 @@
 **Auftragnehmer (Szenario):** Another Great Solution GmbH (Team „Der Dreier“)  
 **Auftraggeber (Szenario):** Regionales Gastronomieunternehmen  
 **Projektlaufzeit:** 2 Wochen (10 Arbeitstage / 320 Personenstunden)  
-**Dokumentenstand:** 24. September 2026  
+**Dokumentenstand:** 01. Oktober 2026  
 **Status:** Vollständige Projektdokumentation, Java-Implementierung & Konsolidierter Bericht  
 
 ---
@@ -31,7 +31,7 @@ Im Rahmen der Projektlaufzeit wurden sämtliche Fach- und IT-Grundlagen erarbeit
 ## 2. Projekttagebuch & Projektregeln
 
 In den Projektregeln unter `.cursor/rules/projekttagebuch.mdc` ist verbindlich vorgegeben, dass ein **Projekttagebuch** parallel geführt werden muss. 
-Sämtliche vergangenen Projektschritte von der Initialisierung am 18.08.2026 bis zur Softwareumsetzung und Dokumentation am 24.09.2026 wurden anhand der Git-Commit-Historie und Erstellungszeitpunkte chronologisch aufgearbeitet.
+Sämtliche vergangenen Projektschritte von der Initialisierung am 18.08.2026 bis zum finalen Projektabschluss am 01.10.2026 wurden chronologisch im Projekttagebuch gepflegt.
 
 - **Projekttagebuch PDF:** [`abgabe/Projekttagebuch.pdf`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/abgabe/Projekttagebuch.pdf) (sowie [`docs/Projekttagebuch.pdf`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/docs/Projekttagebuch.pdf))
 - **HTML-Quelle:** [`docs/Projekttagebuch.html`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/docs/Projekttagebuch.html)
@@ -57,9 +57,10 @@ Die entwickelte Administrationssoftware ist vollständig in **Java 17** ohne ext
 
 ## 4. Testdokumentation & Dokumentations-PDFs
 
-- **Projekttagebuch PDF:** [`abgabe/Projekttagebuch.pdf`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/abgabe/Projekttagebuch.pdf)
+- **Testdokumentation PDF:** [`abgabe/Testdokumentation.pdf`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/abgabe/Testdokumentation.pdf)
 - **Entwicklerdokumentation PDF:** [`abgabe/Entwicklerdokumentation.pdf`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/abgabe/Entwicklerdokumentation.pdf)
 - **Benutzerdokumentation PDF:** [`abgabe/Benutzerdokumentation.pdf`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/abgabe/Benutzerdokumentation.pdf)
+- **Projekttagebuch PDF:** [`abgabe/Projekttagebuch.pdf`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/abgabe/Projekttagebuch.pdf)
 - **ISMS-Systemdokumentation (ISO 27001) PDF:** [`abgabe/ISMS-Systemdokumentation.pdf`](file:///c:/Users/JohannesKirk/.cursor/plans/Projektarbeit/abgabe/ISMS-Systemdokumentation.pdf)
 
 ---

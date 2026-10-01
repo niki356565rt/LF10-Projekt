@@ -10,174 +10,307 @@
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            font-size: 11pt;
-            line-height: 1.55;
+            font-size: 10pt;
+            line-height: 1.5;
             color: #1a1a1a;
             margin: 0;
             padding: 0;
         }
-        h1 {
-            font-size: 22pt;
+        .cover-page {
+            text-align: center;
+            padding-top: 60px;
+            page-break-after: always;
+        }
+        .cover-title {
+            font-size: 26pt;
+            font-weight: bold;
             color: #0d2b45;
-            border-bottom: 2px solid #0d2b45;
-            padding-bottom: 8px;
-            margin-top: 0;
-        }
-        h2 {
-            font-size: 15pt;
-            color: #16425b;
-            border-bottom: 1px solid #d1d5db;
-            padding-bottom: 4px;
-            margin-top: 24px;
-        }
-        h3 {
-            font-size: 12pt;
-            color: #2a6f97;
-            margin-top: 16px;
-        }
-        p {
             margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        .meta-box {
-            background-color: #f3f4f6;
-            border-left: 4px solid #2a6f97;
-            padding: 12px 16px;
-            margin-bottom: 20px;
-            font-size: 10pt;
+        .cover-subtitle {
+            font-size: 16pt;
+            color: #203a43;
+            margin-bottom: 40px;
         }
-        .meta-box table {
+        .cover-badge {
+            display: inline-block;
+            background-color: #e2e8f0;
+            color: #1e293b;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 11pt;
+            font-weight: 600;
+            margin-bottom: 50px;
+        }
+        .cover-meta {
+            margin: 0 auto;
+            width: 85%;
+            text-align: left;
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-left: 6px solid #0d2b45;
+            padding: 20px 24px;
+            font-size: 10.5pt;
+            border-radius: 4px;
+        }
+        .cover-meta table {
             width: 100%;
             border-collapse: collapse;
         }
-        .meta-box td {
-            padding: 4px 8px;
+        .cover-meta td {
+            padding: 6px 10px;
             border: none;
         }
-        ol, ul {
-            margin-top: 6px;
-            margin-bottom: 14px;
-            padding-left: 24px;
+        h1 {
+            font-size: 20pt;
+            color: #0d2b45;
+            border-bottom: 2px solid #0d2b45;
+            padding-bottom: 6px;
+            margin-top: 0;
+        }
+        h2 {
+            font-size: 13.5pt;
+            color: #16425b;
+            border-bottom: 1px solid #d1d5db;
+            padding-bottom: 4px;
+            margin-top: 22px;
+        }
+        h3 {
+            font-size: 11pt;
+            color: #2a6f97;
+            margin-top: 14px;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 9pt;
+        }
+        th, td {
+            border: 1px solid #d1d5db;
+            padding: 6px 8px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #f1f5f9;
+            font-weight: 600;
+            color: #0f172a;
+        }
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+        pre, code {
+            font-family: "Consolas", "Courier New", monospace;
+        }
+        code {
+            background-color: #f1f5f9;
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-size: 8.5pt;
+        }
+        pre {
+            background-color: #0f172a;
+            color: #f8fafc;
+            padding: 10px 14px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 8.5pt;
+            line-height: 1.35;
+            white-space: pre-wrap;
+        }
+        .page-break {
+            page-break-before: always;
+        }
+        ul, ol {
+            margin-top: 4px;
+            margin-bottom: 10px;
+            padding-left: 20px;
         }
         li {
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
         .step-box {
             background-color: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 6px;
-            padding: 14px 18px;
-            margin-bottom: 16px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid #cbd5e1;
+            border-left: 4px solid #2a6f97;
+            border-radius: 4px;
+            padding: 10px 14px;
+            margin-bottom: 12px;
         }
         .step-box h3 {
             margin-top: 0;
             color: #0d2b45;
         }
-        .page-break {
-            page-break-before: always;
-        }
-        .tip {
+        .info-callout {
             background-color: #eff6ff;
             border-left: 4px solid #3b82f6;
             padding: 10px 14px;
-            font-size: 10pt;
             margin: 12px 0;
+            font-size: 9.5pt;
         }
     </style>
 </head>
 <body>
 
-    <h1>Benutzerdokumentation</h1>
+    <!-- DECKBLATT -->
+    <div class="cover-page">
+        <div style="font-size: 13pt; font-weight: bold; color: #64748b; margin-bottom: 20px;">
+            LERNFELD 10 (LF10) – GESTALTEN VON SOFTWAREPROJEKTEN
+        </div>
+        <div class="cover-title">BENUTZERDOKUMENTATION</div>
+        <div class="cover-subtitle">Anwenderhandbuch &amp; Bedienungsanleitung für die Gastronomie</div>
+        <div class="cover-badge">Ausbildungsberuf: Fachinformatiker/in für Anwendungsentwicklung</div>
 
-    <div class="meta-box">
-        <table>
-            <tr>
-                <td><strong>Software:</strong> Smart Restaurant Adminoberfläche</td>
-                <td><strong>Zielgruppe:</strong> Betriebsleitung & Personal</td>
-            </tr>
-            <tr>
-                <td><strong>Voraussetzung:</strong> Java 17 Runtime Environment</td>
-                <td><strong>Stand:</strong> 24. September 2026</td>
-            </tr>
-        </table>
+        <div class="cover-meta">
+            <table>
+                <tr>
+                    <td style="width: 35%;"><strong>Software:</strong></td>
+                    <td>Smart Restaurant Admin- &amp; Verwaltungsoberfläche</td>
+                </tr>
+                <tr>
+                    <td><strong>Zielgruppe:</strong></td>
+                    <td>Betriebsleitung, Servicepersonal, Küchenleitung</td>
+                </tr>
+                <tr>
+                    <td><strong>Voraussetzung:</strong></td>
+                    <td>Java 17 Runtime Environment (JRE)</td>
+                </tr>
+                <tr>
+                    <td><strong>Projektteam:</strong></td>
+                    <td>Another Great Solution GmbH (Team „Der Dreier“)</td>
+                </tr>
+                <tr>
+                    <td><strong>Dokumentenstand &amp; Version:</strong></td>
+                    <td>01. Oktober 2026 | Version 1.2 (Final)</td>
+                </tr>
+                <tr>
+                    <td><strong>Status:</strong></td>
+                    <td>Freigegeben für den Regelbetrieb</td>
+                </tr>
+            </table>
+        </div>
     </div>
 
-    <h2>1. Überblick</h2>
+    <!-- INHALT -->
+    <h1>1. Übersicht &amp; Systemvoraussetzungen</h1>
     <p>
-        Diese Anleitung erklärt die Bedienung der Administrationssoftware für das Smart Restaurant. 
-        Über das Programm verwalten Sie Mitarbeiter, Speisekarten, Tische und den aktuellen Status eingehender Bestellungen.
+        Die <strong>Smart Restaurant Adminsoftware</strong> ist die zentrale Steuerungsplattform für moderne Gastronomiebetriebe. 
+        Sie ermöglicht die transparente Verwaltung von Personalstammdaten, Speisekartenangeboten, Tischbelegungen sowie die 
+        Echtzeit-Verfolgung eingehender Bestellungen.
     </p>
 
-    <h2>2. Programm starten</h2>
+    <div class="info-callout">
+        <strong>Minimalanforderungen:</strong>
+        Windows 10/11 oder Linux, Java Runtime (JRE 17+), mindestens 2 GB Arbeitsspeicher und Bildschirmauflösung ab 1024 × 768 Pixel.
+    </div>
+
+    <h2>2. Programmstart</h2>
+    <p>Der Start erfolgt wahlweise per Doppelklick auf <code>run.bat</code> oder über das Terminal:</p>
+    <pre>
+java -cp "lib/sqlite-jdbc.jar;bin" com.smartrestaurant.Main
+    </pre>
     <p>
-        Öffnen Sie die Anwendung mit einem Doppelklick auf die Datei <code>run.bat</code> im Hauptordner. 
-        Alternativ starten Sie das Programm über das Terminal mit folgendem Befehl:
-    </p>
-    <p><code>java -cp "lib/sqlite-jdbc.jar;bin" com.smartrestaurant.Main</code></p>
-    <p>
-        Nach dem Start öffnet sich das Hauptfenster. Die Benutzeroberfläche unterteilt sich in fünf Reiter.
+        Beim ersten Start richtet das System die Datenbankdatei <code>smart_restaurant.db</code> vollautomatisch ein 
+        und befüllt sie mit Basistestdaten. Es ist keine manuelle Konfiguration erforderlich.
     </p>
 
-    <h2>3. Die Funktionsbereiche</h2>
+    <h2>3. Bedienung der 5 Hauptmodule</h2>
 
     <div class="step-box">
-        <h3>Reiter 1: Mitarbeiterverwaltung</h3>
-        <p>Hier pflegen Sie die Zugänge des Gaststättenpersonals.</p>
+        <h3>👥 1. Mitarbeiterverwaltung (Tab 1)</h3>
+        <p>Erfassung und Verwaltung des Personals:</p>
         <ul>
-            <li><strong>Neuen Mitarbeiter anlegen:</strong> Tragen Sie Name und Benutzernamen in die Textfelder ein, wählen Sie die Rolle (Service, Küche oder Administration) aus und klicken Sie auf <strong>Hinzufügen</strong>.</li>
-            <li><strong>Mitarbeiter löschen:</strong> Wählen Sie die Zeile in der Tabelle aus und klicken Sie auf <strong>Löschen</strong>.</li>
+            <li><strong>Schnelleingabe:</strong> Name und eindeutigen Benutzernamen eingeben, Rolle (<em>Service</em>, <em>Küche</em>, <em>Administration</em>) wählen und auf <strong>Hinzufügen</strong> klicken.</li>
+            <li><strong>Mitarbeiter-Wizard:</strong> Klick auf <strong>Neuer Mitarbeiter (Wizard)</strong> für geführte Eingabe.</li>
+            <li><strong>Löschen:</strong> Mitarbeiter in der Tabelle auswählen und auf <strong>Löschen</strong> klicken.</li>
         </ul>
     </div>
 
     <div class="step-box">
-        <h3>Reiter 2: Artikelverwaltung</h3>
-        <p>Verwaltung der Speisen- und Getränkekarte mit Preisen.</p>
+        <h3>🍕 2. Artikelverwaltung / Speisekarte (Tab 2)</h3>
+        <p>Pflege des Speisen- und Getränkeangebots:</p>
         <ul>
-            <li><strong>Artikel anlegen:</strong> Geben Sie den Namen ein, wählen Sie die Kategorie (z. B. Hauptspeisen) und tragen Sie den Preis ein (z. B. <code>14.50</code>). Klicken Sie auf <strong>Hinzufügen</strong>.</li>
-            <li><strong>Artikel löschen:</strong> Zeile in der Tabelle markieren und auf <strong>Löschen</strong> klicken.</li>
+            <li><strong>Artikel anlegen:</strong> Name eintragen, Kategorie auswählen (Vorspeisen, Hauptspeisen, Desserts, Getränke), Preis eingeben (z. B. <code>12,50</code>) und auf <strong>Hinzufügen</strong> klicken.</li>
+            <li><strong>Artikel-Wizard:</strong> Klick auf <strong>Neuer Artikel (Wizard)</strong> für erweiterte Maskenführung.</li>
+            <li><strong>Preiskonvention:</strong> Das System akzeptiert sowohl das deutsche Komma als auch den internationalen Dezimalpunkt.</li>
+        </ul>
+    </div>
+
+    <div class="step-box">
+        <h3>🪑 3. Tischverwaltung (Tab 3)</h3>
+        <p>Verwaltung der Tische und Sitzplatzkapazitäten:</p>
+        <ul>
+            <li><strong>Tisch anlegen:</strong> Freie Tischnummer und Sitzplatzanzahl eingeben, Status auf <code>frei</code> setzen und auf <strong>Hinzufügen</strong> klicken.</li>
+            <li><strong>Tischliste:</strong> Liefert den sofortigen Überblick über alle Tische und deren Verfügbarkeit.</li>
         </ul>
     </div>
 
     <div class="page-break"></div>
 
     <div class="step-box">
-        <h3>Reiter 3: Tischverwaltung</h3>
-        <p>Übersicht der Tische und deren Belegungszustand.</p>
+        <h3>📋 4. Bestellübersicht &amp; Status-Workflow (Tab 4)</h3>
+        <p>Steuerung des gastronomischen Kernprozesses:</p>
         <ul>
-            <li><strong>Tisch anlegen:</strong> Geben Sie die Tischnummer und die Anzahl der Sitzplätze (2 bis 8 Personen) ein. Wählen Sie den Status (frei oder belegt) und klicken Sie auf <strong>Hinzufügen</strong>.</li>
+            <li><strong>Status weiterschalten:</strong> Bestellung markieren und auf <strong>Status weiterschalten</strong> klicken.</li>
+            <li><strong>Phasen-Reihenfolge:</strong>
+                <code>aufgegeben &rarr; in Bearbeitung &rarr; fertig &rarr; serviert &rarr; bezahlt</code>
+            </li>
+            <li><strong>Aktualisieren:</strong> Klick auf <strong>Aktualisieren</strong> synchronisiert die Tabelle mit der Datenbank.</li>
         </ul>
     </div>
 
     <div class="step-box">
-        <h3>Reiter 4: Bestellübersicht</h3>
-        <p>Echtzeitübersicht aller eingegangenen Bestellungen.</p>
+        <h3>ℹ️ 5. System &amp; DB Status / Web-Dashboard (Tab 5)</h3>
+        <p>Technischer Status und mobiler Webzugriff:</p>
         <ul>
-            <li><strong>Status weiterleiten:</strong> Klicken Sie auf eine Bestellung in der Tabelle und danach auf <strong>Status weiterschalten</strong>. Der Status durchläuft nacheinander die Stufen: <em>aufgegeben → in Bearbeitung → fertig → serviert → bezahlt</em>.</li>
-            <li><strong>Aktualisieren:</strong> Mit dem Button <strong>Aktualisieren</strong> laden Sie die Tabelle neu.</li>
+            <li>Anzeige von Datenbankpfad, Verbindungsstatus und SQLite-Treiberversion.</li>
+            <li><strong>Mobiles Dashboard:</strong> Über <code>http://localhost:8080</code> steht ein browserbasiertes Dashboard für Tablets bereit.</li>
         </ul>
     </div>
 
-    <div class="step-box">
-        <h3>Reiter 5: System & DB Status</h3>
-        <p>Zeigt technische Informationen zur aktiven SQLite-Datenbank und der Java-Laufzeitumgebung.</p>
-    </div>
+    <h2>4. Typischer Gastronomie-Workflow (Praxisbeispiel)</h2>
+    <ol>
+        <li><strong>Gastankunft:</strong> Gast wird empfangen, Tischbelegung auf „belegt“ gesetzt.</li>
+        <li><strong>Bestellaufnahme:</strong> Service erfasst Speisen und Getränke; Status steht auf <code>aufgegeben</code>.</li>
+        <li><strong>Küche:</strong> Koch sieht neue Bestellung, schaltet Status auf <code>in Bearbeitung</code>.</li>
+        <li><strong>Anrichten:</strong> Speisen zubereitet; Status wechselt auf <code>fertig</code>.</li>
+        <li><strong>Servieren:</strong> Kellner bringt Speisen zum Gast; Status wechselt auf <code>serviert</code>.</li>
+        <li><strong>Bezahlung:</strong> Rechnung wird beglichen; Status schaltet auf <code>bezahlt</code>; Tisch wird wieder frei.</li>
+    </ol>
 
-    <h2>4. Häufige Fragen & Fehlerbehebung</h2>
-    
-    <div class="tip">
-        <strong>Meldung: "Gültigen Preis eingeben!"</strong><br>
-        Prüfen Sie das Preisfeld. Verwenden Sie Zahlen mit Punkt oder Komma (z. B. 12.50). Buchstaben oder Sonderzeichen sind nicht erlaubt.
-    </div>
-
-    <div class="tip">
-        <strong>Meldung: "Bitte alle Felder ausfüllen!"</strong><br>
-        Bei der Mitarbeiteranlage müssen sowohl Name als auch Benutzername ausgefüllt sein.
-    </div>
-
-    <div class="tip">
-        <strong>Tabelle zeigt neue Daten nicht an?</strong><br>
-        Klicken Sie unten im jeweiligen Reiter auf den Aktualisieren-Button.
-    </div>
+    <h2>5. Fehlerbehebung &amp; FAQ</h2>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 30%;">Problem / Meldung</th>
+                <th style="width: 30%;">Ursache</th>
+                <th style="width: 40%;">Lösung</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>„Gültigen Preis eingeben!“</td>
+                <td>Ungültiges Preisformat (Buchstaben oder Sonderzeichen).</td>
+                <td>Nur Ziffern und Komma/Punkt eingeben (z. B. <code>14,50</code>).</td>
+            </tr>
+            <tr>
+                <td>„Bitte alle Felder ausfüllen!“</td>
+                <td>Pflichtfeld nicht ausgefüllt.</td>
+                <td>Sicherstellen, dass Name und Benutzername befüllt sind.</td>
+            </tr>
+            <tr>
+                <td>Tabelle aktualisiert sich nicht</td>
+                <td>Echtzeit-Synchronisation verzögert.</td>
+                <td>Klick auf die Schaltfläche <strong>Aktualisieren</strong>.</td>
+            </tr>
+        </tbody>
+    </table>
 
 </body>
 </html>

@@ -4,6 +4,8 @@ tools/plantuml.jar
 # Zwischenergebnisse des Diagramm-Renderings
 out/
 ~$*.docx
+~$*.pptx
+~$*
 
 node_modules/
 scratch/
