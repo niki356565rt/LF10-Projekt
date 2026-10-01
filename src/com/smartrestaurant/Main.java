@@ -15,6 +15,9 @@ public class Main {
         // Datenbank initialisieren
         DatabaseManager.initDatabase();
 
+        // WebServer für das Web-Frontend (http://localhost:8080) starten
+        WebServer.startServer();
+
         // GUI im Event Dispatch Thread starten
         SwingUtilities.invokeLater(() -> {
             AdminGUI gui = new AdminGUI();

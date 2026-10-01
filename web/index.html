@@ -3,27 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Restaurant – Dedicated Frontend</title>
+    <title>Gastronovi Order Suite – Stitch Connected POS</title>
+    <!-- Google Font Inter from Stitch Design System -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        /* --- STITCH DESIGN SYSTEM TOKENS (Project: 7353340643345089919) --- */
         :root {
-            --bg-main: #f8fafc;
+            --stitch-primary: #181b1f; /* Dark Anthracite */
+            --stitch-primary-container: #191c20;
+            --stitch-secondary: #10b981; /* Fresh Emerald Green */
+            --stitch-secondary-container: #dcfce7;
+            --stitch-tertiary: #f59e0b; /* Warm Amber */
+            --stitch-tertiary-container: #fef3c7;
+            --stitch-danger: #dc2626;
+            --bg-main: #f8f9fa;
             --bg-card: #ffffff;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --primary: #2563eb;
-            --primary-hover: #1d4ed8;
-            --success: #16a34a;
-            --warning: #d97706;
-            --danger: #dc2626;
+            --text-main: #191c1d;
+            --text-muted: #45474a;
             --border: #e2e8f0;
-            --radius: 12px;
+            --border-hover: #cbd5e1;
+            --radius: 8px;
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: var(--font-family);
         }
 
         body {
@@ -34,59 +43,78 @@
             flex-direction: column;
         }
 
-        /* Top Navigation Header */
+        /* Top Navigation Header (Stitch Spec: Dark Anthracite #181B1F) */
         header {
-            background-color: #0f172a;
+            background-color: var(--stitch-primary);
             color: #ffffff;
-            padding: 16px 24px;
+            padding: 14px 28px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
         }
 
         .logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 1.25rem;
-            font-weight: 700;
+            gap: 10px;
+        }
+
+        .stitch-badge {
+            background-color: rgba(255, 255, 255, 0.12);
+            color: #6cf8bb;
+            border: 1px solid rgba(108, 248, 187, 0.3);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
         }
 
         .role-selector {
             display: flex;
             gap: 8px;
-            background-color: #1e293b;
+            background-color: rgba(255, 255, 255, 0.08);
             padding: 4px;
-            border-radius: 8px;
+            border-radius: 10px;
         }
 
         .role-btn {
             background: transparent;
             border: none;
             color: #94a3b8;
-            padding: 8px 16px;
-            border-radius: 6px;
+            padding: 10px 18px;
+            border-radius: 8px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.875rem;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.2s ease;
         }
 
         .role-btn:hover {
             color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.05);
         }
 
         .role-btn.active {
-            background-color: var(--primary);
+            background-color: var(--stitch-secondary);
             color: #ffffff;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
         }
 
         /* Main Container */
         main {
             flex: 1;
-            padding: 24px;
-            max-width: 1400px;
+            padding: 24px 32px;
+            max-width: 1440px;
             margin: 0 auto;
             width: 100%;
         }
@@ -103,50 +131,53 @@
         /* Grid Layouts */
         .grid-tische {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
             margin-bottom: 24px;
         }
 
-        /* Tisch Card */
+        /* Tisch Card (Stitch Spec: Rounded 8px, soft borders) */
         .tisch-card {
             background-color: var(--bg-card);
             border: 2px solid var(--border);
             border-radius: var(--radius);
-            padding: 20px;
+            padding: 18px;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.2s ease;
             position: relative;
         }
 
         .tisch-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+            border-color: var(--stitch-secondary);
+            box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.06);
         }
 
         .tisch-card.frei {
-            border-color: #bbf7d0;
+            border-color: #a7f3d0;
             background-color: #f0fdf4;
         }
 
         .tisch-card.belegt {
-            border-color: #fef08a;
-            background-color: #fefce8;
+            border-color: #fde68a;
+            background-color: #fffbeb;
         }
 
         .tisch-card.selected {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+            border-color: var(--stitch-primary);
+            box-shadow: 0 0 0 3px rgba(24, 27, 31, 0.2);
+            background-color: #ffffff;
         }
 
         .tisch-number {
-            font-size: 1.5rem;
+            font-size: 1.35rem;
             font-weight: 800;
             margin-bottom: 4px;
+            letter-spacing: -0.01em;
         }
 
         .tisch-meta {
-            font-size: 0.875rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
         }
 
@@ -160,44 +191,47 @@
             margin-top: 10px;
         }
 
-        .badge-frei { background-color: #dcfce7; color: #166534; }
-        .badge-belegt { background-color: #fef9c3; color: #854d0e; }
+        .badge-frei { background-color: #dcfce7; color: #047857; }
+        .badge-belegt { background-color: #fef3c7; color: #b45309; }
 
         /* Service Order Layout */
         .order-layout {
             display: grid;
-            grid-template-columns: 2fr 1fr;
+            grid-template-columns: 2.2fr 1fr;
             gap: 24px;
         }
 
-        .catalog-box, .cart-box, .ticket-box {
+        .catalog-box, .cart-box, .ticket-card {
             background-color: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 20px;
+            padding: 24px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
 
         .category-tabs {
             display: flex;
-            gap: 8px;
-            margin-bottom: 16px;
+            gap: 10px;
+            margin-bottom: 20px;
             border-bottom: 1px solid var(--border);
-            padding-bottom: 12px;
+            padding-bottom: 14px;
+            overflow-x: auto;
         }
 
         .cat-btn {
             background: #f1f5f9;
-            border: none;
-            padding: 8px 14px;
+            border: 1px solid transparent;
+            padding: 8px 16px;
             border-radius: 20px;
             font-size: 0.875rem;
             font-weight: 600;
             cursor: pointer;
             color: var(--text-muted);
+            transition: all 0.2s;
         }
 
         .cat-btn.active {
-            background: #0f172a;
+            background: var(--stitch-primary);
             color: #ffffff;
         }
 
@@ -209,134 +243,150 @@
 
         .artikel-card {
             border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 14px;
+            border-radius: var(--radius);
+            padding: 16px;
             cursor: pointer;
-            transition: background-color 0.2s;
+            background-color: #ffffff;
+            transition: all 0.2s ease;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .artikel-card:hover {
+            border-color: var(--stitch-secondary);
             background-color: #f8fafc;
-            border-color: var(--primary);
+            transform: translateY(-1px);
         }
 
         .artikel-name {
             font-weight: 600;
             font-size: 0.95rem;
-            margin-bottom: 6px;
+            line-height: 1.3;
         }
 
         .artikel-preis {
-            color: var(--primary);
-            font-weight: 700;
+            color: var(--stitch-secondary);
+            font-weight: 800;
+            font-size: 1.05rem;
+            margin-top: 8px;
         }
 
         /* Cart & Tickets */
         .cart-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 8px;
+            font-size: 1.15rem;
+            font-weight: 800;
+            margin-bottom: 18px;
+            border-bottom: 2px solid var(--stitch-primary);
+            padding-bottom: 10px;
         }
 
         .cart-items {
-            min-height: 200px;
-            margin-bottom: 16px;
+            min-height: 220px;
+            margin-bottom: 18px;
         }
 
         .cart-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 8px 0;
+            padding: 10px 0;
             border-bottom: 1px dashed var(--border);
             font-size: 0.9rem;
         }
 
         .cart-total {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 800;
             display: flex;
             justify-content: space-between;
-            margin-top: 16px;
-            padding-top: 12px;
-            border-top: 2px solid var(--border);
+            margin-top: 18px;
+            padding-top: 14px;
+            border-top: 2px solid var(--stitch-primary);
         }
 
         .btn-action {
             width: 100%;
-            background-color: var(--primary);
+            background-color: var(--stitch-primary);
             color: #ffffff;
             border: none;
-            padding: 12px;
-            border-radius: 8px;
+            padding: 14px;
+            border-radius: var(--radius);
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 0.95rem;
             cursor: pointer;
             margin-top: 12px;
+            transition: all 0.2s;
+            min-height: 48px; /* Stitch Ergonomic Spec */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         .btn-action:hover {
-            background-color: var(--primary-hover);
+            background-color: #2a2e34;
         }
 
-        .btn-success { background-color: var(--success); }
-        .btn-success:hover { background-color: #15803d; }
+        .btn-success {
+            background-color: var(--stitch-secondary);
+        }
+        .btn-success:hover {
+            background-color: #059669;
+        }
 
         /* Order Tickets for Kitchen & Bar */
         .tickets-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 20px;
         }
 
         .ticket-card {
-            background: var(--bg-card);
-            border-top: 4px solid var(--primary);
-            border-left: 1px solid var(--border);
-            border-right: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 16px;
+            border-top: 5px solid var(--stitch-primary);
         }
 
-        .ticket-card.in-bearbeitung { border-top-color: var(--warning); }
-        .ticket-card.fertig { border-top-color: var(--success); }
+        .ticket-card.in-bearbeitung { border-top-color: var(--stitch-tertiary); }
+        .ticket-card.fertig { border-top-color: var(--stitch-secondary); }
 
         .ticket-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 12px;
-            font-weight: 700;
+            margin-bottom: 14px;
+            font-weight: 800;
+            font-size: 1.05rem;
         }
 
         .ticket-items {
-            margin-bottom: 16px;
+            margin-bottom: 18px;
             font-size: 0.95rem;
         }
 
         .ticket-item-row {
-            padding: 4px 0;
+            padding: 6px 0;
+            border-bottom: 1px solid #f1f5f9;
         }
 
         /* Admin Table */
         .admin-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 16px;
+            margin-top: 12px;
         }
 
         .admin-table th, .admin-table td {
             border: 1px solid var(--border);
-            padding: 12px;
+            padding: 14px;
             text-align: left;
+            font-size: 0.9rem;
         }
 
         .admin-table th {
             background-color: #f1f5f9;
             font-weight: 700;
+            color: var(--text-muted);
         }
 
         /* Stats Cards */
@@ -357,7 +407,7 @@
         .stat-value {
             font-size: 2rem;
             font-weight: 800;
-            color: var(--primary);
+            color: var(--stitch-primary);
             margin-top: 8px;
         }
     </style>
@@ -365,28 +415,31 @@
 <body>
 
     <header>
-        <div class="logo">
-            <span>🍽️ Smart Restaurant</span>
+        <div class="logo-container">
+            <div class="logo">
+                🍽️ Gastronovi Order Suite
+            </div>
+            <span class="stitch-badge">🔗 Stitch Design System (Project 7353340643345089919)</span>
         </div>
         <div class="role-selector">
-            <button class="role-btn active" onclick="switchView('service')">📱 Service / Tische</button>
-            <button class="role-btn" onclick="switchView('kueche')">👨‍🍳 Küche (Display)</button>
-            <button class="role-btn" onclick="switchView('bar')">🍹 Bar (Display)</button>
-            <button class="role-btn" onclick="switchView('admin')">⚙️ Administration</button>
+            <button class="role-btn active" onclick="switchView('service')">📱 Kellner (POS)</button>
+            <button class="role-btn" onclick="switchView('kueche')">👨‍🍳 Küche (KDS)</button>
+            <button class="role-btn" onclick="switchView('bar')">🍹 Bar Display</button>
+            <button class="role-btn" onclick="switchView('admin')">⚙️ Admin Suite</button>
         </div>
     </header>
 
     <main>
         <!-- 1. SERVICE VIEW -->
         <section id="view-service" class="view-section active">
-            <h2 style="margin-bottom: 16px;">Tisch- & Bestellübersicht</h2>
+            <h2 style="margin-bottom: 16px; font-weight: 800;">Tischplan & Bestellaufnahme (POS)</h2>
             <div class="grid-tische" id="tisch-container">
-                <!-- Tisch Cards werden dynamisch befüllt -->
+                <!-- Tisch Cards dynamisch -->
             </div>
 
             <div class="order-layout">
                 <div class="catalog-box">
-                    <h3 style="margin-bottom: 12px;">Speisen- & Getränkekarte</h3>
+                    <h3 style="margin-bottom: 14px; font-weight: 800;">Speisen- & Getränkekarte</h3>
                     <div class="category-tabs" id="category-container">
                         <button class="cat-btn active" onclick="filterCategory('Alle')">Alle</button>
                         <button class="cat-btn" onclick="filterCategory('Vorspeisen')">Vorspeisen</button>
@@ -408,23 +461,23 @@
                         <span>Gesamtsumme:</span>
                         <span id="cart-total-price">0.00 €</span>
                     </div>
-                    <button class="btn-action" onclick="submitOrder()">Bestellung aufgeben</button>
-                    <button class="btn-action btn-success" onclick="checkoutTable()">Rechnung erstellen & Bezahlen</button>
+                    <button class="btn-action" onclick="submitOrder()">🚀 Bestellung aufgeben</button>
+                    <button class="btn-action btn-success" onclick="checkoutTable()">💳 Rechnung erstellen & Bezahlen</button>
                 </div>
             </div>
         </section>
 
-        <!-- 2. KÜCHEN VIEW -->
+        <!-- 2. KÜCHE VIEW -->
         <section id="view-kueche" class="view-section">
-            <h2 style="margin-bottom: 16px;">👨‍🍳 Küchen-Display (Offene Speise-Tickets)</h2>
+            <h2 style="margin-bottom: 16px; font-weight: 800;">👨‍🍳 Küchen-Display (Offene Speisen-Tickets)</h2>
             <div class="tickets-grid" id="kueche-tickets">
-                <!-- Küchen Tickets -->
+                <!-- Küchen Tickets (nur Speisen) -->
             </div>
         </section>
 
         <!-- 3. BAR VIEW -->
         <section id="view-bar" class="view-section">
-            <h2 style="margin-bottom: 16px;">🍹 Bar-Display (Offene Getränke-Tickets)</h2>
+            <h2 style="margin-bottom: 16px; font-weight: 800;">🍹 Bar-Display (Offene Getränke-Tickets)</h2>
             <div class="tickets-grid" id="bar-tickets">
                 <!-- Bar Tickets -->
             </div>
@@ -432,7 +485,7 @@
 
         <!-- 4. ADMIN VIEW -->
         <section id="view-admin" class="view-section">
-            <h2 style="margin-bottom: 16px;">⚙️ Stamm- & Betriebsdaten</h2>
+            <h2 style="margin-bottom: 16px; font-weight: 800;">⚙️ Stamm- & Betriebsdaten Verwaltung</h2>
             
             <div class="stats-grid">
                 <div class="stat-card">
@@ -449,8 +502,56 @@
                 </div>
             </div>
 
+            <!-- Tische Verwaltung -->
+            <div class="catalog-box" style="margin-bottom: 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                    <h3>🪑 Tische-Verwaltung</h3>
+                    <button class="btn-action" style="width: auto; padding: 8px 16px; min-height: 40px;" onclick="promptAddTisch()">+ Neuen Tisch anlegen</button>
+                </div>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tischnummer</th>
+                            <th>Kapazität</th>
+                            <th>Status</th>
+                            <th>Aktionen</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-tische-body">
+                        <!-- Tisch Zeilen -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Menüpunkte / Artikel Verwaltung -->
+            <div class="catalog-box" style="margin-bottom: 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                    <h3>🍕 Menüpunkte / Artikel-Verwaltung</h3>
+                    <button class="btn-action" style="width: auto; padding: 8px 16px; min-height: 40px;" onclick="promptAddArtikel()">+ Neuen Artikel anlegen</button>
+                </div>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Artikelname</th>
+                            <th>Kategorie</th>
+                            <th>Preis (€)</th>
+                            <th>Aktionen</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-artikel-body">
+                        <!-- Artikel Zeilen -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Mitarbeiter Verwaltung -->
             <div class="catalog-box">
-                <h3>Mitarbeiter-Stammdaten</h3>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                    <h3>👥 Mitarbeiter-Stammdaten</h3>
+                    <button class="btn-action" style="width: auto; padding: 8px 16px; min-height: 40px;" onclick="promptAddMitarbeiter()">+ Neuen Mitarbeiter anlegen</button>
+                </div>
                 <table class="admin-table">
                     <thead>
                         <tr>
@@ -459,6 +560,7 @@
                             <th>Benutzername</th>
                             <th>Rolle</th>
                             <th>Status</th>
+                            <th>Aktionen</th>
                         </tr>
                     </thead>
                     <tbody id="admin-mitarbeiter-body">
@@ -475,7 +577,7 @@
         let selectedCategory = 'Alle';
         let currentCart = [];
 
-        const tische = [
+        let tische = [
             { id: 1, nummer: 1, kapazitaet: 2, status: 'belegt' },
             { id: 2, nummer: 2, kapazitaet: 4, status: 'frei' },
             { id: 3, nummer: 3, kapazitaet: 4, status: 'belegt' },
@@ -484,7 +586,7 @@
             { id: 6, nummer: 6, kapazitaet: 2, status: 'frei' }
         ];
 
-        const artikel = [
+        let artikel = [
             { id: 1, name: 'Tomatensuppe mit Basilikum', kategorie: 'Vorspeisen', preis: 6.50 },
             { id: 2, name: 'Bruschetta Originale', kategorie: 'Vorspeisen', preis: 7.90 },
             { id: 3, name: 'Wiener Schnitzel vom Kalb', kategorie: 'Hauptspeisen', preis: 22.50 },
@@ -499,7 +601,7 @@
             { id: 12, name: 'Pils vom Fass 0.5l', kategorie: 'Getränke', preis: 4.80 }
         ];
 
-        const mitarbeiter = [
+        let mitarbeiter = [
             { id: 1, name: 'Anna Service', user: 'aservice', rolle: 'Service', aktiv: true },
             { id: 2, name: 'Ben Kellner', user: 'bkellner', rolle: 'Service', aktiv: true },
             { id: 3, name: 'Karl Koch', user: 'kkoch', rolle: 'Küche', aktiv: true },
@@ -530,6 +632,7 @@
 
             if (viewName === 'kueche') renderKueche();
             if (viewName === 'bar') renderBar();
+            if (viewName === 'admin') renderAdmin();
         }
 
         function renderTische() {
@@ -578,6 +681,18 @@
             renderCart();
         }
 
+        function removeFromCart(artikelId) {
+            const idx = currentCart.findIndex(c => c.id === artikelId);
+            if (idx >= 0) {
+                if (currentCart[idx].menge > 1) {
+                    currentCart[idx].menge -= 1;
+                } else {
+                    currentCart.splice(idx, 1);
+                }
+            }
+            renderCart();
+        }
+
         function renderCart() {
             const container = document.getElementById('cart-items');
             if (currentCart.length === 0) {
@@ -592,8 +707,13 @@
                 total += subtotal;
                 return `
                     <div class="cart-item">
-                        <span>${item.menge}x ${item.name}</span>
-                        <span style="font-weight: 600;">${subtotal.toFixed(2)} €</span>
+                        <div>
+                            <span>${item.menge}x ${item.name}</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span style="font-weight: 600;">${subtotal.toFixed(2)} €</span>
+                            <button onclick="removeFromCart(${item.id})" style="background: none; border: none; color: var(--stitch-danger); cursor: pointer; font-size: 1.1rem; font-weight: bold;" title="Eintrag entfernen">🗑️</button>
+                        </div>
                     </div>
                 `;
             }).join('');
@@ -636,27 +756,47 @@
             }
         }
 
+        function deleteOrder(orderId) {
+            if (confirm(`Möchten Sie Bestellung #${orderId} wirklich stornieren / löschen?`)) {
+                bestellungen = bestellungen.filter(b => b.id !== orderId);
+                renderKueche();
+                renderBar();
+            }
+        }
+
         function renderKueche() {
             const container = document.getElementById('kueche-tickets');
-            const speisenOrders = bestellungen.filter(b => b.status !== 'bezahlt');
+            const openOrders = bestellungen.filter(b => b.status !== 'bezahlt');
             
+            // FILTER: Nur Speisen anzeigen (keine Getränke!)
+            const speisenOrders = openOrders.map(b => {
+                const speisenItems = b.items.filter(i => {
+                    const art = artikel.find(a => a.name === i.name);
+                    if (art) return art.kategorie !== 'Getränke';
+                    const nameLower = i.name.toLowerCase();
+                    return !nameLower.includes('cola') && !nameLower.includes('pils') && !nameLower.includes('wasser') && !nameLower.includes('schorle');
+                });
+                return { ...b, items: speisenItems };
+            }).filter(b => b.items.length > 0);
+
             if (speisenOrders.length === 0) {
-                container.innerHTML = `<p style="color: var(--text-muted);">Keine offenen Küchen-Bestellungen.</p>`;
+                container.innerHTML = `<p style="color: var(--text-muted);">Keine offenen Küchen-Speisen-Tickets.</p>`;
                 return;
             }
 
             container.innerHTML = speisenOrders.map(b => `
                 <div class="ticket-card ${b.status}">
                     <div class="ticket-header">
-                        <span>Tisch ${b.tischId} (#${b.id})</span>
+                        <span>Tisch ${b.tischId} (Speisen #${b.id})</span>
                         <span style="font-size: 0.85rem; color: var(--text-muted);">${b.zeit} Uhr</span>
                     </div>
                     <div class="ticket-items">
                         ${b.items.map(i => `<div class="ticket-item-row"><strong>${i.menge}x</strong> ${i.name}</div>`).join('')}
                     </div>
-                    <div style="display: flex; gap: 8px;">
-                        <button class="btn-action" style="padding: 8px; font-size: 0.85rem;" onclick="updateTicketStatus(${b.id}, 'in Bearbeitung')">Zubereitung starten</button>
-                        <button class="btn-action btn-success" style="padding: 8px; font-size: 0.85rem;" onclick="updateTicketStatus(${b.id}, 'fertig')">Als FERTIG melden</button>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                        <button class="btn-action" style="padding: 8px; font-size: 0.85rem; flex: 1; min-height: 38px;" onclick="updateTicketStatus(${b.id}, 'in Bearbeitung')">Zubereitung starten</button>
+                        <button class="btn-action btn-success" style="padding: 8px; font-size: 0.85rem; flex: 1; min-height: 38px;" onclick="updateTicketStatus(${b.id}, 'fertig')">Als FERTIG melden</button>
+                        <button class="btn-action" style="padding: 8px; font-size: 0.85rem; background: #fee2e2; color: #991b1b; border: 1px solid #f87171; min-height: 38px;" onclick="deleteOrder(${b.id})">Löschen</button>
                     </div>
                 </div>
             `).join('');
@@ -664,18 +804,36 @@
 
         function renderBar() {
             const container = document.getElementById('bar-tickets');
-            const barOrders = bestellungen.filter(b => b.status !== 'bezahlt');
+            const openOrders = bestellungen.filter(b => b.status !== 'bezahlt');
+
+            const barOrders = openOrders.map(b => {
+                const getraenkeItems = b.items.filter(i => {
+                    const art = artikel.find(a => a.name === i.name);
+                    if (art) return art.kategorie === 'Getränke';
+                    const nameLower = i.name.toLowerCase();
+                    return nameLower.includes('cola') || nameLower.includes('pils') || nameLower.includes('wasser') || nameLower.includes('schorle');
+                });
+                return { ...b, items: getraenkeItems };
+            }).filter(b => b.items.length > 0);
+
+            if (barOrders.length === 0) {
+                container.innerHTML = `<p style="color: var(--text-muted);">Keine offenen Getränke-Tickets.</p>`;
+                return;
+            }
 
             container.innerHTML = barOrders.map(b => `
                 <div class="ticket-card ${b.status}">
                     <div class="ticket-header">
-                        <span>Tisch ${b.tischId} (Getränke)</span>
+                        <span>Tisch ${b.tischId} (Getränke #${b.id})</span>
                         <span style="font-size: 0.85rem; color: var(--text-muted);">${b.zeit} Uhr</span>
                     </div>
                     <div class="ticket-items">
-                        ${b.items.filter(i => i.name.includes('Cola') || i.name.includes('Pils') || i.name.includes('Wasser') || i.name.includes('Schorle')).map(i => `<div class="ticket-item-row"><strong>${i.menge}x</strong> ${i.name}</div>`).join('')}
+                        ${b.items.map(i => `<div class="ticket-item-row"><strong>${i.menge}x</strong> ${i.name}</div>`).join('')}
                     </div>
-                    <button class="btn-action btn-success" style="padding: 8px; font-size: 0.85rem;" onclick="updateTicketStatus(${b.id}, 'serviert')">Getränke serviert</button>
+                    <div style="display: flex; gap: 8px;">
+                        <button class="btn-action btn-success" style="padding: 8px; font-size: 0.85rem; flex: 1; min-height: 38px;" onclick="updateTicketStatus(${b.id}, 'serviert')">Getränke serviert</button>
+                        <button class="btn-action" style="padding: 8px; font-size: 0.85rem; background: #fee2e2; color: #991b1b; border: 1px solid #f87171; min-height: 38px;" onclick="deleteOrder(${b.id})">Löschen</button>
+                    </div>
                 </div>
             `).join('');
         }
@@ -689,17 +847,154 @@
             }
         }
 
+        // --- ADMIN CRUD METHODS ---
+
         function renderAdmin() {
-            const container = document.getElementById('admin-mitarbeiter-body');
-            container.innerHTML = mitarbeiter.map(m => `
+            // 1. Tische
+            const tischeBody = document.getElementById('admin-tische-body');
+            tischeBody.innerHTML = tische.map(t => `
+                <tr>
+                    <td>${t.id}</td>
+                    <td>Tisch ${t.nummer}</td>
+                    <td>${t.kapazitaet} Personen</td>
+                    <td><span class="badge-status badge-${t.status}">${t.status}</span></td>
+                    <td>
+                        <button style="padding: 6px 12px; margin-right: 4px; cursor: pointer; border: 1px solid var(--border); border-radius: 4px; background: #fff;" onclick="editTisch(${t.id})">✏️ Bearbeiten</button>
+                        <button style="padding: 6px 12px; color: var(--stitch-danger); cursor: pointer; border: 1px solid #fca5a5; border-radius: 4px; background: #fef2f2;" onclick="deleteTisch(${t.id})">🗑️ Löschen</button>
+                    </td>
+                </tr>
+            `).join('');
+
+            // 2. Artikel / Menüpunkte
+            const artikelBody = document.getElementById('admin-artikel-body');
+            artikelBody.innerHTML = artikel.map(a => `
+                <tr>
+                    <td>${a.id}</td>
+                    <td>${a.name}</td>
+                    <td>${a.kategorie}</td>
+                    <td>${a.preis.toFixed(2)} €</td>
+                    <td>
+                        <button style="padding: 6px 12px; margin-right: 4px; cursor: pointer; border: 1px solid var(--border); border-radius: 4px; background: #fff;" onclick="editArtikel(${a.id})">✏️ Bearbeiten</button>
+                        <button style="padding: 6px 12px; color: var(--stitch-danger); cursor: pointer; border: 1px solid #fca5a5; border-radius: 4px; background: #fef2f2;" onclick="deleteArtikel(${a.id})">🗑️ Löschen</button>
+                    </td>
+                </tr>
+            `).join('');
+
+            // 3. Mitarbeiter
+            const mitarbeiterBody = document.getElementById('admin-mitarbeiter-body');
+            mitarbeiterBody.innerHTML = mitarbeiter.map(m => `
                 <tr>
                     <td>${m.id}</td>
                     <td>${m.name}</td>
                     <td>${m.user}</td>
                     <td>${m.rolle}</td>
                     <td><span class="badge-status badge-frei">${m.aktiv ? 'Aktiv' : 'Inaktiv'}</span></td>
+                    <td>
+                        <button style="padding: 6px 12px; margin-right: 4px; cursor: pointer; border: 1px solid var(--border); border-radius: 4px; background: #fff;" onclick="editMitarbeiter(${m.id})">✏️ Bearbeiten</button>
+                        <button style="padding: 6px 12px; color: var(--stitch-danger); cursor: pointer; border: 1px solid #fca5a5; border-radius: 4px; background: #fef2f2;" onclick="deleteMitarbeiter(${m.id})">🗑️ Löschen</button>
+                    </td>
                 </tr>
             `).join('');
+
+            document.getElementById('stat-mitarbeiter').innerText = mitarbeiter.length + ' Personen';
+        }
+
+        // Tische CRUD
+        function promptAddTisch() {
+            const nr = prompt('Tischnummer:');
+            if (!nr) return;
+            const kap = prompt('Kapazität (Personen):', '4');
+            if (!kap) return;
+            const newId = tische.length > 0 ? Math.max(...tische.map(t => t.id)) + 1 : 1;
+            tische.push({ id: newId, nummer: parseInt(nr), kapazitaet: parseInt(kap), status: 'frei' });
+            renderTische();
+            renderAdmin();
+        }
+
+        function editTisch(id) {
+            const t = tische.find(item => item.id === id);
+            if (!t) return;
+            const newKap = prompt(`Kapazität für Tisch #${t.nummer} ändern:`, t.kapazitaet);
+            if (newKap !== null) {
+                t.kapazitaet = parseInt(newKap);
+                renderTische();
+                renderAdmin();
+            }
+        }
+
+        function deleteTisch(id) {
+            if (confirm('Tisch wirklich löschen?')) {
+                tische = tische.filter(t => t.id !== id);
+                renderTische();
+                renderAdmin();
+            }
+        }
+
+        // Artikel CRUD
+        function promptAddArtikel() {
+            const name = prompt('Artikelname:');
+            if (!name) return;
+            const kat = prompt('Kategorie (Vorspeisen, Hauptspeisen, Desserts, Getränke):', 'Hauptspeisen');
+            if (!kat) return;
+            const preis = prompt('Preis (€):', '12.50');
+            if (!preis) return;
+            const newId = artikel.length > 0 ? Math.max(...artikel.map(a => a.id)) + 1 : 1;
+            artikel.push({ id: newId, name: name, kategorie: kat, preis: parseFloat(preis.replace(',', '.')) });
+            renderArtikel();
+            renderAdmin();
+        }
+
+        function editArtikel(id) {
+            const a = artikel.find(item => item.id === id);
+            if (!a) return;
+            const newName = prompt('Artikelname ändern:', a.name);
+            if (!newName) return;
+            const newPreis = prompt('Preis (€) ändern:', a.preis.toFixed(2));
+            if (!newPreis) return;
+            a.name = newName;
+            a.preis = parseFloat(newPreis.replace(',', '.'));
+            renderArtikel();
+            renderAdmin();
+        }
+
+        function deleteArtikel(id) {
+            if (confirm('Artikel wirklich löschen?')) {
+                artikel = artikel.filter(a => a.id !== id);
+                renderArtikel();
+                renderAdmin();
+            }
+        }
+
+        // Mitarbeiter CRUD
+        function promptAddMitarbeiter() {
+            const name = prompt('Mitarbeiter Name:');
+            if (!name) return;
+            const user = prompt('Benutzername:');
+            if (!user) return;
+            const rolle = prompt('Rolle (Service, Küche, Administration):', 'Service');
+            if (!rolle) return;
+            const newId = mitarbeiter.length > 0 ? Math.max(...mitarbeiter.map(m => m.id)) + 1 : 1;
+            mitarbeiter.push({ id: newId, name: name, user: user, rolle: rolle, aktiv: true });
+            renderAdmin();
+        }
+
+        function editMitarbeiter(id) {
+            const m = mitarbeiter.find(item => item.id === id);
+            if (!m) return;
+            const newName = prompt('Mitarbeiter Name ändern:', m.name);
+            if (!newName) return;
+            const newUser = prompt('Benutzername ändern:', m.user);
+            if (!newUser) return;
+            m.name = newName;
+            m.user = newUser;
+            renderAdmin();
+        }
+
+        function deleteMitarbeiter(id) {
+            if (confirm('Mitarbeiter wirklich löschen?')) {
+                mitarbeiter = mitarbeiter.filter(m => m.id !== id);
+                renderAdmin();
+            }
         }
     </script>
 </body>

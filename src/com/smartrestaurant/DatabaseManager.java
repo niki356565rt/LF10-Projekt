@@ -136,6 +136,21 @@ public class DatabaseManager {
         }
     }
 
+    public static boolean updateMitarbeiter(Mitarbeiter m) {
+        String sql = "UPDATE mitarbeiter SET name = ?, benutzername = ?, rolle = ?, aktiv = ? WHERE mitarbeiter_id = ?";
+        try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, m.getName());
+            pstmt.setString(2, m.getBenutzername());
+            pstmt.setString(3, m.getRolle());
+            pstmt.setInt(4, m.isAktiv() ? 1 : 0);
+            pstmt.setInt(5, m.getId());
+            return pstmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public static boolean deleteMitarbeiter(int id) {
         String sql = "DELETE FROM mitarbeiter WHERE mitarbeiter_id = ?";
         try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -182,6 +197,21 @@ public class DatabaseManager {
         }
     }
 
+    public static boolean updateArtikel(Artikel a) {
+        String sql = "UPDATE artikel SET name = ?, kategorie = ?, preis = ?, aktiv = ? WHERE artikel_id = ?";
+        try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, a.getName());
+            pstmt.setString(2, a.getKategorie());
+            pstmt.setDouble(3, a.getPreis());
+            pstmt.setInt(4, a.isAktiv() ? 1 : 0);
+            pstmt.setInt(5, a.getId());
+            return pstmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public static boolean deleteArtikel(int id) {
         String sql = "DELETE FROM artikel WHERE artikel_id = ?";
         try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -219,6 +249,20 @@ public class DatabaseManager {
             pstmt.setInt(1, t.getTischnummer());
             pstmt.setInt(2, t.getKapazitaet());
             pstmt.setString(3, t.getStatus());
+            return pstmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean updateTisch(Tisch t) {
+        String sql = "UPDATE tisch SET tischnummer = ?, kapazitaet = ?, status = ? WHERE tisch_id = ?";
+        try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, t.getTischnummer());
+            pstmt.setInt(2, t.getKapazitaet());
+            pstmt.setString(3, t.getStatus());
+            pstmt.setInt(4, t.getId());
             return pstmt.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -271,6 +315,17 @@ public class DatabaseManager {
         try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, newStatus);
             pstmt.setInt(2, bestellungId);
+            return pstmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean deleteBestellung(int bestellungId) {
+        String sql = "DELETE FROM bestellung WHERE bestellung_id = ?";
+        try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, bestellungId);
             return pstmt.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();

@@ -81,13 +81,14 @@ public class AdminGUI extends JFrame {
         configureTable(tableMitarbeiter);
         panel.add(new JScrollPane(tableMitarbeiter), BorderLayout.CENTER);
 
-        JPanel formPanel = new JPanel(new GridLayout(2, 5, 8, 8));
-        formPanel.setBorder(BorderFactory.createTitledBorder("Neuen Mitarbeiter anlegen"));
+        JPanel formPanel = new JPanel(new GridLayout(2, 6, 8, 8));
+        formPanel.setBorder(BorderFactory.createTitledBorder("Mitarbeiter verwalten (Anlegen / Bearbeiten)"));
 
         txtMitarbeiterName = new JTextField();
         txtMitarbeiterUser = new JTextField();
         cbMitarbeiterRolle = new JComboBox<>(new String[]{"Service", "Küche", "Administration"});
         JButton btnAdd = new JButton("Hinzufügen");
+        JButton btnEdit = new JButton("Bearbeiten");
         JButton btnDelete = new JButton("Löschen");
 
         formPanel.add(new JLabel("Name:"));
@@ -95,11 +96,13 @@ public class AdminGUI extends JFrame {
         formPanel.add(new JLabel("Rolle:"));
         formPanel.add(new JLabel(""));
         formPanel.add(new JLabel(""));
+        formPanel.add(new JLabel(""));
 
         formPanel.add(txtMitarbeiterName);
         formPanel.add(txtMitarbeiterUser);
         formPanel.add(cbMitarbeiterRolle);
         formPanel.add(btnAdd);
+        formPanel.add(btnEdit);
         formPanel.add(btnDelete);
 
         panel.add(formPanel, BorderLayout.SOUTH);
@@ -115,6 +118,27 @@ public class AdminGUI extends JFrame {
                 refreshMitarbeiterTable();
             } else {
                 JOptionPane.showMessageDialog(this, "Bitte alle Felder ausfüllen!", "Fehler", JOptionPane.ERROR_MESSAGE);
+            }
+        });
+
+        btnEdit.addActionListener(e -> {
+            int row = tableMitarbeiter.getSelectedRow();
+            if (row >= 0) {
+                int id = (int) modelMitarbeiter.getValueAt(row, 0);
+                String currentName = (String) modelMitarbeiter.getValueAt(row, 1);
+                String currentUser = (String) modelMitarbeiter.getValueAt(row, 2);
+                String currentRolle = (String) modelMitarbeiter.getValueAt(row, 3);
+                
+                String newName = JOptionPane.showInputDialog(this, "Name bearbeiten:", currentName);
+                if (newName != null && !newName.trim().isEmpty()) {
+                    String newUser = JOptionPane.showInputDialog(this, "Benutzername bearbeiten:", currentUser);
+                    if (newUser != null && !newUser.trim().isEmpty()) {
+                        DatabaseManager.updateMitarbeiter(new Mitarbeiter(id, newName.trim(), newUser.trim(), currentRolle, true));
+                        refreshMitarbeiterTable();
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Bitte eine Zeile zum Bearbeiten auswählen!", "Hinweis", JOptionPane.WARNING_MESSAGE);
             }
         });
 
@@ -145,13 +169,14 @@ public class AdminGUI extends JFrame {
         configureTable(tableArtikel);
         panel.add(new JScrollPane(tableArtikel), BorderLayout.CENTER);
 
-        JPanel formPanel = new JPanel(new GridLayout(2, 5, 8, 8));
-        formPanel.setBorder(BorderFactory.createTitledBorder("Neuen Artikel anlegen"));
+        JPanel formPanel = new JPanel(new GridLayout(2, 6, 8, 8));
+        formPanel.setBorder(BorderFactory.createTitledBorder("Menüpunkt / Artikel verwalten (Anlegen / Bearbeiten)"));
 
         txtArtikelName = new JTextField();
         txtArtikelPreis = new JTextField();
         cbArtikelKategorie = new JComboBox<>(new String[]{"Vorspeisen", "Hauptspeisen", "Desserts", "Getränke"});
         JButton btnAdd = new JButton("Hinzufügen");
+        JButton btnEdit = new JButton("Bearbeiten");
         JButton btnDelete = new JButton("Löschen");
 
         formPanel.add(new JLabel("Artikelname:"));
@@ -159,11 +184,13 @@ public class AdminGUI extends JFrame {
         formPanel.add(new JLabel("Preis (€):"));
         formPanel.add(new JLabel(""));
         formPanel.add(new JLabel(""));
+        formPanel.add(new JLabel(""));
 
         formPanel.add(txtArtikelName);
         formPanel.add(cbArtikelKategorie);
         formPanel.add(txtArtikelPreis);
         formPanel.add(btnAdd);
+        formPanel.add(btnEdit);
         formPanel.add(btnDelete);
 
         panel.add(formPanel, BorderLayout.SOUTH);
@@ -181,6 +208,32 @@ public class AdminGUI extends JFrame {
                 }
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "Gültigen Preis eingeben!", "Fehler", JOptionPane.ERROR_MESSAGE);
+            }
+        });
+
+        btnEdit.addActionListener(e -> {
+            int row = tableArtikel.getSelectedRow();
+            if (row >= 0) {
+                int id = (int) modelArtikel.getValueAt(row, 0);
+                String currentName = (String) modelArtikel.getValueAt(row, 1);
+                String currentKat = (String) modelArtikel.getValueAt(row, 2);
+                double currentPreis = (double) modelArtikel.getValueAt(row, 3);
+
+                String newName = JOptionPane.showInputDialog(this, "Artikelname bearbeiten:", currentName);
+                if (newName != null && !newName.trim().isEmpty()) {
+                    String newPreisStr = JOptionPane.showInputDialog(this, "Preis (€) bearbeiten:", String.format(java.util.Locale.US, "%.2f", currentPreis));
+                    if (newPreisStr != null) {
+                        try {
+                            double newPreis = Double.parseDouble(newPreisStr.trim().replace(',', '.'));
+                            DatabaseManager.updateArtikel(new Artikel(id, newName.trim(), currentKat, newPreis, true));
+                            refreshArtikelTable();
+                        } catch (Exception ex) {
+                            JOptionPane.showMessageDialog(this, "Ungültiger Preis!", "Fehler", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Bitte einen Artikel zum Bearbeiten auswählen!", "Hinweis", JOptionPane.WARNING_MESSAGE);
             }
         });
 
@@ -209,13 +262,14 @@ public class AdminGUI extends JFrame {
         configureTable(tableTische);
         panel.add(new JScrollPane(tableTische), BorderLayout.CENTER);
 
-        JPanel formPanel = new JPanel(new GridLayout(2, 5, 8, 8));
-        formPanel.setBorder(BorderFactory.createTitledBorder("Neuen Tisch anlegen"));
+        JPanel formPanel = new JPanel(new GridLayout(2, 6, 8, 8));
+        formPanel.setBorder(BorderFactory.createTitledBorder("Tisch verwalten (Anlegen / Bearbeiten)"));
 
         txtTischNummer = new JTextField();
         txtTischKapazitaet = new JTextField();
         cbTischStatus = new JComboBox<>(new String[]{"frei", "belegt"});
         JButton btnAdd = new JButton("Hinzufügen");
+        JButton btnEdit = new JButton("Bearbeiten");
         JButton btnDelete = new JButton("Löschen");
 
         formPanel.add(new JLabel("Tischnummer:"));
@@ -223,11 +277,13 @@ public class AdminGUI extends JFrame {
         formPanel.add(new JLabel("Status:"));
         formPanel.add(new JLabel(""));
         formPanel.add(new JLabel(""));
+        formPanel.add(new JLabel(""));
 
         formPanel.add(txtTischNummer);
         formPanel.add(txtTischKapazitaet);
         formPanel.add(cbTischStatus);
         formPanel.add(btnAdd);
+        formPanel.add(btnEdit);
         formPanel.add(btnDelete);
 
         panel.add(formPanel, BorderLayout.SOUTH);
@@ -243,6 +299,29 @@ public class AdminGUI extends JFrame {
                 refreshTischeTable();
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "Gültige Zahlen für Nummer und Kapazität eingeben!", "Fehler", JOptionPane.ERROR_MESSAGE);
+            }
+        });
+
+        btnEdit.addActionListener(e -> {
+            int row = tableTische.getSelectedRow();
+            if (row >= 0) {
+                int id = (int) modelTische.getValueAt(row, 0);
+                int currentNr = (int) modelTische.getValueAt(row, 1);
+                int currentKap = (int) modelTische.getValueAt(row, 2);
+                String currentStatus = (String) modelTische.getValueAt(row, 3);
+
+                String newKapStr = JOptionPane.showInputDialog(this, "Kapazität für Tisch #" + currentNr + " bearbeiten:", currentKap);
+                if (newKapStr != null) {
+                    try {
+                        int newKap = Integer.parseInt(newKapStr.trim());
+                        DatabaseManager.updateTisch(new Tisch(id, currentNr, newKap, currentStatus));
+                        refreshTischeTable();
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(this, "Ungültige Kapazität!", "Fehler", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Bitte einen Tisch zum Bearbeiten auswählen!", "Hinweis", JOptionPane.WARNING_MESSAGE);
             }
         });
 
@@ -273,9 +352,11 @@ public class AdminGUI extends JFrame {
 
         JPanel btnPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JButton btnStatusNext = new JButton("Status weiterschalten");
+        JButton btnDeleteOrder = new JButton("Bestellung löschen");
         JButton btnRefresh = new JButton("Aktualisieren");
 
         btnPanel.add(btnStatusNext);
+        btnPanel.add(btnDeleteOrder);
         btnPanel.add(btnRefresh);
 
         panel.add(btnPanel, BorderLayout.SOUTH);
@@ -290,6 +371,20 @@ public class AdminGUI extends JFrame {
                 refreshBestellungenTable();
             } else {
                 JOptionPane.showMessageDialog(this, "Bitte eine Bestellung auswählen!", "Hinweis", JOptionPane.WARNING_MESSAGE);
+            }
+        });
+
+        btnDeleteOrder.addActionListener(e -> {
+            int row = tableBestellungen.getSelectedRow();
+            if (row >= 0) {
+                int id = (int) modelBestellungen.getValueAt(row, 0);
+                int confirm = JOptionPane.showConfirmDialog(this, "Soll die Bestellung #" + id + " wirklich gelöscht werden?", "Bestellung löschen", JOptionPane.YES_NO_OPTION);
+                if (confirm == JOptionPane.YES_OPTION) {
+                    DatabaseManager.deleteBestellung(id);
+                    refreshBestellungenTable();
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Bitte eine Bestellung zum Löschen auswählen!", "Hinweis", JOptionPane.WARNING_MESSAGE);
             }
         });
 
