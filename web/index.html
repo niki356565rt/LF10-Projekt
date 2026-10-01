@@ -69,16 +69,6 @@
             gap: 10px;
         }
 
-        .stitch-badge {
-            background-color: rgba(255, 255, 255, 0.12);
-            color: #6cf8bb;
-            border: 1px solid rgba(108, 248, 187, 0.3);
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
         .role-selector {
             display: flex;
             gap: 8px;
@@ -419,7 +409,6 @@
             <div class="logo">
                 Gastronovi Order Suite
             </div>
-            <span class="stitch-badge">Stitch Design System (Projekt 7353340643345089919)</span>
         </div>
         <div class="role-selector">
             <button class="role-btn active" onclick="switchView('service')">Kellner</button>
@@ -569,6 +558,34 @@
                 </table>
             </div>
         </section>
+
+        <!-- WIZARD MODAL DIALOG OVERLAY -->
+        <div id="wizard-modal-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.5); z-index: 1000; align-items: center; justify-content: center;">
+            <div style="background: #ffffff; border-radius: 12px; width: 90%; max-width: 520px; overflow: hidden; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);">
+                <!-- Header -->
+                <div style="background: var(--stitch-primary); color: #ffffff; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center;">
+                    <h3 id="wizard-modal-title" style="margin: 0; font-size: 1.1rem;">Wizard Dialog</h3>
+                    <button onclick="closeWizard()" style="background: none; border: none; color: #ffffff; font-size: 1.4rem; cursor: pointer;">&times;</button>
+                </div>
+                <!-- Progress Bar / Indicator -->
+                <div style="background: #f1f5f9; padding: 10px 20px; border-bottom: 1px solid var(--border); font-size: 0.85rem; font-weight: 600; color: var(--text-muted);" id="wizard-step-indicator">
+                    Schritt 1 von 3
+                </div>
+                <!-- Body Step Pages -->
+                <div style="padding: 24px;" id="wizard-modal-body">
+                    <!-- Step content injected dynamically -->
+                </div>
+                <!-- Footer Navigation -->
+                <div style="padding: 16px 20px; background: #f8fafc; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
+                    <button class="btn-action" style="width: auto; margin: 0; background: #94a3b8; padding: 8px 16px; min-height: 40px;" onclick="closeWizard()">Abbrechen</button>
+                    <div style="display: flex; gap: 8px;">
+                        <button class="btn-action" id="wizard-btn-prev" style="width: auto; margin: 0; background: #64748b; padding: 8px 16px; min-height: 40px;" onclick="wizardPrev()">Zurück</button>
+                        <button class="btn-action" id="wizard-btn-next" style="width: auto; margin: 0; padding: 8px 16px; min-height: 40px;" onclick="wizardNext()">Weiter</button>
+                        <button class="btn-action btn-success" id="wizard-btn-finish" style="width: auto; margin: 0; padding: 8px 16px; min-height: 40px; display: none;" onclick="wizardFinish()">Speichern</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <script>
@@ -899,35 +916,6 @@
             document.getElementById('stat-mitarbeiter').innerText = mitarbeiter.length + ' Personen';
         }
 
-    <!-- WIZARD MODAL DIALOG OVERLAY -->
-    <div id="wizard-modal-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.5); z-index: 1000; align-items: center; justify-content: center;">
-        <div style="background: #ffffff; border-radius: 12px; width: 90%; max-width: 520px; overflow: hidden; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);">
-            <!-- Header -->
-            <div style="background: var(--stitch-primary); color: #ffffff; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center;">
-                <h3 id="wizard-modal-title" style="margin: 0; font-size: 1.1rem;">Wizard Dialog</h3>
-                <button onclick="closeWizard()" style="background: none; border: none; color: #ffffff; font-size: 1.4rem; cursor: pointer;">&times;</button>
-            </div>
-            <!-- Progress Bar / Indicator -->
-            <div style="background: #f1f5f9; padding: 10px 20px; border-bottom: 1px solid var(--border); font-size: 0.85rem; font-weight: 600; color: var(--text-muted);" id="wizard-step-indicator">
-                Schritt 1 von 3
-            </div>
-            <!-- Body Step Pages -->
-            <div style="padding: 24px;" id="wizard-modal-body">
-                <!-- Step content injected dynamically -->
-            </div>
-            <!-- Footer Navigation -->
-            <div style="padding: 16px 20px; background: #f8fafc; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
-                <button class="btn-action" style="width: auto; margin: 0; background: #94a3b8; padding: 8px 16px; min-height: 40px;" onclick="closeWizard()">Abbrechen</button>
-                <div style="display: flex; gap: 8px;">
-                    <button class="btn-action" id="wizard-btn-prev" style="width: auto; margin: 0; background: #64748b; padding: 8px 16px; min-height: 40px;" onclick="wizardPrev()">Zurück</button>
-                    <button class="btn-action" id="wizard-btn-next" style="width: auto; margin: 0; padding: 8px 16px; min-height: 40px;" onclick="wizardNext()">Weiter</button>
-                    <button class="btn-action btn-success" id="wizard-btn-finish" style="width: auto; margin: 0; padding: 8px 16px; min-height: 40px; display: none;" onclick="wizardFinish()">Speichern</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
         // --- WIZARD MODAL SYSTEM ---
         let wizardType = null; // 'tisch', 'artikel', 'mitarbeiter'
         let wizardMode = 'add'; // 'add' or 'edit'
