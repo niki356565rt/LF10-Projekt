@@ -317,7 +317,7 @@
                 <span class="stage-dir">[Deutet mit offener Hand auf die drei nummerierten Karten auf der Folie]</span><br>
                 „Um Ihnen einen transparenten Überblick zu geben, haben wir unsere 20-minütige Präsentation in drei inhaltlich ausgewogene Blöcke unterteilt: <span class="pause-marker">//</span> 
                 Wir starten in <strong>Block 1</strong> mit der Ausgangslage, der methodischen Make-or-Buy-Entscheidung, dem Phasenplan und der detaillierten Zuschlagskalkulation inklusive Energiekosten. <span class="pause-marker">//</span> 
-                Im <strong>zweiten Block</strong> widmen wir uns ab Minute 6 der technischen Substanz: Wir zeigen Ihnen den Geschäftsprozess in UML, das relationale Datenmodell in der 3. Normalform und unsere Java 17 DAO-Architektur mit konkreten Code-Ausschnitten. <span class="pause-marker">//</span> 
+                Im <strong>zweiten Block</strong> widmen wir uns ab Minute 6 der technischen Substanz: Wir zeigen Ihnen das prozessuale Routing und Zustandsmanagement im Quellcode, das relationale Datenmodell in der 3. Normalform sowie unsere Java 17 Transaktions- und DAO-Architektur. <span class="pause-marker">//</span> 
                 Im <strong>dritten Block</strong> ab Minute 13 fokussieren wir uns auf die Zuverlässigkeit: Unsere automatisierte Testsuite, das Informationssicherheitskonzept nach ISO 27001, den Soll-Ist-Vergleich und die Roadmap für künftige Erweiterungen. <span class="pause-marker">//</span> 
                 Lassen Sie uns direkt mit der Ausgangssituation unseres Kunden beginnen.“
             </p>
@@ -426,28 +426,33 @@
     <div class="slide-card">
         <div class="slide-header">
             <span class="slide-num">Folie 6</span>
-            <span class="slide-title">Geschäftsprozess: Ablauf in UML (Aktivitätsdiagramm)</span>
+            <span class="slide-title">Geschäftsprozess: Ablauf &amp; Routing-Logik im Quellcode</span>
             <span class="slide-time">06:15 – 07:45 min</span>
         </div>
         
         <div class="speech-box">
             <div class="speech-header">🎙️ Wort-für-Wort-Redeskript:</div>
             <p class="speech-text">
-                <span class="stage-dir">[Sprecher 2 übernimmt mit Blickkontakt und Verweis auf das UML-Diagramm rechts]</span><br>
-                „Vielen Dank. <span class="pause-marker">//</span> Bevor eine einzige Zeile Java-Code geschrieben wurde, haben wir den Soll-Bestellprozess formal modelliert. <span class="pause-marker">//</span> 
-                Hier sehen Sie unser UML-Aktivitätsdiagramm mit Swimlanes für Servicekraft, Küche, Bar und das Datenbanksystem. <span class="pause-marker">//</span> 
-                Der Ablauf gliedert sich in vier präzise Etappen: <span class="stage-dir">[Zeigt auf die linken Kacheln]</span> 
-                1. <strong>Bestellaufnahme:</strong> Die Servicekraft wählt den Gasttisch und erfasst Speisen und Getränke. <span class="pause-marker">//</span> 
-                2. <strong>Automatisches Routing:</strong> Am Synchronisationsbalken – dem Fork – trennt das System automatisch: Speisen gehen auf das Küchen-Display, Getränke an die Bar. Der Status springt auf ‚IN_BEARBEITUNG‘. <span class="pause-marker">//</span> 
-                3. <strong>Zubereitung &amp; Signal:</strong> Sobald die Küche fertig ist, quittiert der Koch per Tastendruck. Die Servicekraft erhält auf ihrem Monitor ein optisches Signal. <span class="pause-marker">//</span> 
-                4. <strong>Servieren &amp; Abrechnung:</strong> Nach dem Servieren wird am Tisch eine konsolidierte Sammelrechnung generiert, der Bezahlstatus verbucht und der Tisch sofort wieder freigegeben. <span class="pause-marker">//</span> 
-                Dieser strukturierte Ablauf war das direkte Fundament für unser Datenmodell.“
+                <span class="stage-dir">[Sprecher 2 übernimmt mit Blickkontakt und Verweis auf den Quellcode in der rechten IDE-Box]</span><br>
+                „Vielen Dank. <span class="pause-marker">//</span> Schauen wir uns nun an, wie der Geschäftsprozess direkt in unserer Softwarearchitektur implementiert ist. <span class="pause-marker">//</span> 
+                Auf der linken Seite sehen Sie die vier sequentiellen Prozessphasen: <span class="stage-dir">[Zeigt auf die linken Kacheln]</span> 
+                1. <strong>Bestellaufnahme:</strong> Am Tisch wählt die Servicekraft den Tisch aus und erfasst Artikel – die Bestellung startet mit dem Status <code>‚aufgegeben‘</code>. <span class="pause-marker">//</span> 
+                2. <strong>Automatisches Routing:</strong> Das System trennt Posten automatisch nach Artikelkategorie: Speisen gehen auf das Display der Küche, Getränke direkt an die Bar. <span class="pause-marker">//</span> 
+                3. <strong>Zubereitung &amp; Quittierung:</strong> Die Küche setzt den Zustand auf <code>‚in Bearbeitung‘</code> und bei Fertigstellung auf <code>‚fertig‘</code>. <span class="pause-marker">//</span> 
+                4. <strong>Servieren &amp; Abrechnung:</strong> Nach dem Servieren erfolgt die Gesamtrechnung und automatische Freigabe des Gasttisches. <span class="pause-marker">//</span> 
+                <span class="stage-dir">[Blick auf die rechte IDE-Box mit Java-Code]</span> 
+                Rechts sehen Sie die programmierte Zustandsmaschine in <code>DatabaseManager.updateBestellstatus()</code>: 
+                Statusübergänge werden parametrisiert und synchron über ein PreparedStatement in die Datenbank geschrieben. Das stellt sicher, dass Service, Küche und Bar jederzeit exakt denselben, konsistenten Auftragsstatus sehen.“
             </p>
         </div>
 
         <div class="qa-box">
-            <div class="question">❓ Prüferfrage: „Was passiert im Prozess, wenn ein Gast einen Sonderwunsch äußert oder einen Artikel stornieren möchte?“</div>
-            <div class="answer">💡 <strong>Antwort:</strong> „Im Aktivitätsdiagramm ist dafür ein Verzweigungsknoten definiert: Solange der Status noch auf 'OFFEN' steht, kann der Kellner Positionen modifizieren. Befindet sich der Bon bereits 'IN_BEARBEITUNG' in der Küche, erfordert ein Storno eine Freigabebestätigung durch die Küchenleitung.“</div>
+            <div class="question">❓ Prüferfrage: „Wie verhindert Ihre Software, dass ungültige Statusübergänge stattfinden (z. B. von 'fertig' zurück auf 'aufgegeben')?“</div>
+            <div class="answer">💡 <strong>Antwort:</strong> „Wir steuern das über ein Finite State Machine Pattern im Backend: Vor dem Aufruf von <code>updateBestellstatus()</code> validiert die Service-Logik, ob der Zielstatus ein erlaubter Folgezustand des aktuellen Status ist. Zusätzlich sichert ein SQL-CHECK-Constraint auf Spaltenebene nur die definierten Enum-Statuswerte ab.“</div>
+        </div>
+        <div class="qa-box">
+            <div class="question">❓ Prüferfrage: „Wie wird das Routing zwischen Küche und Bar technisch realisiert?“</div>
+            <div class="answer">💡 <strong>Antwort:</strong> „Beim Auslesen der offenen Positionen filtert die GUI über das Attribut <code>kategorie</code> der Tabelle <code>artikel</code>: Das Küchen-Display filtert auf 'Vorspeisen', 'Hauptspeisen' und 'Desserts', während die Bar alle Positionen der Kategorie 'Getränke' anzeigt.“</div>
         </div>
     </div>
 
@@ -492,24 +497,29 @@
     <div class="slide-card">
         <div class="slide-header">
             <span class="slide-num">Folie 8</span>
-            <span class="slide-title">Java 17-Softwarearchitektur: DAO-Pattern &amp; Prepared SQL</span>
+            <span class="slide-title">Java 17-Softwarearchitektur: Transaktionskapselung &amp; DAO-Pattern</span>
             <span class="slide-time">09:30 – 11:15 min</span>
         </div>
         
         <div class="speech-box">
             <div class="speech-header">🎙️ Wort-für-Wort-Redeskript:</div>
             <p class="speech-text">
-                <span class="stage-dir">[Zeigt links auf das Klassendiagramm und rechts auf den Java-Code]</span><br>
+                <span class="stage-dir">[Zeigt auf die beiden Code-Boxen: links Transaktionslogik, rechts DAO-Zugriff]</span><br>
                 „Auf Softwareebene setzen wir auf modernes <strong>Java 17</strong> und eine strikte Schichtentrennung nach dem <strong>DAO-Entwurfsmuster (Data Access Object)</strong>. <span class="pause-marker">//</span> 
-                Wie Sie im Klassendiagramm sehen, kennt die Benutzeroberfläche <code>AdminGUI</code> keine einzige Zeile SQL. Sämtliche Datenzugriffe sind in der Klasse <code>DatabaseManager</code> gekapselt. <span class="pause-marker">//</span> 
-                <span class="stage-dir">[Blick auf den Code rechts]</span> 
-                Hier sehen Sie die Methode <code>bucheBestellung()</code>. 
-                Wir nutzen ausnahmslos <strong>Prepared Statements</strong> mit parametrisierten Platzhaltern. <span class="pause-marker">//</span> 
-                Dadurch werden Parameter wie <code>tischId</code> und <code>maId</code> vom SQL-Treiber als reine Datenliterale gebunden. Ein Einschleusen bösartigen SQL-Codes – also <strong>SQL-Injections</strong> – ist damit technisch zu 100 % ausgeschlossen. <span class="pause-marker">//</span> 
-                Zusätzlich erreichen wir durch den Standard-JDBC-Treiber ein ‚Loose Coupling‘: Wir können die Datenbank-Engine jederzeit von SQLite auf MariaDB oder PostgreSQL portieren, ohne eine einzige Zeile unseres Frontends zu modifizieren.“
+                <span class="stage-dir">[Blick auf die linke Code-Box: OrderTransaction.java]</span> 
+                In der linken Box sehen Sie unser Transaktionsmanagement nach den <strong>ACID-Prinzipien</strong>: 
+                Über <code>conn.setAutoCommit(false)</code> leiten wir eine atomare Transaktion ein. Die Erstellung des Bestellkopfs, das iterative Einfügen aller Positionen und das Setzen des Tischstatus auf ‚belegt‘ finden in einer unteilbaren Einheit statt. <span class="pause-marker">//</span> 
+                Tritt während des Vorgangs ein Fehler oder ein Netzwerkabbruch auf, greift sofort <code>conn.rollback()</code> im Catch-Block. Dadurch ist ein inkonsistenter Datenbankzustand technisch ausgeschlossen. <span class="pause-marker">//</span> 
+                <span class="stage-dir">[Blick auf die rechte Code-Box: DatabaseManager.java]</span> 
+                Rechts sehen Sie unsere DAO-Abfrage: Über relationale <code>SQL-JOINs</code> werden Bestelldaten, Tischnummern und Servicemitarbeiter konsolidiert ausgelesen. <span class="pause-marker">//</span> 
+                Die Benutzeroberfläche bleibt dadurch vollkommen frei von SQL-Syntax, und dank PreparedStatement sind <strong>SQL-Injections</strong> technisch zu 100 % ausgeschlossen.“
             </p>
         </div>
 
+        <div class="qa-box">
+            <div class="question">❓ Prüferfrage: „Was bedeuten die ACID-Prinzipien konkret für Ihren Bestellvorgang?“</div>
+            <div class="answer">💡 <strong>Antwort:</strong> „<strong>A (Atomarität):</strong> Entweder wird die gesamte Bestellung mit allen Positionen und Tischstatus gespeichert oder gar nichts. <strong>C (Konsistenz):</strong> Fremdschlüssel und Constraints bleiben stets integer. <strong>I (Isolation):</strong> Parallele Buchungen sehen keine unvollständigen Zwischenstände (Dirty Reads). <strong>D (Dauerhaftigkeit):</strong> Nach <code>commit()</code> sind die Daten persistent auf der Festplatte gesichert.“</div>
+        </div>
         <div class="qa-box">
             <div class="question">❓ Prüferfrage: „Wie schützen Prepared Statements technisch vor SQL-Injection?“</div>
             <div class="answer">💡 <strong>Antwort:</strong> „Bei einem PreparedStatement wird das SQL-Gerüst vorkompiliert an die Datenbank gesendet. Die über <code>ps.setInt()</code> oder <code>ps.setString()</code> übergebenen Parameter werden als reine Literaldaten behandelt und können die logische Syntax des SQL-Parsers niemals manipulieren.“</div>

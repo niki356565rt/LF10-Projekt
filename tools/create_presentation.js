@@ -200,7 +200,7 @@ async function createPresentation() {
                 title: 'Architektur & Implementierung',
                 time: 'ca. 7 Minuten',
                 color: TEAL,
-                items: ['UML-Geschäftsprozessmodellierung', 'Datenbankmodellierung (3NF)', 'Java 17 DAO-Architektur & SQL', 'GUI-Design & Usability (ISO 9241)']
+                items: ['Prozess-Routing & Statuslogik', 'Datenbankmodellierung (3NF)', 'Transaktionen (ACID) & DAO', 'GUI-Design & Usability (ISO 9241)']
             },
             {
                 num: '03',
@@ -494,25 +494,25 @@ async function createPresentation() {
     }
 
     // -------------------------------------------------------------
-    // SLIDE 6: GESCHÄFTSPROZESSMODELLIERUNG UML (GRAFIK + STEPS)
+    // SLIDE 6: GESCHÄFTSPROZESS: ABLAUF & QUELLCODE (STEPS + CODE)
     // -------------------------------------------------------------
     {
         const slide = pres.addSlide();
         slide.background = { color: LIGHT_BG };
-        addSlideChrome(slide, 6, 'Geschäftsprozess: Ablauf in UML', 'Entwurf & Modellierung');
+        addSlideChrome(slide, 6, 'Geschäftsprozess: Ablauf & Routing-Logik', 'Entwurf & Implementierung');
 
         // Left: 4 Prozess-Etappen
         const steps = [
-            { num: '01', title: 'Bestellaufnahme am Tisch', desc: 'Auswahl Gasttisch, Erfassung Speisen/Getränke, atomare Transaktion' },
-            { num: '02', title: 'Automatisches Routing', desc: 'Sofortige Trennung: Speisen an Küche, Getränke an Bar-Display' },
-            { num: '03', title: 'Zubereitung & Signal', desc: 'Küche markiert »FERTIG«; automatischer Hinweis an Servicekraft' },
-            { num: '04', title: 'Servieren & Abrechnung', desc: 'Servieren der Positionen, Rechnungsdruck & Tischfreigabe' }
+            { num: '01', title: 'Bestellaufnahme am Tisch', desc: 'Auswahl Tisch, Erfassung Speisen & Getränke, Status = "aufgegeben"' },
+            { num: '02', title: 'Automatisches Routing & Status', desc: 'Trennung nach Kategorie: Küche (Speisen) vs. Bar (Getränke)' },
+            { num: '03', title: 'Zubereitung & Quittierung', desc: 'Küche/Bar setzt Status: "in Bearbeitung" ➔ "fertig"' },
+            { num: '04', title: 'Servieren & Abrechnung', desc: 'Service quittiert "serviert"; Tischabrechnung & Freigabe' }
         ];
 
         steps.forEach((s, idx) => {
             const yPos = 1.25 + idx * 0.92;
             slide.addShape(pres.shapes.ROUNDED_RECTANGLE, {
-                x: 0.8, y: yPos, w: 4.3, h: 0.82,
+                x: 0.8, y: yPos, w: 4.15, h: 0.82,
                 fill: { color: CARD_BG }, line: { color: BORDER_COLOR, width: 1 }
             });
             slide.addShape(pres.shapes.ROUNDED_RECTANGLE, {
@@ -524,29 +524,39 @@ async function createPresentation() {
                 fontSize: 12, bold: true, color: 'FFFFFF', fontFace: 'Segoe UI', align: 'center'
             });
             slide.addText(s.title, {
-                x: 1.45, y: yPos + 0.08, w: 3.55, h: 0.3,
-                fontSize: 10.5, bold: true, color: NAVY, fontFace: 'Segoe UI'
+                x: 1.45, y: yPos + 0.08, w: 3.45, h: 0.3,
+                fontSize: 10.2, bold: true, color: NAVY, fontFace: 'Segoe UI'
             });
             slide.addText(s.desc, {
-                x: 1.45, y: yPos + 0.36, w: 3.55, h: 0.4,
-                fontSize: 8.5, color: TEXT_MAIN, fontFace: 'Segoe UI'
+                x: 1.45, y: yPos + 0.36, w: 3.45, h: 0.4,
+                fontSize: 8.2, color: TEXT_MAIN, fontFace: 'Segoe UI'
             });
         });
 
-        // Right: Embedded UML Activity Diagram
-        slide.addShape(pres.shapes.ROUNDED_RECTANGLE, {
-            x: 5.3, y: 1.25, w: 3.9, h: 3.7,
-            fill: { color: CARD_BG }, line: { color: BORDER_COLOR, width: 1 }
-        });
-
-        const imgPath = path.join(__dirname, '..', 'docs', '07-uml-aktivitaetsdiagramm-bestellprozess.png');
-        if (fs.existsSync(imgPath)) {
-            slide.addImage({
-                path: imgPath,
-                x: 5.4, y: 1.35, w: 3.7, h: 3.5,
-                sizing: { type: 'contain', w: 3.7, h: 3.5 }
-            });
-        }
+        // Right: IDE Code Box showing the state machine / routing process implementation in Java & SQL
+        const processCode = [
+            { text: '// DatabaseManager.java - Status-Routing\n', options: { color: '64748B', italic: true } },
+            { text: 'public static boolean ', options: { color: 'F43F5E', bold: true } },
+            { text: 'updateBestellstatus(\n    ', options: { color: '38BDF8' } },
+            { text: 'int bestellungId, String newStatus) {\n', options: { color: 'E2E8F0' } },
+            { text: '    // Validierte Status-Übergänge:\n', options: { color: '64748B', italic: true } },
+            { text: '    // aufgegeben ➔ in Bearbeitung ➔ fertig\n', options: { color: '64748B', italic: true } },
+            { text: '    String sql = \n', options: { color: 'E2E8F0' } },
+            { text: '      "UPDATE bestellung "\n    + ', options: { color: '34D399' } },
+            { text: '"SET status = ? "\n    + ', options: { color: '34D399' } },
+            { text: '"WHERE bestellung_id = ?";\n\n', options: { color: '34D399' } },
+            { text: '    try (Connection conn = \n', options: { color: 'E2E8F0' } },
+            { text: '           getConnection();\n', options: { color: 'E2E8F0' } },
+            { text: '         PreparedStatement pstmt = \n', options: { color: 'F43F5E' } },
+            { text: '           conn.prepareStatement(sql)) {\n', options: { color: 'E2E8F0' } },
+            { text: '        pstmt.setString(1, newStatus);\n', options: { color: 'E2E8F0' } },
+            { text: '        pstmt.setInt(2, bestellungId);\n', options: { color: 'E2E8F0' } },
+            { text: '        return pstmt.executeUpdate() > 0;\n', options: { color: 'F43F5E' } },
+            { text: '    } catch (SQLException e) {\n', options: { color: 'E2E8F0' } },
+            { text: '        return false;\n', options: { color: 'F43F5E' } },
+            { text: '    }\n}', options: { color: 'E2E8F0' } }
+        ];
+        addCodeBox(slide, 5.15, 1.25, 4.05, 3.7, 'BestellprozessRouting.java', processCode);
     }
 
     // -------------------------------------------------------------
@@ -653,53 +663,63 @@ async function createPresentation() {
     }
 
     // -------------------------------------------------------------
-    // SLIDE 8: SOFTWARE-ARCHITEKTUR & JAVA-CODE (KLASSENDIAGRAMM + CODE)
+    // SLIDE 8: SOFTWARE-ARCHITEKTUR & TRANSAKTIONEN (DUAL-CODE)
     // -------------------------------------------------------------
     {
         const slide = pres.addSlide();
         slide.background = { color: LIGHT_BG };
-        addSlideChrome(slide, 8, 'Java 17-Architektur: DAO-Pattern & Prepared SQL', 'Software-Architektur');
+        addSlideChrome(slide, 8, 'Java 17-Architektur: Transaktionskapselung & DAO', 'Software-Architektur');
 
-        // Left: Embedded Class Diagram
-        slide.addShape(pres.shapes.ROUNDED_RECTANGLE, {
-            x: 0.8, y: 1.25, w: 4.1, h: 3.7,
-            fill: { color: CARD_BG }, line: { color: BORDER_COLOR, width: 1 }
-        });
+        // Left IDE Code Box: Transaction Management (ACID)
+        const txCode = [
+            { text: '// Transaktionssichere Buchung (ACID)\n', options: { color: '64748B', italic: true } },
+            { text: 'conn.setAutoCommit(', options: { color: '38BDF8' } },
+            { text: 'false', options: { color: 'F43F5E', bold: true } },
+            { text: '); // Start TX\n', options: { color: '38BDF8' } },
+            { text: 'try {\n', options: { color: 'E2E8F0' } },
+            { text: '    // 1. Kopfdatensatz erzeugen\n', options: { color: '64748B', italic: true } },
+            { text: '    int bId = insertBestellung(conn);\n', options: { color: 'E2E8F0' } },
+            { text: '    // 2. Positionen buchen\n', options: { color: '64748B', italic: true } },
+            { text: '    for (Item pos : items) {\n', options: { color: 'E2E8F0' } },
+            { text: '        insertPosition(conn, bId, pos);\n', options: { color: 'E2E8F0' } },
+            { text: '    }\n', options: { color: 'E2E8F0' } },
+            { text: '    // 3. Tischstatus ➔ "belegt"\n', options: { color: '64748B', italic: true } },
+            { text: '    updateTischStatus(conn, tId);\n\n', options: { color: 'E2E8F0' } },
+            { text: '    conn.commit(); ', options: { color: '34D399', bold: true } },
+            { text: '// Atomar gespeichert\n', options: { color: '64748B', italic: true } },
+            { text: '} catch (SQLException ex) {\n', options: { color: 'E2E8F0' } },
+            { text: '    conn.rollback(); ', options: { color: 'F43F5E', bold: true } },
+            { text: '// Konsistenter Zustand\n', options: { color: '64748B', italic: true } },
+            { text: '    throw ex;\n', options: { color: 'F43F5E' } },
+            { text: '}', options: { color: 'E2E8F0' } }
+        ];
+        addCodeBox(slide, 0.8, 1.25, 4.15, 3.7, 'OrderTransaction.java', txCode);
 
-        const classImgPath = path.join(__dirname, '..', 'docs', '16-klassendiagramm.png');
-        if (fs.existsSync(classImgPath)) {
-            slide.addImage({
-                path: classImgPath,
-                x: 0.9, y: 1.35, w: 3.9, h: 3.5,
-                sizing: { type: 'contain', w: 3.9, h: 3.5 }
-            });
-        }
-
-        // Right: IDE Code Box with Java DAO Prepared Statement
-        const javaCode = [
-            { text: '// DatabaseManager.java - Transaktionskapselung\n', options: { color: '64748B', italic: true } },
-            { text: 'public void ', options: { color: 'F43F5E', bold: true } },
-            { text: 'bucheBestellung(', options: { color: '38BDF8' } },
-            { text: 'int ', options: { color: 'F43F5E' } },
-            { text: 'tischId, ', options: { color: 'E2E8F0' } },
-            { text: 'int ', options: { color: 'F43F5E' } },
-            { text: 'maId)\n    ', options: { color: 'E2E8F0' } },
-            { text: 'throws ', options: { color: 'F43F5E' } },
-            { text: 'SQLException {\n', options: { color: '38BDF8' } },
-            { text: '    String sql = ', options: { color: 'E2E8F0' } },
-            { text: '"INSERT INTO bestellung "\n               + ', options: { color: '34D399' } },
-            { text: '"(tisch_id, ma_id, status) "\n               + ', options: { color: '34D399' } },
-            { text: '"VALUES (?, ?, \'OFFEN\')";\n', options: { color: '34D399' } },
-            { text: '    try (PreparedStatement ', options: { color: 'F43F5E' } },
-            { text: 'ps = \n            conn.prepareStatement(sql)) {\n', options: { color: 'E2E8F0' } },
-            { text: '        ps.setInt(1, tischId);  ', options: { color: 'E2E8F0' } },
-            { text: '// Parametrisiert\n', options: { color: '64748B', italic: true } },
-            { text: '        ps.setInt(2, maId);     ', options: { color: 'E2E8F0' } },
-            { text: '// Injection-Safe\n', options: { color: '64748B', italic: true } },
-            { text: '        ps.executeUpdate();\n', options: { color: 'E2E8F0' } },
+        // Right IDE Code Box: DAO PreparedStatement Query
+        const daoCode = [
+            { text: '// DatabaseManager.java - DAO-Pattern\n', options: { color: '64748B', italic: true } },
+            { text: 'public static List<Bestellung>\n', options: { color: 'F43F5E', bold: true } },
+            { text: 'getAllBestellungen() {\n', options: { color: '38BDF8' } },
+            { text: '    String sql = \n', options: { color: 'E2E8F0' } },
+            { text: '      "SELECT b.bestellung_id, "\n    + ', options: { color: '34D399' } },
+            { text: '"t.tischnummer, m.name, "\n    + ', options: { color: '34D399' } },
+            { text: '"b.status, b.gesamtpreis "\n    + ', options: { color: '34D399' } },
+            { text: '"FROM bestellung b "\n    + ', options: { color: '34D399' } },
+            { text: '"JOIN tisch t ON b.tisch_id=t.id "\n    + ', options: { color: '34D399' } },
+            { text: '"JOIN mitarbeiter m "\n    + ', options: { color: '34D399' } },
+            { text: '"  ON b.erstellt_von=m.id "\n    + ', options: { color: '34D399' } },
+            { text: '"ORDER BY b.bestellung_id DESC";\n\n', options: { color: '34D399' } },
+            { text: '    // PreparedStatement & AutoClose\n', options: { color: '64748B', italic: true } },
+            { text: '    try (Connection conn = \n', options: { color: 'E2E8F0' } },
+            { text: '           getConnection();\n', options: { color: 'E2E8F0' } },
+            { text: '         Statement stmt = \n', options: { color: 'F43F5E' } },
+            { text: '           conn.createStatement();\n', options: { color: 'E2E8F0' } },
+            { text: '         ResultSet rs = \n', options: { color: 'F43F5E' } },
+            { text: '           stmt.executeQuery(sql)) {\n', options: { color: 'E2E8F0' } },
+            { text: '        return mapResultSet(rs);\n', options: { color: '38BDF8' } },
             { text: '    }\n}', options: { color: 'E2E8F0' } }
         ];
-        addCodeBox(slide, 5.1, 1.25, 4.1, 3.7, 'DatabaseManager.java', javaCode);
+        addCodeBox(slide, 5.15, 1.25, 4.05, 3.7, 'DatabaseManager.java', daoCode);
     }
 
     // -------------------------------------------------------------
